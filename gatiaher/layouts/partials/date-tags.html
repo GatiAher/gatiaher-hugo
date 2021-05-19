@@ -1,0 +1,5 @@
+{{ partial "date.html" . }}
+{{ if gt ( len .Params.tags ) 0 }}
+|
+{{ partial "tags.html" . }}
+{{ end }}

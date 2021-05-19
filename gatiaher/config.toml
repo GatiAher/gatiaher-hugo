@@ -1,0 +1,30 @@
+baseURL = "http://GatiAher.github.io"
+title = "Gati Aher"
+publishDir = "docs"
+
+languageCode = "en-us"
+copyright = ""
+
+[author]
+    name = "Gati Aher"
+
+[params]
+    dateFormat = "Jan 2, 2006"
+
+# See https://feathericons.com/
+# The value of pre is the icon name
+[menu]
+  [[menu.main]]
+    name = " "
+    pre = "github"
+    url = "https://github.com/GatiAher"
+    weight = 1
+  [[menu.main]]
+    name = ""
+    pre = "linkedin"
+    url = "https://www.linkedin.com/in/gatiaher"
+    weight = 2
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"

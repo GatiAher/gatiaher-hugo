@@ -1,0 +1,12 @@
+{{ define "main" }}
+
+<h1>{{ .Title }}</h1>
+{{ range .Pages.ByPublishDate.Reverse }}
+<ul>
+    <li>
+        {{ partial "date-title-tags.html" . }}
+    </li>
+</ul>
+{{ end }}
+
+{{ end }}

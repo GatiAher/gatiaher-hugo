@@ -1,0 +1,3 @@
+[submodule "gatiaher/docs"]
+	path = gatiaher/docs
+	url = git@github.com:GatiAher/GatiAher.github.io.git
