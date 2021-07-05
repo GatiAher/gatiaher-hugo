@@ -1,9 +1,9 @@
 ---
 title: "1D and 2D Fourier Transforms"
 date: 2021-05-17T14:22:03-04:00
-tags: ["image processing"]
+tags: ["Image Processing", "Fourier Transforms"]
 draft: false
-description: "Concepts and math behind 1D and 2D discrete Fourier Transforms for signal and image analysis. Overview of mathmatical steps, post-processing, assumptions, and reading of phase and magnitude plots."
+description: "Concepts and math behind 1D and 2D discrete Fourier Transforms for signal and image analysis. Overview of mathematical steps, post-processing, assumptions, and reading of phase and magnitude plots."
 ---
 
 - [Fourier Transforms: A Pattern-Based Perspective](#fourier-transforms-a-pattern-based-perspective)
@@ -65,7 +65,7 @@ The basis matrix $W$ depends on the values of $k$, number of frequency component
 Each element of $W$ is a primitive Nth root of unity. For any exponent $kn$, the Nth roots of unity repeat themselves with a period of $N$, as in $w^{kn} = w^{kn \mod N}$. This leads to several patterns of symmetry in W. For example, Eight-point DFT Matrix looks like this:
 
 {{< figure 
-height=200 
+height=250
 src="/1D-and-2D-Fourier-Transforms/8_point_DFT_equation.png" 
 caption="The first image shows w raised to all combinations of k*n. The second image shows the Nth roots of unity repeating themselves with a period of N. The 8 possible values of w are each given a unique color."
 >}}
@@ -73,7 +73,7 @@ caption="The first image shows w raised to all combinations of k*n. The second i
 We can visualize the DFT Matrix W by graphing the repetition pattern of each row. This representation allows us to see that W is an evenly spaced set of sinusoidal frequencies. The DFT transform is just the result of projecting original signal x onto a set of sinusoidal frequencies. 
 
 {{< figure 
-height=200 
+height=300
 src="/1D-and-2D-Fourier-Transforms/8_point_DFT.png" 
 caption="DFT as a matrix multiplication. Real part (cosine) shown by a solid line, and the imaginary part (sine) by a dashed line. From [DFT matrix – Wikipedia](https://en.wikipedia.org/wiki/DFT_matrix)"
 >}}
@@ -85,7 +85,7 @@ Once we have the DFT coefficients $X$, we have to do some post-processing in ord
 First, to make the frequency plots easier to read, we shift the frequency components in $X$ so that the zero frequency is in the center and higher frequencies are at the edges.
 
 {{< figure 
-height=200 
+height=300
 src="/1D-and-2D-Fourier-Transforms/8_point_DFT_shifted.png" 
 caption="To center a 1D DFT, swap the left and right halves of X."
 >}}
@@ -95,7 +95,7 @@ Next we convert the DFT coefficients $X$ from complex form (real and imaginary p
 $$a + ib = r\cos(\theta) + ir\sin(\theta)$$
 
 {{< figure 
-height=200 
+height=300 
 src="/1D-and-2D-Fourier-Transforms/polar_representation.png" 
 caption="Relationship between complex form and polar form"
 >}}
@@ -111,7 +111,7 @@ $$\theta = \arctan(b/a)$$
 Once we have the magnitude and phase, we can plot them to see how they change over the different frequency components. The x-axis has the frequency component, and the y-axis has the DFT-coefficient magnitude or phase, depending on the plot.
 
 {{< figure 
-height=200 
+height=300 
 src="/1D-and-2D-Fourier-Transforms/frequency_axis_units.png" 
 caption="Different but equivalent units for the frequency components on the x-axis"
 >}}
@@ -120,7 +120,7 @@ Based on the needed interpretation, the frequency component labels on the x-axis
 
 ### Read the 1D Frequency Plots
 
-Let's compare the plots of some simple discrete signals! Here are the magnitude and phase of the DFT coefficients found from projecting a sine wave of 8 Hz, a sine wave of 16 Hz, and a cosine wave of 8 Hz onto a 128-point DFT matrix. Each wave was sampled 128 times over a timespan of 1 second.
+Let's compare the plots of some simple discrete signals! Here are the magnitude and phase of the DFT coefficients found from projecting a sine wave of 8 Hz, a sine wave of 16 Hz, and a cosine wave of 8 Hz onto a 128-point DFT matrix. Each wave was sampled 128 times over a time-span of 1 second.
 
 {{< figure 
 height=600 
@@ -148,7 +148,7 @@ Images can be represented as 2D functions $f(x, y)$ varying in spatial coordinat
 To visualize the sinuous nature of image signals, we can plot the pixel intensities of the image in a surface plot and observe the top view of its contours. In this view, areas of sharp change, like edges, appear as narrow peaks, and swatches of uniform values, like the evenly colored sky, appear flat with no or low gradual peaks. These patterns have direct parallels with the sharp narrow peaks of high frequency waves and low gradual peaks of low frequency waves.
 
 {{< figure 
-height=200 
+height=300 
 src="/1D-and-2D-Fourier-Transforms/cameraman_surface_plot.png" 
 caption="The camera man, a famous image in image processing literature, and his corresponding image surface / Bed Sheet View. From [matlab meshCanopy](https://www.mathworks.com/matlabcentral/fileexchange/29485-meshcanopy)"
 >}}
@@ -161,7 +161,7 @@ The name suggests that an image can be represented by a series of overlaid bedsh
 
  The 2D discrete Fourier transform projects the *NxN* image signal $f$ onto a basis of 2D sine and cosine functions (think bedsheets) in order to get the *NxN* matrix of Fourier coefficients $F$. 
  
-The 2D basis functions are matrices ordered by increasing frequency so that the first basis, corresponding to the top left corner of the coefficient matrix, $F(0, 0)$, represents the DC-offset of the image, or average brightness, and the last basis, corresponding to the bottom right corner of the coefficient matrix, $F(N-1, N-1)$ represents the highest frequency. For a square image of size NxN, the two dimensionsional discrete Fourier transform is given by:
+The 2D basis functions are matrices ordered by increasing frequency so that the first basis, corresponding to the top left corner of the coefficient matrix, $F(0, 0)$, represents the DC-offset of the image, or average brightness, and the last basis, corresponding to the bottom right corner of the coefficient matrix, $F(N-1, N-1)$ represents the highest frequency. For a square image of size NxN, the two dimensional discrete Fourier transform is given by:
 
  $$F(k, l) = \sum_{i=0}^{N-1} \sum_{j=0}^{N-1} f(i, j) * e^{-i2\pi (\frac{ki}{N} + \frac{lj}{N})}$$
 
@@ -185,7 +185,7 @@ Using the [Fast Fourier Transform](https://en.wikipedia.org/wiki/Fast_Fourier_tr
 The Fourier Transform math works by assuming that the given spatial image is just one period in an infinitely repeating spectrum. For example when it looks at the camera man image, it sees:
 
 {{< figure 
-height=400 
+height=400
 src="/1D-and-2D-Fourier-Transforms/cameraman_infinite_spectrum.png" 
 caption="Repeating spectrum of the cameraman image"
 >}}
@@ -219,7 +219,7 @@ Bright values closer to the center of the shifted magnitude plot represent a str
 For example, the sky and ground create horizontal stripes in the infinite spectrum. Horizontal stripes can be represented by a horizontal 2D sine wave. The horizontal stripes’ FFT magnitude plot has a pattern of vertical dots, indicating the periodic pattern across the y-direction.
 
 {{< figure 
-height=150 
+height=150
 src="/1D-and-2D-Fourier-Transforms/example_fft2_sine_wave.png" 
 caption="Horizontal sine wave stripes FFT magnitude plot has a pattern of vertical dots indicating the presences of a periodic pattern across the y-direction."
 >}}
