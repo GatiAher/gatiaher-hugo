@@ -180,7 +180,7 @@ distMat = get_distance_matrix(400)
 distances = binary_min * distMat
 ```
 
-{{< figure 
+{{< figure
 height=200
 src="/Spectral-Analysis-of-Bacteria-S-Layer/find_distances.png"
 caption="Result of multiplying mask by distance 400x400 pixel distance matrix."
@@ -221,7 +221,7 @@ The inner (red) ring has a longer period, compared to the outer (blue) ring. Thi
 Finally, I have to convert from pixels to nanometers using the scale on the original image.
 
 {{< figure 
-height=300
+height=200
 src="/Spectral-Analysis-of-Bacteria-S-Layer/scale.png" 
 caption="Scale on the original image. The scale is 53 pixels equals 90 nm."
 >}}
@@ -272,7 +272,7 @@ I thought it might be cool to visualize the S-layer units.
 I use the threshold logic from earlier to get a pixel intensity cutoff that will isolate the key frequencies. This time, I am using a non-windowed image because when I inverse FFT, I want the result to have edges.
 
 {{< figure 
-height=400
+height=600
 src="/Spectral-Analysis-of-Bacteria-S-Layer/threshold_for_iFFT.png"
 caption="Top: colored-over image centered log magnitude FFT and histogram of pixel intensities. Bottom: Mask keeping only pixels with log pixel intensity > 4 and annotated histogram"
 >}}
