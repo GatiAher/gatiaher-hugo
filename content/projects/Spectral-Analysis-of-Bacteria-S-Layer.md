@@ -27,15 +27,13 @@ src="/Spectral-Analysis-of-Bacteria-S-Layer/caulobacter_crescentus_s_layer.jpg"
 caption="Image source: [Structure of the hexagonal surface layer on Caulobacter crescentus cells](https://www.nature.com/articles/nmicrobiol201759)"
 >}}
 
-The S-layer arrangement has a pattern of lattice symmetry with a center-to-center subunit spacing ranging from 3 to 35 nm. The patterns are named by the number of monomers involved to make a repeating unit. 
+The S-layer arrangement has a pattern of lattice symmetry with a center-to-center subunit spacing ranging from 3 to 35 nm. The patterns are named by the number of monomers involved to make a repeating unit. The most common is hexagonal symmetry (p3, p6), but oblique (p1, p2) and square symmetry (p4) have been observed as well.
 
 {{< figure 
 height=300
-src="/Spectral-Analysis-of-Bacteria-S-Layer/example_FFTs.png" 
+src="/Spectral-Analysis-of-Bacteria-S-Layer/s_layer_examples.jpg" 
 caption="Image source: [S-layer fusion proteins--construction principles and applications](https://europepmc.org/article/med/21696943)"
 >}}
-
-The most common is hexagonal symmetry (p3, p6), but oblique (p1, p2) and square symmetry (p4) have been observed as well.
 
 {{< figure 
 height=300
