@@ -9,6 +9,7 @@ description: "Using the 2D Discrete Fourier Transform to identify size and shape
 
 - [Background Info: Bacteria S-Layers](#background-info-bacteria-s-layers)
 - [Introducing Hot Peanuts](#introducing-hot-peanuts)
+- [Doing FFT In Python / General Code Setup](#doing-fft-in-python--general-code-setup)
 - [Step 1. Remove Vertical and Horizontal Pattern Noise](#step-1-remove-vertical-and-horizontal-pattern-noise)
 - [Step 2. Identify Key Periodic Frequencies](#step-2-identify-key-periodic-frequencies)
 - [Step 3. Calculate Size and Scale](#step-3-calculate-size-and-scale)
@@ -76,6 +77,30 @@ From their FFT magnitude plot, the 2015-2016 research group could tell that thei
 
 Fortunately, I figured it out. See my post on [1D and 2D Fourier Transforms](/projects/1d-and-2d-fourier-transforms/) to learn more about the basic concepts (magnitude, phase, shifting, log transforms). The rest of this blog post will use the bacteria S-layer as a case-study for performing image analysis with Fourier Transforms.
 
+## Doing FFT In Python / General Code Setup
+
+Packages used in analysis:
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+from scipy.fftpack import fft2, fftshift, ifft2, ifftshift
+from skimage import img_as_float
+from skimage.color import rgb2gray
+from skimage.filters import window
+```
+
+How to get image, image's DFT magnitude plot, and log transformed magnitude plot:
+```python
+# image
+image = img_as_float(plt.imread("2A.tif"))
+# take 2D DFT, center it, and get magnitude
+image_f = np.abs(fftshift(fft2(image)))
+# log transform to compress big values into smaller range
+# lets us see more information in the magnitude plot
+image_f_log = np.log(1 + image_f)
+```
+
 ## Step 1. Remove Vertical and Horizontal Pattern Noise
 
 When the FFT algorithm looks at an image, it assumes that the image is just one period of an infinitely repeating spectrum:
@@ -104,10 +129,16 @@ The edge mismatches at the seams of the images still produce sharp horizontal an
 
 To reduce the frequencies of the edge discontinuities, I can use a windowing function. Windowing smoothly reduces the amplitude of the signal as it reaches the edges, removing the effect of the artificial discontinuity that results from the FFT. I use the Hann windowing function in this analysis.
 
+```python
+# windowed image
+wimage = image * window('hann', image.shape)
+wimage_f = np.abs(fftshift(fft2(wimage)))
+```
+
 {{< figure 
 height=600
 src="/Spectral-Analysis-of-Bacteria-S-Layer/windowed.png"
-caption="Right: original colored image and its FFT (magma color scheme to accentuate pattern). Left: Hann windowed image and its FFT which has no edge discontinuities."
+caption="Right: original colored image and its FFT (magma color scheme to accentuate pattern). Left: Hann windowed image and its log magnitude FFT which has no edge discontinuities."
 >}}
 
 ## Step 2. Identify Key Periodic Frequencies
@@ -124,6 +155,11 @@ To identify the key frequencies I need to find the distance from the brightest p
 
 First, I threshold by log of pixel intensity to create a mask of dominant frequency points. I kept points with a log pixel intensity greater than 4 (the brightest points).
 
+```python
+thresh_min = 4
+binary_min = np.log(1 + wimage_f) > thresh_min
+```
+
 {{< figure 
 height=600
 src="/Spectral-Analysis-of-Bacteria-S-Layer/threshold.png" 
@@ -132,13 +168,25 @@ caption="Top: windowed image centered log magnitude FFT and histogram of pixel i
 
 The mask contains some points from the inner and outer rings, as well as lower frequency points that are not important. I can use the mask to find how far the dominant frequency points are from the center of the plot.
 
+```python
+def get_distance_matrix(N):
+    x = np.linspace(-N/2, N/2, N)
+    y = np.linspace(-N/2, N/2, N)
+    X, Y = np.meshgrid(x, y)
+    distMat = np.sqrt((X**2) + (Y**2))
+    return distMat
+
+distMat = get_distance_matrix(400)
+distances = binary_min * distMat
+```
+
 {{< figure 
 height=200
 src="/Spectral-Analysis-of-Bacteria-S-Layer/find_distances.png"
 caption="Result of multiplying mask by distance 400x400 pixel distance matrix."
 >}}
 
-Then I can simply sort the result and I have the distances!
+Then I can simply sort the result and I have the distances for the points in the rings!
 
 **Inner Ring (Low Frequency Ring) (Red)**
 * number of points in mask: 20
