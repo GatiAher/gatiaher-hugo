@@ -4,7 +4,7 @@ date: 2021-07-04T22:24:10-04:00
 tags: ["Image Processing", "Fourier Transforms", "Microbiology"]
 categories: []
 draft: false
-description: "Identified size and shape of the repeating protein units in a bacteria S-layer by using the 2D Discrete Fourier Transform. Mini-project for Olin College Spring 2021 microbiology research with Professor Jean Huang."
+description: "Using the 2D Discrete Fourier Transform to identify size and shape of the repeating protein units in a bacteria S-layer. Mini-project for Olin College Spring 2021 microbiology research with Professor Jean Huang."
 ---
 
 - [Background Info: Bacteria S-Layers](#background-info-bacteria-s-layers)
