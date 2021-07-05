@@ -1,25 +1,25 @@
 {{ define "main" }}
-<main aria-role="main" class="home-content">
-  <header class="homepage-header">
-    <h1>{{.Title}}</h1>
-    {{ with .Params.subtitle }}
-    <span class="subtitle">{{.}}</span>
-    {{ end }}
-  </header>
+<main aria-role="main">
+
   <div class="homepage-content">
     <!-- Note that the content for index.html, as a sort of list page, will pull from content/_index.md -->
     {{.Content}}
   </div>
+
   <div>
     {{ $section := where $.Site.RegularPages "Section" "projects" }}
-    <h1>Projects</h1>
     {{ range $section }}
-    <ul>
-      <li>
-        {{ partial "date-title-tags" . }}
-      </li>
-    </ul>
+    <span>
+      {{ partial "post-meta" . }}
+      <h2>
+        <a class="post-link" href="{{ .RelPermalink }}">{{ .Title }}</a>
+      </h2>
+      <blockquote>
+        {{ .Description }}
+      </blockquote>
+    </span>
     {{ end }}
   </div>
+
 </main>
 {{ end }}

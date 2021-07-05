@@ -4,7 +4,7 @@
 {{ range .Pages.ByPublishDate.Reverse }}
 <ul>
     <li>
-        {{ partial "date-title-tags.html" . }}
+        {{ partial "archive-meta.html" . }}
     </li>
 </ul>
 {{ end }}

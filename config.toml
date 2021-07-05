@@ -13,15 +13,27 @@ copyright = ""
 
 # See https://feathericons.com/
 # The value of pre is the icon name
-[menu]
+[menux]
   [[menu.main]]
+    name = "Projects"
+    pre = "archive"
+    url = "/projects"
+    weight = 1
+  [[menu.main]]
+    name = "Contact"
+    pre = "at-sign"
+    url = "/about"
+    weight = 2
+
+[footer]
+  [[footer.main]]
     name = " "
     pre = "github"
     url = "https://github.com/GatiAher"
     weight = 1
-  [[menu.main]]
+  [[footer.main]]
     name = ""
-    pre = "linkedin"
+    re = "linkedin"
     url = "https://www.linkedin.com/in/gatiaher"
     weight = 2
 

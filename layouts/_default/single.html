@@ -1,9 +1,14 @@
 {{ define "main" }}
 
 <article>
-    <h1>{{ .Title }}</h1>
-    {{ partial "date-tags.html" . }}
-    <br><br>
+    <div>
+        <h1>{{ .Title }}</h1>
+        {{ partial "post-meta-with-author.html" . }}
+        <blockquote>
+            {{ .Description }}
+        </blockquote>
+        <br>
+    </div>
     {{ .Content }}
 </article>
 

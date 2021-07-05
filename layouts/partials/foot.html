@@ -1,11 +1,5 @@
-<div class="foot">
-        <div class="container flex-row">
-                {{ $start := .Site.Params.startyear }} &copy;
-                {{ $start }} {{ now.Format "2006" }} &#183;
-                {{ $icon := printf "<i data-feather=\"%s\"></i>" "github" }}
-                {{ $text := print $icon | safeHTML }}
-                <a class="center-image" href="https://github.com/GatiAher/gatiaher-hugo">{{ $text }}</a> &#183;
-                Powered by <a href="https://gohugo.io/">Hugo</a>
-                <a href="#"><i class="fas fa-chevron-up"></i></a>
-        </div>
-</div>
+<footer class="site-footer">
+        &copy {{ now.Format "2006" }} by Gati Aher &#183;
+        Powered by <a href="https://gohugo.io/">Hugo</a> &#183;
+        View on <a href="https://github.com/GatiAher/gatiaher-hugo">GitHub</a>
+</footer>
