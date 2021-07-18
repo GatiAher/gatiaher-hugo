@@ -219,6 +219,7 @@ caption="Topic Modeling: merge redundant words instead of pixels (Image Source: 
 >}}
 
 {{< figure 
+height=300,
 src="/Eigenfaces-and-Out-of-Distribution-Data/Biplot.png"
 caption="Microbiome Biplot: make PCoA more interpretable by plotting directions in which factors vary. (Image Source: [How to read PCA biplots and scree plots](https://blog.bioturing.com/2018/06/18/how-to-read-pca-biplots-and-scree-plots/))"
 >}}
@@ -230,23 +231,3 @@ caption="Microbiome Biplot: make PCoA more interpretable by plotting directions 
 * [A Step-by-Step Explanation of Principal Component Analysis](https://builtin.com/data-science/step-step-explanation-principal-component-analysis)
 * [Eigendecomposition, Eigenvectors and Eigenvalues - Andrew Gurung](https://notes.andrewgurung.com/data-science/linear-algebra/eigenvalues-and-eigenvectors)
 * [A Complete Guide to Principal Component Analysis — PCA in Machine Learning](https://towardsdatascience.com/a-complete-guide-to-principal-component-analysis-pca-in-machine-learning-664f34fc3e5a)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

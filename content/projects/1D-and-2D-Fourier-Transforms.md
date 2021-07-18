@@ -269,34 +269,3 @@ Using FFT in Python:
 
 * [Fourier Transforms (scipy.fft) — SciPy v1.6.3 Reference Guide](https://docs.scipy.org/doc/scipy/reference/tutorial/fft.html) is Scipy’s overview for using its FFT library.
 * [General examples — skimage v0.18.0 docs](https://scikit-image.org/docs/stable/auto_examples/) is a gallery of examples for Scikit-Image Python image processing library. It provides helpful tutorials for thresholding, windowing, filtering, etc.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
