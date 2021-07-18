@@ -101,7 +101,7 @@ image_f_log = np.log(1 + image_f)
 
 ## Step 1. Remove Vertical and Horizontal Pattern Noise
 
-When the FFT algorithm looks at an image, it assumes that the image is just one period of an infinitely repeating spectrum:
+When the FFT algorithm looks at an image, it assumes the image is one period of an infinitely repeating spectrum:
 
 {{< figure 
 height=300
@@ -123,9 +123,9 @@ src="/Spectral-Analysis-of-Bacteria-S-Layer/cleaner_FFT.jpg"
 caption="FFT of colored-over image. The spectral patterns caused by patterns in the background and the sharp white box have been muted."
 >}}
 
-The edge mismatches at the seams of the images still produce sharp horizontal and vertical periodic patterns that can be seen in the FFT plot, but overall the noise has gone down and the hexagonal rings are more evident.
+The edge mismatches at the seams of the images still produce sharp horizontal and vertical periodic patterns that the FFT picks up on, but overall the noise has gone down and the hexagonal rings are more evident.
 
-To reduce the frequencies of the edge discontinuities, I can use a windowing function. Windowing smoothly reduces the amplitude of the signal as it reaches the edges, removing the effect of the artificial discontinuity that results from the FFT. I use the Hann windowing function in this analysis.
+To reduce the frequencies of the edge discontinuities, I can use a windowing function. Windowing smoothly reduces the amplitude of the signal as it reaches the edges, removing the effect of the artificial discontinuity from the FFT. I use the Hann windowing function in this analysis.
 
 ```python
 # windowed image
@@ -244,7 +244,7 @@ src="/Spectral-Analysis-of-Bacteria-S-Layer/annotated_patterns.png"
 caption="The annotated dominant patterns with their periods."
 >}}
 
-As a quick check, we verify that the 8.5 nm and 14.7 nm periods are consistent with the ratios expected in a hexagon pattern. We can see that the periods make up the legs of a 30-60-90 right triangle, so if the shorter leg is $a = 8.5$, we expect the longer leg to be $a\sqrt(3) ~= 14.72$. This looks good!
+As a quick check, we verify the 8.5 nm and 14.7 nm periods are consistent with the ratios expected in a hexagon pattern. We can see the periods make up the legs of a 30-60-90 right triangle, so if the shorter leg is $a = 8.5$, we expect the longer leg to be $a\sqrt(3) ~= 14.72$. This looks good!
 
 We can get our center-to-center spacing by multiplying the period length by 2:
 
@@ -274,7 +274,7 @@ The Hot Peanut magnitude plot has the same layout as the example hexagonal S-lay
 
 I thought it might be cool to visualize the S-layer units. 
 
-I use the threshold logic from earlier to get a pixel intensity cutoff that will isolate the key frequencies. This time, I am using a non-windowed image because when I inverse FFT, I want the result to have edges.
+I use the threshold logic from earlier to get a pixel intensity cutoff to isolate the key frequencies. This time, I am using a non-windowed image because when I inverse FFT, I want the result to have edges.
 
 {{< figure 
 height=600
