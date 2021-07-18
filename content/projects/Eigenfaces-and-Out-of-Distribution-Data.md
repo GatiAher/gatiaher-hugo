@@ -184,7 +184,7 @@ caption="Reconstruction"
 
 For the train image, beyond 50 eigenvectors, using more eigenvectors fills in finer details and doesn’t substantially change the image.
 
-For the smiling test image, using more eigenvectors doesn't allow for a better reconstruction. Data is lost because the axis space (neutral neutral eigenvectors) cannot fully capture it.
+For the smiling test image, using more eigenvectors doesn't allow for a better reconstruction. Data is lost because the axis space (neutral face eigenvectors) cannot fully capture it.
 
 ### Step 6. Evaluation
 
