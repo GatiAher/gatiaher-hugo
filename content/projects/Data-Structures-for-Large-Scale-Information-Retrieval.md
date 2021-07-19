@@ -69,7 +69,7 @@ caption="Figure 3: It is an “inverted” index because instead of mapping what
 
 ### 2.2 Big Document IDs Use a Lot of Space
 
-Googling the word “the'' returns “About 25,270,000,000 results (0.73 seconds)”. Assuming that each result document ID is stored as a unique 4-byte unsigned int, the document IDs alone take up 101.08 Gigabytes of space. It gets worse. The number 25,270,000,000 is actually greater than the upper range of numbers that can be expressed by a 4-byte unsigned int ($2^{32}$) so to ensure that all the results have unique document IDs, these numbers need to be stored in a 8-byte representation, resulting in a mighty 202.16 GB minimum just to store the document IDs for part of the postings list for the word “the''. When dealing with a gigantic corpus, like the billions of documents on the Internet, document IDs can be very large, and storing big numbers consumes significant amounts of memory. 
+Googling the word “the'' returns “About 25,270,000,000 results (0.73 seconds)”. Assuming each result document ID is stored as a unique 4-byte unsigned int, the document IDs alone take up 101.08 Gigabytes of space. It gets worse. The number 25,270,000,000 is actually greater than the upper range of numbers that can be expressed by a 4-byte unsigned int ($2^{32}$) so to ensure all the results have unique document IDs, these numbers need to be stored in a 8-byte representation, resulting in a mighty 202.16 GB minimum just to store the document IDs for part of the postings list for the word “the''. When dealing with a gigantic corpus, like the billions of documents on the Internet, document IDs can be very large, and storing big numbers consumes significant amounts of memory. 
 
 Google, Bing, and other big data information retrieval systems care deeply about reducing memory consumption for storing large numbers. One solution to this dilemma is using inverted index compression codes. These are completely invertible transformations that map the large integers of the document IDs onto smaller integers that require less bits. As an added bonus, by using compression codings, storing and accessing the inverted index from RAM becomes feasible. This can lead to faster indexing and query response times compared to storing and retrieving from slower hard disk or SSD.
 
@@ -84,7 +84,7 @@ src="/Data-Structures-for-Large-Scale-Information-Retrieval/compression_code_per
 caption="Figure 4: Compression Codes: the trade-off between spacing savings and decompression time costs [10]."
 >}}
 
-**BIC** manages to reach its astounding compression ratio by recursively splitting monotone integer sequences in half so that each split’s range is reduced, thus reducing the number of bits to encode it. Several experiments show that BIC is the smallest way to encode highly clustered and sequential clusters of integers. However, decoding the recursive code is very slow.
+**BIC** manages to reach its astounding compression ratio by recursively splitting monotone integer sequences in half so each split’s range is reduced, thus reducing the number of bits to encode it. Several experiments show BIC is the smallest way to encode highly clustered and sequential clusters of integers. However, decoding the recursive code is very slow.
 
 **VByte** encoding uses byte-aligned representations, making it faster than bit-aligned representations. It splits each positive integer x into groups of 7 bits and makes the eighth bit a continuation bit, which is equal to 1 only for the last byte of the sequence.
 
@@ -141,9 +141,9 @@ Elias-Fano performs badly on sequential, enumeration oriented tasks that do not 
 
 ### 4.1 For Better Compression, Take Advantage of Naturally Occuring Document ID Clusters
 
-Elias-Fano assumes that document IDs in a postings list are randomly distributed, and its encoding uses the minimum quasi-succinct space needed to represent a sequence of random numbers. However, in real life, document IDs are not randomly distributed, and taking advantage of natural document ID clusters allows for even better compression.
+Elias-Fano assumes document IDs in a postings list are randomly distributed, and its encoding uses the minimum quasi-succinct space needed to represent a sequence of random numbers. However, in real life, document IDs are not randomly distributed, and taking advantage of natural document ID clusters allows for even better compression.
 
-"Crawler" is a generic term for any program (such as a robot or spider) that is used to automatically discover and scan websites by following links from one webpage to another. Using a crawler to find new documents to index means that consecutively indexed pages are generally from the same site or on the same topic. These pages frequently have similar vocabularies, which creates clusters of consecutive document pointers in the postings list. These consecutive document IDs can be compressed more than randomly spaced numbers (see Figure 7).
+"Crawler" is a generic term for any program (such as a robot or spider) that is used to automatically discover and scan websites by following links from one webpage to another. Using a crawler to find new documents to index means consecutively indexed pages are generally from the same site or on the same topic. These pages frequently have similar vocabularies, which creates clusters of consecutive document pointers in the postings list. These consecutive document IDs can be compressed more than randomly spaced numbers (see Figure 7).
 
 {{< figure 
 src="/Data-Structures-for-Large-Scale-Information-Retrieval/partitioned_elias_fano_improvements.png"
@@ -159,11 +159,11 @@ caption="Figure 8: PEF chunks sequences and stores pointers [8]"
 
 ### 4.2 Speed-Up PEF Partitioning with Dynamic Programming on a Sparsified DAG
 
-PEF needs to decide where to draw the partition lines in order to make the most compressible document ID chunks. Unfortunately, exhaustive search is exponential. Luckily, drawing partition lines is just a generalization of the weighted interval scheduling problem, so PEF can use dynamic programming to perform the search in quadratic time. 
+PEF needs to decide where to draw the partition lines in order to make the most compressible document ID chunks. Unfortunately, exhaustive search is exponential. Luckily, drawing partition lines is a generalization of the weighted interval scheduling problem, so PEF can use dynamic programming to perform the search in quadratic time. 
 
 The problem can be represented as a search for the minimal cost path on a directed acyclic graph (DAG), where each node is a document ID, and each edge weight is the cost of the chunk defined by the edge endpoints. Each edge cost can quickly be computed in O(1). However, evaluating all the edges is quadratic with the number of document IDs. More optimization is required for a scalable system. To further narrow the search space, PEF uses two general DAG sparsification techniques to reduce the number of evaluated edges from quadratic to linear (See Figure 9). 
 
-**Technique 1**: Since the partition does not have to be optimal, it just has to be workably “good enough”, instead of evaluating every combination of edges, PEF can select and evaluate on a handful of promising edges. PEF selects promising edges by binning edge costs into cost classes, and for each node and each cost class, greedily keeping one best edge.
+**Technique 1**: Since the partition does not have to be optimal, only workably “good enough”, instead of evaluating every combination of edges, PEF can select and evaluate on a handful of promising edges. PEF selects promising edges by binning edge costs into cost classes, and for each node and each cost class, greedily keeping one best edge.
 
 **Technique 2**: Cost differences between arbitrarily split chunks are negligible if the chunks are big enough. Thus, the search space can be trimmed by removing edges via a loss thresholding function.
 
@@ -188,7 +188,7 @@ However, search engines cannot always wait for batch updates in order to serve n
 
 ### 5.2 Bloom Filters: Fast, Compact, and Sometimes Wrong
 
-BitFunnel uses minimal space while enabling rapid querying of the fresh collection of documents that have not been batch updated into the main inverted index. It does this by representing each document in the corpus by a signature. This signature is a Bloom filter representing the set of terms in the document (see Figure 9). A Bloom filter is a probabilistic data structure, meaning that it does not store the terms directly, it just stores indicators (a.k.a. hashes, probes) of each term’s presence.
+BitFunnel uses minimal space while enabling rapid querying of the fresh collection of documents that have not been batch updated into the main inverted index. It does this by representing each document in the corpus by a signature. This signature is a Bloom filter representing the set of terms in the document (see Figure 9). A Bloom filter is a probabilistic data structure, meaning it does not store the terms directly, it stores indicators (a.k.a. hashes, probes) of each term’s presence.
 
 {{< figure 
 src="/Data-Structures-for-Large-Scale-Information-Retrieval/bloom_filter.png"
@@ -210,7 +210,7 @@ BitFunnel is okay with a small possibility of false positives as long as its imp
 
 **Optimization 1:** If documents have many terms, increasing m, the length of the signature bit vector, can keep the bit vector from filling up. If a bit vector fills up, say all of its bits are set to 1, then it will say every query exists in the document set. Ideally, a bit vector should have about half of its bits set. BitFunnel saves space by sharding the corpus into bins by document length. This allows BitFunnel to use smaller m bit-sliced signatures to store shorter documents and larger m bit-sliced signatures to store larger documents. While normally sharding a document is not advisable because of overhead costs, when an index is many times larger than the memory of a single machine it must be sharded anyway. By sharding intelligently by document length instead of some arbitrary factor, BitFunnel saves memory.
 
-**Optimization 2:** Identification of terms requires a good signal to noise ratio. Signal, s, is the probability that a term is actually a member of the document. Noise, , is the probability that a term’s k probes are set to 1 in the document signature, given that the term is not in the document. Assuming that the Bloom filter is configured to have an average bit density d, the density is the fraction of bits expected to be set. Therefore, one can use simple probability math to solve for the minimum value of k to ensure a certain signal-to-noise ratio  (see paper). The main takeaway is that rare terms have a lower signal value and thus require more k hashes to ensure a given signal-to-noise level. BitFunnel saves space and prevents the bit vector from filling up by using a Weighted Bloom Filter to adjust the number of hash functions on a term-by-term basis within the same Bloom Filters.
+**Optimization 2:** Identification of terms requires a good signal to noise ratio. Signal, $s$, is the probability that a term is actually a member of the document. Noise, $\alpha$, is the probability that a term’s $k$ probes are set to 1 in the document signature, given that the term is not in the document. Assuming the Bloom filter is configured to have an average bit density $d$, the density is the fraction of bits expected to be set. Therefore, one can use simple probability math to solve for the minimum value of k to ensure a certain signal-to-noise ratio (see paper). The main takeaway is rare terms have a lower signal value and thus require more $k$ hashes to ensure a given signal-to-noise level. BitFunnel saves space and prevents the bit vector from filling up by using a Weighted Bloom Filter to adjust the number of hash functions on a term-by-term basis within the same Bloom Filters.
 
 ### 5.4 Review of BitFunnel
 
