@@ -4,14 +4,10 @@ date: 2021-07-18T21:21:42-04:00
 tags: ["Data Structures"]
 categories: []
 draft: false
-description: "An whirlwind tour of optimizations and designs used in large-scale information systems. Explores various inverted index compression codes, with more details given on the optimizations and advantages of using Elias-Fano and Partitioned Elias-Fano compression codes. Touches on the optimizations and use-cases for BitFunnel, an unusual probabilistic data structure used by the Bing search engine as an alternative to inverted indexes. Final project for SP2021 Data Structures and Algorithms at Olin College."
+description: "A tour of data structures used in large-scale information systems, the inverted index data structure that allows constant time querying, inverted index compression codes (focusing on Elias-Fano and Partitioned Elias-Fano), and BitFunnel, an unusual probabilistic data structure used by the Bing search engine as an alternative to inverted indexes. Final project for SP2021 Data Structures and Algorithms at Olin College."
 ---
 
-**Highest Level Overview**
-
-Inverted indexes are widely used by most large data retrieval systems because it supports keyword search in constant time. Compression codes can be applied to inverted indexes to reduce memory storage. Using Elias-Fano and Partitioned Elias-Fano gives several advantages with low time trade-off. An alternative data-structure, BitFunnel, has a compact representation and provides fast querying performance while avoiding costly global document ingestion operations.
-
-**5-minute video**:
+**5-minute video overview**:
 {{< youtube id=UN6_yzZyczE title="Understanding Large Data Retrieval Systems: Data Structures and Optimizations" >}}
 
 - [1 INTRODUCTION](#1-introduction)
@@ -69,7 +65,14 @@ caption="Figure 3: It is an “inverted” index because instead of mapping what
 
 ### 2.2 Big Document IDs Use a Lot of Space
 
-Googling the word “the'' returns “About 25,270,000,000 results (0.73 seconds)”. Assuming each result document ID is stored as a unique 4-byte unsigned int, the document IDs alone take up 101.08 Gigabytes of space. It gets worse. The number 25,270,000,000 is actually greater than the upper range of numbers that can be expressed by a 4-byte unsigned int ($2^{32}$) so to ensure all the results have unique document IDs, these numbers need to be stored in a 8-byte representation, resulting in a mighty 202.16 GB minimum just to store the document IDs for part of the postings list for the word “the''. When dealing with a gigantic corpus, like the billions of documents on the Internet, document IDs can be very large, and storing big numbers consumes significant amounts of memory. 
+Googling the word "the" returns "About 25,270,000,000 results".
+
+{{< figure 
+src="/Data-Structures-for-Large-Scale-Information-Retrieval/the.png"
+caption="Figure 3: Google results for the word 'the'"
+>}}
+
+Assuming each result document ID is stored as a unique 4-byte unsigned int, the document IDs alone take up 101.08 Gigabytes of space. It gets worse. The number 25,270,000,000 is actually greater than the upper range of numbers that can be expressed by a 4-byte unsigned int ($2^{32}$) so to ensure all the results have unique document IDs, these numbers need to be stored in a 8-byte representation, resulting in a mighty 202.16 GB minimum just to store the document IDs for part of the postings list for the word "the". When dealing with a gigantic corpus, like the billions of documents on the Internet, document IDs can be very large, and storing big numbers consumes significant amounts of memory. 
 
 Google, Bing, and other big data information retrieval systems care deeply about reducing memory consumption for storing large numbers. One solution to this dilemma is using inverted index compression codes. These are completely invertible transformations that map the large integers of the document IDs onto smaller integers that require less bits. As an added bonus, by using compression codings, storing and accessing the inverted index from RAM becomes feasible. This can lead to faster indexing and query response times compared to storing and retrieving from slower hard disk or SSD.
 
