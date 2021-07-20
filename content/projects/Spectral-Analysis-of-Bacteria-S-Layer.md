@@ -1,6 +1,6 @@
 ---
 title: "Spectral Analysis of Bacteria S-Layer"
-date: 2021-07-04T22:24:10-04:00
+date: 2021-03-14T22:24:10-04:00
 tags: ["Image Processing", "Fourier Transforms", "Microbiology"]
 categories: []
 draft: false

@@ -1,6 +1,6 @@
 ---
 title: "Data Structures for Large Scale Information Retrieval"
-date: 2021-07-18T21:21:42-04:00
+date: 2021-05-09T21:21:42-04:00
 tags: ["Data Structures"]
 categories: []
 draft: false
@@ -29,6 +29,7 @@ description: "A tour of data structures used in large-scale information systems.
   - [5.3 Being Wrong Less Often: Managing the False Positive Rate](#53-being-wrong-less-often-managing-the-false-positive-rate)
   - [5.4 Review of BitFunnel](#54-review-of-bitfunnel)
 - [CONCLUSION](#conclusion)
+  - [BONUS: Partially Implementing BitFunnel!](#bonus-partially-implementing-bitfunnel)
 - [REFERENCES](#references)
 
 
@@ -224,6 +225,56 @@ BitFunnel is a fast and compact probabilistic data structure that allows a new d
 All large-scale information retrieval systems use inverted indexes for efficiently performing data retrieval based on keyword search. Over the years, as data storage needs grew, several inverted index compression codes were suggested for reducing the memory used to store large document pointer numbers in postings lists. A commonly used compression code with a good memory compression to query retrieval speed ratio is Elias-Fano, which uses a quasi-succinct mathematical data structure that allows for constant time querying on average and a memory usage close to the theoretical optimal bound. Partitioned Elias-Fano improves upon Elias-Fano by taking advantage of the high occurrence of sequential document pointers in a postings list. It uses a dynamic programming technique to determine the best partitioning scheme for compressing sequential document IDs and then forms a two-level compressed data structure.
 
 Adding a new document to an inverted index requires a costly global operation to update the posting list for each term in the document. To save time on this operation, invented indexes generally use batch updates. In order to support user queries on documents that are waiting on the batch update, e.g. people searching for real-time news, Bing uses a probabilistic data structure called BitFunnel that can ingest new documents with a quick local update while also supporting rapid keyword search.
+
+### BONUS: Partially Implementing BitFunnel!
+
+In order to understand the BitFunnel data structure better, I implemented a Bloom filter and a bit-sliced document signature in C. I also wrote tests to make sure my implementations worked as expected, and fun demos to show how these data structures can be used. More details and a writeup are available at [BloomForSearchFromScratch](https://github.com/GatiAher/BloomForSearchFromScratch).
+
+As a fun information retrieval demo, I decided to use my bit-sliced document signature to retrieve [xkcd comics](https://xkcd.com/2379/) that match keywords. This is a fun tool to explore new xkcd comics for a topic.
+
+In this demo, I add 40 documents (allocating two blocks of 64 bits), use signatures of length 512, and 3 hashes on each term. Each document comprises of the title, alt-text, and transcript of a given xkcd comic. This information is scraped from https://www.explainxkcd.com/ using a Python script with beautifulsoup.
+
+As a demo query, I search for the term "outside". This word actually appears in two documents: 30 and 14.
+
+Here is an excerpt of the final [results](https://github.com/GatiAher/BloomForSearchFromScratch/blob/main/results/output_demo_bss_xkcd_query.txt):
+
+```bash
+---------------------------------
+Bit-Sliced Block Signature
+
+m = 512, k = 3, num_blocks = 2
+39/64 docs added
+hash_seeds = 28 10 6 
+array = 
+197188	0	
+16908928	8	
+1694507008	0	
+17306112	0	
+17104896	0	
+-946130846	49	
+1092625410	0	
+1611989056	0	
+-105968822	187	
+165224480	8	
+... [output truncated]
+colsums = 0 103 69 23 69 162 175 82 83 160 95 68 116 206 85 89 324 167 155 219 263 122 88 212 428 56 92 98 88 207 159 97 220 71 65 114 80 122 97 89 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+percent filled = 0=0.00% 1=0.20% 2=0.13% 3=0.04% 4=0.13% 5=0.32% 6=0.34% 7=0.16% 8=0.16% 9=0.31% 10=0.19% 11=0.13% 12=0.23% 13=0.40% 14=0.17% 15=0.17% 16=0.63% 17=0.33% 18=0.30% 19=0.43% 20=0.51% 21=0.24% 22=0.17% 23=0.41% 24=0.84% 25=0.11% 26=0.18% 27=0.19% 28=0.17% 29=0.40% 30=0.31% 31=0.19% 32=0.43% 33=0.14% 34=0.13% 35=0.22% 36=0.16% 37=0.24% 38=0.19% 39=0.17% 40=0.00% 41=0.00% 42=0.00% 43=0.00% 44=0.00% 45=0.00% 46=0.00% 47=0.00% 48=0.00% 49=0.00% 50=0.00% 51=0.00% 52=0.00% 53=0.00% 54=0.00% 55=0.00% 56=0.00% 57=0.00% 58=0.00% 59=0.00% 60=0.00% 61=0.00% 62=0.00% 63=0.00% 
+---------------------------------
+Sucessfully saved bit-sliced signature to bss_xkcd.dat!
+echo "outside" | ./bss_play -f bss_xkcd.dat -s "https://xkcd.com/%d"
+
+4 Documents matching query: 
+https://xkcd.com/30
+https://xkcd.com/24
+https://xkcd.com/16
+https://xkcd.com/14
+```
+
+My probabilistic data structure returns 4 matches: 30, 24, 16, 14. As expected there are the two true positives and no false negatives. However, documents 16 and 24 are false positives. Upon taking a closer look, the document signatures for documents 16 and 24 are 63% and 84% full respectively. That means, each bit has a higher than random chance possibility of being flipped, so the probability of the query hash being falsely present in the signature is pretty high.
+
+To reduce the rate of false positives, I can increase the length of the bit signature so that it is less full. If I was using bit-sliced signatures in a production system, there are some interesting optimizations that reduce query speed, memory usage, and false positive rate (e.g. intelligent corpus sharding, weighted Bloom filters).
+
 
 ## REFERENCES
 

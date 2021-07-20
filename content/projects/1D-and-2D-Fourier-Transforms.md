@@ -1,6 +1,6 @@
 ---
 title: "1D and 2D Fourier Transforms"
-date: 2021-05-17T14:22:03-04:00
+date: 2021-03-03T14:22:03-04:00
 tags: ["Image Processing", "Fourier Transforms"]
 draft: false
 description: "Concepts and math behind 1D and 2D discrete Fourier Transforms for signal and image analysis. Overview of mathematical steps, post-processing, assumptions, and reading of phase and magnitude plots."
