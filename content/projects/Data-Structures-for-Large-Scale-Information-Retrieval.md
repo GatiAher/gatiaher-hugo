@@ -4,7 +4,7 @@ date: 2021-05-09T21:21:42-04:00
 tags: ["Data Structures"]
 categories: []
 draft: false
-description: "A tour of data structures used in large-scale information systems. Covers the inverted index data structures that allows constant time querying, interesting design details of inverted index compression codes (focusing on Elias-Fano and Partitioned Elias-Fano), and the use-case of BitFunnel, an unusual probabilistic data structure used by the Bing search engine as an alternative to inverted indexes. Final project for SP2021 Data Structures and Algorithms at Olin College."
+description: "A tour of data structures used in large-scale information systems. Covers (i) inverted index data structure that allows constant time querying, (ii) interesting design details of inverted index compression codes (focusing on Elias-Fano and Partitioned Elias-Fano), and (iii) the use-case of BitFunnel, an unusual probabilistic data structure used by the Bing search engine as an alternative to inverted indexes. Final project for SP2021 Data Structures and Algorithms at Olin College."
 ---
 
 **5-minute video overview**:
