@@ -10,10 +10,10 @@
     {{ $section := where $.Site.RegularPages "Section" "projects" }}
     {{ range $section }}
     <span>
-      {{ partial "post-meta" . }}
       <h2>
         <a class="post-link" href="{{ .RelPermalink }}">{{ .Title }}</a>
       </h2>
+      {{ partial "post-meta" . }}
       <blockquote>
         {{ .Description }}
       </blockquote>
