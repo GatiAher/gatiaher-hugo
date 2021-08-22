@@ -6,19 +6,19 @@ draft: false
 description: "Concepts and math behind 1D and 2D discrete Fourier Transforms for signal and image analysis. Overview of mathematical steps, post-processing, assumptions, and reading of phase and magnitude plots."
 ---
 
-- [Fourier Transforms: A Pattern-Based Perspective](#fourier-transforms-a-pattern-based-perspective)
-- [1D Fourier Transforms](#1d-fourier-transforms)
+- [1 INTRODUCTION](#1-introduction)
+- [2 1D FOURIER TRANSFORM](#2-1d-fourier-transform)
   - [Understanding the 1D Math](#understanding-the-1d-math)
     - [The DFT-matrix (W)](#the-dft-matrix-w)
     - [Post Projection Processing](#post-projection-processing)
   - [Read the 1D Frequency Plots](#read-the-1d-frequency-plots)
-- [Generalizing to 2D Fourier Transform](#generalizing-to-2d-fourier-transform)
+- [3 GENERALIZING TO 2D FOURIER TRANSFORM](#3-generalizing-to-2d-fourier-transform)
   - [Understand the 2D Math](#understand-the-2d-math)
   - [Read the 2D Plots](#read-the-2d-plots)
-- [Exercises](#exercises)
-- [Further Reading](#further-reading)
+  - [Exercises](#exercises)
+- [4 FURTHER READING](#4-further-reading)
 
-## Fourier Transforms: A Pattern-Based Perspective
+# 1 INTRODUCTION
 
 In the 1800s, Joseph Fourier showed that periodic functions could be written as an infinite sum of sinusoids. His theory paved the way for Fourier Analysis, a useful tool for signal and data processing.
 
@@ -32,11 +32,11 @@ The Fourier Transform is a projection that transforms functions depending on spa
 
 The 2D Fourier Transform has applications in image analysis, filtering, reconstruction, and compression.
 
-## 1D Fourier Transforms
+# 2 1D FOURIER TRANSFORM
 
 To understand the two-dimensional Fourier Transform we will use for image processing, first we have to understand its foundations: the one dimensional discrete Fourier Transform.
 
-### Understanding the 1D Math
+## Understanding the 1D Math
 
 The Discrete Fourier Transform (DFT) turns a 1D array of $N$ discrete, evenly spaced time points, $x$ into a set of coefficients $X$ that describe the weight placed onto $N$ frequency components:
 
@@ -58,7 +58,7 @@ To understand these equations as a projection, we can rewrite the Fourier Transf
 $$X = Wx$$
 $$x = XW^{-1}$$
 
-#### The DFT-matrix (W)
+### The DFT-matrix (W)
 
 The basis matrix $W$ depends on the values of $k$, number of frequency components and $n$, number of time points. Both $k$ and $n$ are vectors with length $N$ that increase from $0$ to $N-1$ by $1$. In the original equations, we sum over all combinations k and n in $e^{i2\pi kn/N}$, so the [DFT matrix](https://en.wikipedia.org/wiki/DFT_matrix) W is a N-by-N square matrix of elements raised to all combinations of exponents k and n.
 
@@ -78,7 +78,7 @@ src="/1D-and-2D-Fourier-Transforms/8_point_DFT.png"
 caption="DFT as a matrix multiplication. Real part (cosine) shown by a solid line, and the imaginary part (sine) by a dashed line. From [DFT matrix – Wikipedia](https://en.wikipedia.org/wiki/DFT_matrix)"
 >}}
 
-#### Post Projection Processing
+### Post Projection Processing
 
 Once we have the DFT coefficients $X$, we have to do some post-processing in order to get understandable information.
 
@@ -118,9 +118,9 @@ caption="Different but equivalent units for the frequency components on the x-ax
 
 Based on the needed interpretation, the frequency component labels on the x-axis can be in index (0 to N-1), frequencies (Hz), or angular frequencies (radians per second). Frequency can be converted to angular frequency by multiplying by a constant $2\pi$.
 
-### Read the 1D Frequency Plots
+## Read the 1D Frequency Plots
 
-Let's compare the plots of some simple discrete signals! Here are the magnitude and phase of the DFT coefficients found from projecting a sine wave of 8 Hz, a sine wave of 16 Hz, and a cosine wave of 8 Hz onto a 128-point DFT matrix. Each wave was sampled 128 times over a time-span of 1 second.
+Let us compare the plots of some simple discrete signals! Here are the magnitude and phase of the DFT coefficients found from projecting a sine wave of 8 Hz, a sine wave of 16 Hz, and a cosine wave of 8 Hz onto a 128-point DFT matrix. Each wave was sampled 128 times over a time-span of 1 second.
 
 {{< figure 
 height=600 
@@ -141,7 +141,7 @@ caption="Isolated phase values for 8 Hz frequency component."
 >}}
 
 
-## Generalizing to 2D Fourier Transform
+# 3 GENERALIZING TO 2D FOURIER TRANSFORM
 
 Images can be represented as 2D functions $f(x, y)$ varying in spatial coordinates $(x, y)$ in the image plane. Like a 1D wave, every 2D image signal can be decomposed into a series of sine terms. 
 
@@ -157,7 +157,7 @@ To represent the 2D image as a sum of 2D sinusoids, we can think of the surface 
 
 The name suggests that an image can be represented by a series of overlaid bedsheets. If we had an infinite number of bedsheets, held each one by its four corners, and oscillated it at one of the Fourier frequencies with the correct corresponding magnitude and phase, then the superposition of all the bedsheets would have creases that looked like the surface plot of an image!
 
-### Understand the 2D Math
+## Understand the 2D Math
 
  The 2D discrete Fourier transform projects the *NxN* image signal $f$ onto a basis of 2D sine and cosine functions (think bedsheets) in order to get the *NxN* matrix of Fourier coefficients $F$. 
  
@@ -180,7 +180,7 @@ The Fourier image can be re-transformed to the spatial domain using the inverse 
 
 Using the [Fast Fourier Transform](https://en.wikipedia.org/wiki/Fast_Fourier_transform) method computes the 1D DFTs in $\log{2N}$ time. To support this fast, recursive. Some forms of the FFT restrict the size of the input image, often to $N = 2n$ where $n$ is an integer.
 
-### Read the 2D Plots
+## Read the 2D Plots
 
 The Fourier Transform math works by assuming the given spatial image is one period in an infinitely repeating spectrum. For example when it looks at the camera man image, it sees:
 
@@ -256,7 +256,7 @@ src="/1D-and-2D-Fourier-Transforms/example_fft2_flower.png"
 caption="The flower is a more complex image. It’s magnitude plot shows a clear circular pattern of repetition, probably from the patterns of symmetry in the flower, and also vertical and horizontal lines, caused by patterns in the background when the image is represented as an infinite spectrum."
 >}}
 
-## Further Reading
+# 4 FURTHER READING
 
 [The Fundamentals of FFT-Based Signal Analysis and Measurement](https://www.sjsu.edu/people/burford.furman/docs/me120/FFT_tutorial_NI.pdf) by National Instruments does a nice job explaining basic signal analysis computations, and goes into detail about windowing and the different properties of different windowing functions.
  

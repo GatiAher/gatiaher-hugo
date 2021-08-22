@@ -7,17 +7,57 @@ draft: false
 description: "Using the 2D Discrete Fourier Transform to identify size and shape of the repeating protein units in a bacteria S-layer. Mini-project for Olin College Spring 2021 microbiology research with Professor Jean Huang."
 ---
 
-- [Background Info: Bacteria S-Layers](#background-info-bacteria-s-layers)
-- [Introducing Hot Peanuts](#introducing-hot-peanuts)
-- [FFT In Python Code](#fft-in-python-code)
-- [Step 1. Remove Vertical and Horizontal Pattern Noise](#step-1-remove-vertical-and-horizontal-pattern-noise)
-- [Step 2. Identify Key Periodic Frequencies](#step-2-identify-key-periodic-frequencies)
-- [Step 3. Calculate Size and Scale](#step-3-calculate-size-and-scale)
-- [Step 4. Identify Shape](#step-4-identify-shape)
-- [Extra Credit: Visualize the S-Layer Units](#extra-credit-visualize-the-s-layer-units)
-- [Conclusion](#conclusion)
+- [1 INTRODUCTION](#1-introduction)
+- [2 BACKGROUND INFORMATION](#2-background-information)
+  - [Bacteria S-Layers](#bacteria-s-layers)
+  - [FFT In Python Code](#fft-in-python-code)
+- [3 APPLYING, CLEANING, AND INTERPRETING THE 2D FFT](#3-applying-cleaning-and-interpreting-the-2d-fft)
+  - [Step 1. Remove Vertical and Horizontal Pattern Noise](#step-1-remove-vertical-and-horizontal-pattern-noise)
+  - [Step 2. Identify Key Periodic Frequencies](#step-2-identify-key-periodic-frequencies)
+  - [Step 3. Calculate Size and Scale](#step-3-calculate-size-and-scale)
+  - [Step 4. Identify Shape](#step-4-identify-shape)
+  - [Bonus: Visualize the S-Layer Units](#bonus-visualize-the-s-layer-units)
+- [4 CONCLUSION](#4-conclusion)
 
-## Background Info: Bacteria S-Layers
+# 1 INTRODUCTION
+
+In 2015-2016, Professor Jean Huang and her research group cultured a phototrophic bacteria from the Little Sippewissett Salt Marsh. They nicknamed it ‘Hot Peanuts’ based on its interesting shape and growth at high temperatures. They wanted to study and publish their findings about its physiology and metabolism in a paper. The group performed a wide variety of analysis, including growth studies, 16sRNA analysis, and S-layer protein dissociation and identification.
+
+{{< figure 
+height=300
+src="/Spectral-Analysis-of-Bacteria-S-Layer/hot_peanuts.png"
+caption="Image of 'Hot Peanuts' under 400X magnification before S-layer removal. It phases bright because of the reflection of light off of the S-layer."
+>}}
+
+{{< figure 
+height=300
+src="/Spectral-Analysis-of-Bacteria-S-Layer/hot_peanuts_close_up.jpg" 
+caption="A close-up TEM image of a 'Hot Peanut'"
+>}}
+
+As part of their analysis, the researchers wanted to know the pattern and size of the S-layer subunits. To do this, they took a transmission electron microscopy (TEM) on a ‘Hot Peanut’ sample stained with tungsten at Boston University, and attempted to do FFT analysis on the image to discern its dominant periodic patterns.
+
+{{< figure 
+height=300
+src="/Spectral-Analysis-of-Bacteria-S-Layer/original_TEM.jpg" 
+caption="400x400 pixel TEM image of the S-layer pattern on the surface of a 'Hot Peanut'."
+>}}
+
+{{< figure 
+height=300
+src="/Spectral-Analysis-of-Bacteria-S-Layer/original_FFT.jpg"
+caption="First attempt at a FFT. Only magnitude information is shown. Two hexagonal-shaped rings are barely visible. There is strong, unexplained noise along the vertical and horizontal."
+>}}
+
+From their FFT magnitude plot, the 2015-2016 research group could tell that their S-layer was probably hexagonal, but they held back on publishing because their FFT plot looked unusually messy and they did not know how to read size information from the magnitude plot.
+
+Fortunately, I figured it out. See my post on [1D and 2D Fourier Transforms](/projects/1d-and-2d-fourier-transforms/) to learn more about the basic concepts (magnitude, phase, shifting, log transforms). The rest of this blog post will use the bacteria S-layer as a case-study for performing image analysis with Fourier Transforms.
+
+# 2 BACKGROUND INFORMATION
+
+This is a brief introduction to prerequisite concepts.
+
+## Bacteria S-Layers
 
 Most prokaryotic cells are encapsulated by a surface layer (S-layer) consisting of repeating units of S-layer proteins. These S-layers protect cells from the outside, provide mechanical stability, and play roles in spreading disease.
 
@@ -40,40 +80,6 @@ height=300
 src="/Spectral-Analysis-of-Bacteria-S-Layer/s_layer_diagram.png" 
 caption="Image source: [International Genetically Engineered Machine (iGEM) Team Bielefeld-Germany S-Layer](http://2011.igem.org/Team:Bielefeld-Germany/Project/Background/S-Layer)"
 >}}
-
-## Introducing Hot Peanuts
-
-In 2015-2016, Professor Jean Huang and her research group cultured a phototrophic bacteria from the Little Sippewissett Salt Marsh. They nicknamed it ‘Hot Peanuts’ based on its interesting shape and growth at high temperatures. They wanted to study and publish their findings about its physiology and metabolism in a paper. The group performed a wide variety of analysis, including growth studies, 16sRNA analysis, and S-layer protein dissociation and identification.
-
-{{< figure 
-height=300
-src="/Spectral-Analysis-of-Bacteria-S-Layer/hot_peanuts.png"
-caption="Image of 'Hot Peanuts' under 400X magnification before S-layer removal. It phases bright because of the reflection of light off of the S-layer."
->}}
-
-{{< figure 
-height=300
-src="/Spectral-Analysis-of-Bacteria-S-Layer/hot_peanuts_close_up.jpg" 
-caption="A close-up TEM image of a 'Hot Peanut'"
->}}
-
-The researchers wanted to know the pattern and size of the S-layer subunits. To do this analysis, they took a transmission electron microscopy (TEM) on a ‘Hot Peanut’ sample stained with tungsten at Boston University, and attempted to do FFT analysis on the image to discern its dominant periodic patterns.
-
-{{< figure 
-height=300
-src="/Spectral-Analysis-of-Bacteria-S-Layer/original_TEM.jpg" 
-caption="400x400 pixel TEM image of the S-layer pattern on the surface of a 'Hot Peanut'."
->}}
-
-{{< figure 
-height=300
-src="/Spectral-Analysis-of-Bacteria-S-Layer/original_FFT.jpg"
-caption="First attempt at a FFT. Only magnitude information is shown. Two hexagonal-shaped rings are barely visible. There is strong, unexplained noise along the vertical and horizontal."
->}}
-
-From their FFT magnitude plot, the 2015-2016 research group could tell that their S-layer was probably hexagonal, but they held back on publishing because their FFT plot looked unusually messy and they did not know how to read size information from the magnitude plot.
-
-Fortunately, I figured it out. See my post on [1D and 2D Fourier Transforms](/projects/1d-and-2d-fourier-transforms/) to learn more about the basic concepts (magnitude, phase, shifting, log transforms). The rest of this blog post will use the bacteria S-layer as a case-study for performing image analysis with Fourier Transforms.
 
 ## FFT In Python Code
 
@@ -98,6 +104,8 @@ image_f = np.abs(fftshift(fft2(image)))
 # lets us see more information in the magnitude plot
 image_f_log = np.log(1 + image_f)
 ```
+
+# 3 APPLYING, CLEANING, AND INTERPRETING THE 2D FFT
 
 ## Step 1. Remove Vertical and Horizontal Pattern Noise
 
@@ -270,7 +278,7 @@ Here, I cropped the images, multiplied them with the Hann windowing function, an
 
 The Hot Peanut magnitude plot has the same layout as the example hexagonal S-layer!
 
-## Extra Credit: Visualize the S-Layer Units
+## Bonus: Visualize the S-Layer Units
 
 I thought it might be cool to visualize the S-layer units. 
 
@@ -312,7 +320,7 @@ src="/Spectral-Analysis-of-Bacteria-S-Layer/filtered_out.png"
 caption="Inverted filtered FFT and resulting inverse FFT."
 >}}
 
-## Conclusion
+# 4 CONCLUSION
 
 The 2D discrete Fast Fourier plot is a nice tool for picking out key periodic frequencies in an image. By using FFT analysis, I determined that the ‘Hot Peanuts’ bacteria S-layer had a hexagonal lattice pattern, and center-to-center subunit spacings of 29.4 nm and 17.0 nm.
 

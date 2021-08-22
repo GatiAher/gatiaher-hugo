@@ -7,22 +7,22 @@ draft: false
 description: "Facial Recognition on a dataset of my classmates faces using Principal Component Analysis (PCA). Reasons about the assumptions of PCA and the effects of applying it to out-of-distribution data. Project adapted from  Olin College’s Quantitative Engineering Analysis, presented at Łódź University MathUp virtual conference."
 ---
 
-- [Facial Recognition](#facial-recognition)
-- [Dataset](#dataset)
-- [Facial Recognition Via Nearest Neighbor Distance](#facial-recognition-via-nearest-neighbor-distance)
-- [Room for Improvement](#room-for-improvement)
-- [PCA Toy Example](#pca-toy-example)
-- [Delving into the Details of the Facial Recognition Pipeline](#delving-into-the-details-of-the-facial-recognition-pipeline)
+- [1 INTRODUCTION](#1-introduction)
+  - [Dataset](#dataset)
+- [2 FACIAL RECOGNITION WITH NEAREST NEIGHBOR DISTANCE](#2-facial-recognition-with-nearest-neighbor-distance)
+  - [Room for Improvement](#room-for-improvement)
+    - [PCA Toy Example](#pca-toy-example)
+- [3 FACIAL RECOGNITION WITH PCA NEAREST NEIGHBOR DISTANCE](#3-facial-recognition-with-pca-nearest-neighbor-distance)
   - [Step 1. Standardize Dataset](#step-1-standardize-dataset)
   - [Step 2. Compute Sample Covariance Matrix from Standardized Train Dataset](#step-2-compute-sample-covariance-matrix-from-standardized-train-dataset)
   - [Step 3. Compute Eigenvectors and Eigenvalues of the Covariance Matrix](#step-3-compute-eigenvectors-and-eigenvalues-of-the-covariance-matrix)
   - [Step 4. Pick k Eigenvectors](#step-4-pick-k-eigenvectors)
   - [Step 5. Project and Reconstruct Dataset onto k Eigenvectors](#step-5-project-and-reconstruct-dataset-onto-k-eigenvectors)
   - [Step 6. Evaluation](#step-6-evaluation)
-- [Applications](#applications)
-- [Further Reading:](#further-reading)
+- [4 APPLICATIONS](#4-applications)
+- [5 FURTHER READING](#5-further-reading)
 
-## Facial Recognition
+# 1 INTRODUCTION
 
 Through this project, I wanted to learn more about the technique of Principal Component Analysis (PCA), namely how to reason about the result of applying PCA on a dataset, and the effects of testing on out-of-distribution data. I set the project up as a facial recognition problem: after teaching a computer what my classmates and I look like, I want the computer to correctly name a person in a picture it hasn’t seen before.
 
@@ -35,7 +35,7 @@ src="/Eigenfaces-and-Out-of-Distribution-Data/dataset_description.png"
 caption="Due to privacy issues and me not wanting to hunt down my classmates for image permission, I am only going to show my face. So here is me!"
 >}}
 
-## Facial Recognition Via Nearest Neighbor Distance 
+# 2 FACIAL RECOGNITION WITH NEAREST NEIGHBOR DISTANCE 
 
 To classify a test image, I match it to the closest train image. To find the closest train image, I unroll the image into a vector of pixel values so I am dealing in a vector space where each dimension is the value of one of the pixel features. So I originally had a 64x64 image, now I have a 4096 dimensional vector. This vector representation lets me use the euclidean distance formula to see how close in vector space all the image vectors are. I assume images of the same person are close to each other in vector space.
 
@@ -64,7 +64,7 @@ src="/Eigenfaces-and-Out-of-Distribution-Data/covariance_eigenfaces.png"
 caption="What I want to end up with, a much cleaner correlation matrix of 50 independent features."
 >}}
 
-## PCA Toy Example
+### PCA Toy Example
 
 So PCA allows us to reduce dimensions with minimal information loss. it does this by picking a better set of features, or axes, to represent our data. In this 2D toy example of not my data, PCA has picked two new axes, principal component 1 and principal component 2. Principal component 1 is in the direction of most variation. Principal component 2 is orthogonal to principal component 1 and it is in the direction of second most variation.
 
@@ -75,9 +75,9 @@ caption="Image Source: [Limitations of Applying Dimensionality Reduction using P
 
 If I rotate my data onto these new axes, all the points still have the same relationship. PC1 holds 97.5% of the variance of the dataset. So if I wanted to drop a dimension, I could get rid of PC2 while only losing 2.5% of the information separating points.
 
-## Delving into the Details of the Facial Recognition Pipeline
+# 3 FACIAL RECOGNITION WITH PCA NEAREST NEIGHBOR DISTANCE
 
-### Step 1. Standardize Dataset
+## Step 1. Standardize Dataset
 
 I have to standardize all of my pixel features so they are all on the same scale. This prevents drastic changes (background color) from overshadowing subtle changes (in facial features). I use the standard z-score formula from statistics.
 
@@ -99,7 +99,7 @@ Looking at the standardized train face, my black hair has been muted because eve
 
 My test face has also been standardized by the feature average and standard deviation calculated from the train dataset, which is important because the algorithm shouldn’t know anything about the test data. Because my test face’s features do not follow the train feature distribution, the standardization looks a little washed out.
 
-### Step 2. Compute Sample Covariance Matrix from Standardized Train Dataset
+## Step 2. Compute Sample Covariance Matrix from Standardized Train Dataset
 
 My next step is computing the NxN covariance matrix. For each pair of features x, y apply the sample covariance formula. 
 
@@ -124,7 +124,7 @@ caption="For 64 x 64 pixel images, if each pixel is a feature, there are 4096 fe
 
 The train set correlation matrix has high amounts of yellow and orange, which means it has a lot of highly correlated features. The horizontal and vertical striped pattern means pixels near each other are highly correlated, which we would expect from faces.
 
-### Step 3. Compute Eigenvectors and Eigenvalues of the Covariance Matrix
+## Step 3. Compute Eigenvectors and Eigenvalues of the Covariance Matrix
 
 Eigendecomposition is the heart of PCA. It is smart factoring for matrices. If we give it our covariance matrix, we will get a set of eigenvectors and eigenvalues.
 
@@ -138,7 +138,7 @@ caption="Eigendecomposition via Singular Value Decomposition (SVD). It is like P
 
 **Eigenvalues**, tell us how much variance is explained by each eigenvector direction. We can use the eigenvalues to tell us how much we want to keep the corresponding eigenvector.
 
-### Step 4. Pick k Eigenvectors
+## Step 4. Pick k Eigenvectors
 
 Since the covariance matrix was a square matrix, the calculated eigenvectors are each 4096 dimensions long. This means I can visualize them like images.
 
@@ -163,7 +163,7 @@ caption="Cumulative percent variance explained plot. Using the top 50 eigenvecto
 
 So my new feature set is the top 50 eigenvectors of my train dataset.
 
-### Step 5. Project and Reconstruct Dataset onto k Eigenvectors
+## Step 5. Project and Reconstruct Dataset onto k Eigenvectors
 
 Matrix multiplication can be used to project the images into lower feature space and to reconstruct the projection back into the 4096-feature space to see how much information was lost. The projected train and test images are a weighted sum of the eigenfaces.
 
@@ -186,7 +186,7 @@ For the train image, beyond 50 eigenvectors, using more eigenvectors fills in fi
 
 For the smiling test image, using more eigenvectors doesn't allow for a better reconstruction. Data is lost because the axis space (neutral face eigenvectors) cannot fully capture it.
 
-### Step 6. Evaluation
+## Step 6. Evaluation
 
 Running the distance nearest neighbor algorithm on images projected into only the top two principal component dimensions performs pretty bad. The accuracy of identifying the subject of a smiling test image by label of closest neutral train image is 29.2%. So better than random chance (1.12%) but still pretty bad.
 
@@ -206,7 +206,7 @@ src="/Eigenfaces-and-Out-of-Distribution-Data/PC_evaluation.png"
 caption="Plot of how accuracy and cumulative percentage variance explained changes as more principal components are used in the projection."
 >}}
 
-## Applications
+# 4 APPLICATIONS
 
 Using PCA made all 50 of our dimensions independent, so if we wanted to replace the nearest neighbor distance algorithm with machine learning for classification, it would work much better on our projected dataset (Machine Learning and other pattern searching algorithms perform better on a small number of independent features).
 
@@ -224,7 +224,7 @@ src="/Eigenfaces-and-Out-of-Distribution-Data/Biplot.png"
 caption="Microbiome Biplot: make PCoA more interpretable by plotting directions in which factors vary. (Image Source: [How to read PCA biplots and scree plots](https://blog.bioturing.com/2018/06/18/how-to-read-pca-biplots-and-scree-plots/))"
 >}}
 
-## Further Reading:
+# 5 FURTHER READING
 
 * Paper on Eigenfaces for Facial Recognition: M. Turk; A. Pentland (1991). ["Face recognition using eigenfaces"](http://www.cs.ucsb.edu/~mturk/Papers/mturk-CVPR91.pdf) (PDF). Proc. IEEE Conference on Computer Vision and Pattern Recognition. pp. 586–591.
 * [Olin College Eigenfaces Resource: A Face in the Crowd: A Contextualized, Integrated, Intro to Linear Algebra by Olin College Quantitative Engineering Analysis Course](https://qeacourse.github.io/page3.html)
