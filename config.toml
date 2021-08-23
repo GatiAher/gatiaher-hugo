@@ -1,5 +1,5 @@
 baseURL = "http://GatiAher.github.io"
-title = "Gati Aher"
+title = "Gati Aher's Blog"
 publishDir = "docs"
 
 languageCode = "en-us"

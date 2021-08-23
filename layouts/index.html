@@ -9,7 +9,7 @@
   <div>
     {{ $section := where $.Site.RegularPages "Section" "projects" }}
     {{ range $section }}
-    <span>
+    <div class="post-container">
       <h2>
         <a class="post-link" href="{{ .RelPermalink }}">{{ .Title }}</a>
       </h2>
@@ -17,7 +17,7 @@
       <blockquote>
         {{ .Description }}
       </blockquote>
-    </span>
+    </div>
     {{ end }}
   </div>
 
