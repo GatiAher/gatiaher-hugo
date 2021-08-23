@@ -8,7 +8,7 @@ description: "Hi, I'm Gati, CS Student at Olin College of Engineering, class of 
 
 {{< figure
 height=300 
-src="/img/Gati_Aher_2021_May.jpeg" 
+src="img/Gati_Aher_2021_May.jpeg" 
 >}}
 
 I'm currently a software engineering student at [Olin College of Engineering](https://www.olin.edu/) in Needham, MA. I am most passionate about data analysis, machine learning, natural language processing, computer vision.

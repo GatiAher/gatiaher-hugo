@@ -24,7 +24,7 @@ In the 1800s, Joseph Fourier showed that periodic functions could be written as 
 
 {{< figure 
 height=300 
-src="/1D-and-2D-Fourier-Transforms/time_frequency_explanation.png" 
+src="img/time_frequency_explanation.png" 
 caption="A 1D signal can be represented as a weighted sum of sinusoids. Image Source: [An Interactive Guide To The Fourier Transform](https://betterexplained.com/articles/an-interactive-guide-to-the-fourier-transform/), a good explanation by BetterExplained."
 >}}
 
@@ -66,7 +66,7 @@ Each element of $W$ is a primitive Nth root of unity. For any exponent $kn$, the
 
 {{< figure 
 height=250
-src="/1D-and-2D-Fourier-Transforms/8_point_DFT_equation.png" 
+src="img/8_point_DFT_equation.png" 
 caption="The first image shows w raised to all combinations of k*n. The second image shows the Nth roots of unity repeating themselves with a period of N. The 8 possible values of w are each given a unique color."
 >}}
 
@@ -74,7 +74,7 @@ We can visualize the DFT Matrix W by graphing the repetition pattern of each row
 
 {{< figure 
 height=300
-src="/1D-and-2D-Fourier-Transforms/8_point_DFT.png" 
+src="img/8_point_DFT.png" 
 caption="DFT as a matrix multiplication. Real part (cosine) shown by a solid line, and the imaginary part (sine) by a dashed line. From [DFT matrix – Wikipedia](https://en.wikipedia.org/wiki/DFT_matrix)"
 >}}
 
@@ -86,7 +86,7 @@ First, to make the frequency plots easier to read, we shift the frequency compon
 
 {{< figure 
 height=300
-src="/1D-and-2D-Fourier-Transforms/8_point_DFT_shifted.png" 
+src="img/8_point_DFT_shifted.png" 
 caption="To center a 1D DFT, swap the left and right halves of X."
 >}}
 
@@ -96,7 +96,7 @@ $$a + ib = r\cos(\theta) + ir\sin(\theta)$$
 
 {{< figure 
 height=300 
-src="/1D-and-2D-Fourier-Transforms/polar_representation.png" 
+src="img/polar_representation.png" 
 caption="Relationship between complex form and polar form"
 >}}
 
@@ -112,7 +112,7 @@ Once we have the magnitude and phase, we can plot them to see how they change ov
 
 {{< figure 
 height=300 
-src="/1D-and-2D-Fourier-Transforms/frequency_axis_units.png" 
+src="img/frequency_axis_units.png" 
 caption="Different but equivalent units for the frequency components on the x-axis"
 >}}
 
@@ -124,7 +124,7 @@ Let us compare the plots of some simple discrete signals! Here are the magnitude
 
 {{< figure 
 height=600 
-src="/1D-and-2D-Fourier-Transforms/sine_waves_fft.png" 
+src="img/sine_waves_fft.png" 
 caption="Centered phase and magnitude plots for a sine wave of 8 Hz, a sine wave of 16 Hz, and a sine wave of 8 Hz with a phase offset of π/2 (cosine wave)."
 >}}
 
@@ -136,7 +136,7 @@ If we isolate the true dominant frequency components in the phase plot, we get c
 
 {{< figure 
 height=400 
-src="/1D-and-2D-Fourier-Transforms/sine_waves_fft_clean.png" 
+src="img/sine_waves_fft_clean.png" 
 caption="Isolated phase values for 8 Hz frequency component."
 >}}
 
@@ -149,7 +149,7 @@ To visualize the sinuous nature of image signals, we can plot the pixel intensit
 
 {{< figure 
 height=300 
-src="/1D-and-2D-Fourier-Transforms/cameraman_surface_plot.png" 
+src="img/cameraman_surface_plot.png" 
 caption="The camera man, a famous image in image processing literature, and his corresponding image surface / Bed Sheet View. From [matlab meshCanopy](https://www.mathworks.com/matlabcentral/fileexchange/29485-meshcanopy)"
 >}}
 
@@ -186,7 +186,7 @@ The Fourier Transform math works by assuming the given spatial image is one peri
 
 {{< figure 
 height=400
-src="/1D-and-2D-Fourier-Transforms/cameraman_infinite_spectrum.png" 
+src="img/cameraman_infinite_spectrum.png" 
 caption="Repeating spectrum of the cameraman image"
 >}}
 
@@ -202,7 +202,7 @@ In order to see more information in the plots, use a log transform to non-linear
 
 {{< figure 
 height=400 
-src="/1D-and-2D-Fourier-Transforms/cameraman_explore_fft.png" 
+src="img/cameraman_explore_fft.png" 
 caption="Cameraman FFT magnitude and phase"
 >}}
 
@@ -210,7 +210,7 @@ In the log of magnitude plot, several frequencies are show up. These frequencies
 
 {{< figure 
 height=400 
-src="/1D-and-2D-Fourier-Transforms/cameraman_spectrum_annotated.png" 
+src="img/cameraman_spectrum_annotated.png" 
 caption="Annotated spectrum of the cameraman image"
 >}}
 
@@ -220,7 +220,7 @@ For example, the sky and ground create horizontal stripes in the infinite spectr
 
 {{< figure 
 height=150
-src="/1D-and-2D-Fourier-Transforms/example_fft2_sine_wave.png" 
+src="img/example_fft2_sine_wave.png" 
 caption="Horizontal sine wave stripes FFT magnitude plot has a pattern of vertical dots indicating the presences of a periodic pattern across the y-direction."
 >}}
 
@@ -234,25 +234,25 @@ To get a feel for reading patterns from a 2D FFT centered magnitude plot, look a
 
 {{< figure 
 height=150 
-src="/1D-and-2D-Fourier-Transforms/example_fft2_brick.png" 
+src="img/example_fft2_brick.png" 
 caption="The brick wall image has a stripe pattern in its magnitude plot."
 >}}
 
 {{< figure 
 height=150 
-src="/1D-and-2D-Fourier-Transforms/example_fft2_mustard_seeds.png" 
+src="img/example_fft2_mustard_seeds.png" 
 caption="The mustard seed image has circular rings in its magnitude plot."
 >}}
 
 {{< figure 
 height=150 
-src="/1D-and-2D-Fourier-Transforms/example_fft2_honeycomb.png" 
+src="img/example_fft2_honeycomb.png" 
 caption="The honeycomb has a hexagonal pattern in its magnitude plot."
 >}}
 
 {{< figure 
 height=150 
-src="/1D-and-2D-Fourier-Transforms/example_fft2_flower.png" 
+src="img/example_fft2_flower.png" 
 caption="The flower is a more complex image. It’s magnitude plot shows a clear circular pattern of repetition, probably from the patterns of symmetry in the flower, and also vertical and horizontal lines, caused by patterns in the background when the image is represented as an infinite spectrum."
 >}}
 

@@ -25,13 +25,13 @@ In 2015-2016, Professor Jean Huang and her research group cultured a phototrophi
 
 {{< figure 
 height=300
-src="/Spectral-Analysis-of-Bacteria-S-Layer/hot_peanuts.png"
+src="img/hot_peanuts.png"
 caption="Image of 'Hot Peanuts' under 400X magnification before S-layer removal. It phases bright because of the reflection of light off of the S-layer."
 >}}
 
 {{< figure 
 height=300
-src="/Spectral-Analysis-of-Bacteria-S-Layer/hot_peanuts_close_up.jpg" 
+src="img/hot_peanuts_close_up.jpg" 
 caption="A close-up TEM image of a 'Hot Peanut'"
 >}}
 
@@ -39,13 +39,13 @@ As part of their analysis, the researchers wanted to know the pattern and size o
 
 {{< figure 
 height=300
-src="/Spectral-Analysis-of-Bacteria-S-Layer/original_TEM.jpg" 
+src="img/original_TEM.jpg" 
 caption="400x400 pixel TEM image of the S-layer pattern on the surface of a 'Hot Peanut'."
 >}}
 
 {{< figure 
 height=300
-src="/Spectral-Analysis-of-Bacteria-S-Layer/original_FFT.jpg"
+src="img/original_FFT.jpg"
 caption="First attempt at a FFT. Only magnitude information is shown. Two hexagonal-shaped rings are barely visible. There is strong, unexplained noise along the vertical and horizontal."
 >}}
 
@@ -63,7 +63,7 @@ Most prokaryotic cells are encapsulated by a surface layer (S-layer) consisting 
 
 {{< figure 
 height=300
-src="/Spectral-Analysis-of-Bacteria-S-Layer/caulobacter_crescentus_s_layer.jpg" 
+src="img/caulobacter_crescentus_s_layer.jpg" 
 caption="Image source: [Structure of the hexagonal surface layer on Caulobacter crescentus cells](https://www.nature.com/articles/nmicrobiol201759)"
 >}}
 
@@ -71,13 +71,13 @@ The S-layer arrangement has a pattern of lattice symmetry with a center-to-cente
 
 {{< figure 
 height=300
-src="/Spectral-Analysis-of-Bacteria-S-Layer/s_layer_examples.jpg" 
+src="img/s_layer_examples.jpg" 
 caption="Image source: [S-layer fusion proteins--construction principles and applications](https://europepmc.org/article/med/21696943)"
 >}}
 
 {{< figure 
 height=300
-src="/Spectral-Analysis-of-Bacteria-S-Layer/s_layer_diagram.png" 
+src="img/s_layer_diagram.png" 
 caption="Image source: [International Genetically Engineered Machine (iGEM) Team Bielefeld-Germany S-Layer](http://2011.igem.org/Team:Bielefeld-Germany/Project/Background/S-Layer)"
 >}}
 
@@ -113,7 +113,7 @@ When the FFT algorithm looks at an image, it assumes the image is one period of 
 
 {{< figure 
 height=300
-src="/Spectral-Analysis-of-Bacteria-S-Layer/annotated_spectrum.png"
+src="img/annotated_spectrum.png"
 caption="Bacteria S-layer TEM image with sources of horizontal and vertical periodic pattern identified."
 >}}
 
@@ -121,13 +121,13 @@ The vertical and horizontal leakage is caused by discontinuities at the seams wh
 
 {{< figure 
 height=300
-src="/Spectral-Analysis-of-Bacteria-S-Layer/colored_over_spectrum.png"
+src="img/colored_over_spectrum.png"
 caption="What the infinite spectra looks like when I color over the background and the white scale box."
 >}}
 
 {{< figure 
 height=300
-src="/Spectral-Analysis-of-Bacteria-S-Layer/cleaner_FFT.jpg"
+src="img/cleaner_FFT.jpg"
 caption="FFT of colored-over image. The spectral patterns caused by patterns in the background and the sharp white box have been muted."
 >}}
 
@@ -143,7 +143,7 @@ wimage_f = np.abs(fftshift(fft2(wimage)))
 
 {{< figure 
 height=600
-src="/Spectral-Analysis-of-Bacteria-S-Layer/windowed.png"
+src="img/windowed.png"
 caption="Right: original colored image and its FFT (magma color scheme to accentuate pattern). Left: Hann windowed image and its log magnitude FFT which has no edge discontinuities."
 >}}
 
@@ -153,7 +153,7 @@ The FFT magnitude plot clearly shows two hexagonal rings of bright points:
 
 {{< figure 
 height=400
-src="/Spectral-Analysis-of-Bacteria-S-Layer/annotated_FFT.png"
+src="img/annotated_FFT.png"
 caption="Annotated centered FFT log of magnitude plot. The yellow circle shows the DC-offset, or the average pixel brightness of the image. The red circles show the dominant lower frequency periodic pattern, the blue circles show the dominant higher frequency periodic pattern."
 >}}
 
@@ -166,7 +166,7 @@ binary_min = np.log(1 + wimage_f) > thresh_min
 
 {{< figure 
 height=600
-src="/Spectral-Analysis-of-Bacteria-S-Layer/threshold.png" 
+src="img/threshold.png" 
 caption="Top: windowed image centered log magnitude FFT and histogram of pixel intensities. Bottom: Mask keeping only pixels with log pixel intensity > 4 and annotated histogram"
 >}}
 
@@ -186,7 +186,7 @@ distances = binary_min * distMat
 
 {{< figure
 height=200
-src="/Spectral-Analysis-of-Bacteria-S-Layer/find_distances.png"
+src="img/find_distances.png"
 caption="Result of multiplying mask by distance 400x400 pixel distance matrix."
 >}}
 
@@ -232,7 +232,7 @@ Finally, I have to convert from pixels to nanometers using the scale on the orig
 
 {{< figure 
 height=200
-src="/Spectral-Analysis-of-Bacteria-S-Layer/scale.png" 
+src="img/scale.png" 
 caption="Scale on the original image. The scale is 53 pixels equals 90 nm."
 >}}
 
@@ -248,7 +248,7 @@ These cycle lengths map to the dominant periodic frequencies in a hexagonal patt
 
 {{< figure 
 height=400
-src="/Spectral-Analysis-of-Bacteria-S-Layer/annotated_patterns.png"
+src="img/annotated_patterns.png"
 caption="The annotated dominant patterns with their periods."
 >}}
 
@@ -270,7 +270,7 @@ The Fourier magnitude plot pretty clearly shows two hexagonal rings. Lets compar
 
 {{< figure 
 height=400
-src="/Spectral-Analysis-of-Bacteria-S-Layer/example_FFTs.png" 
+src="img/example_FFTs.png" 
 caption="FFT log magnitude plots of example oblique, square, and hexagonal S-layers"
 >}}
 
@@ -286,7 +286,7 @@ I use the threshold logic from earlier to get a pixel intensity cutoff to isolat
 
 {{< figure 
 height=600
-src="/Spectral-Analysis-of-Bacteria-S-Layer/threshold_for_iFFT.png"
+src="img/threshold_for_iFFT.png"
 caption="Top: colored-over image centered log magnitude FFT and histogram of pixel intensities. Bottom: Mask keeping only pixels with log pixel intensity > 4 and annotated histogram"
 >}}
 
@@ -294,7 +294,7 @@ The resulting mask can be used as a filter. I multiply the original FFT by it, t
 
 {{< figure 
 height=300
-src="/Spectral-Analysis-of-Bacteria-S-Layer/filtered.png"
+src="img/filtered.png"
 caption="Filtered FFT and resulting inverse FFT"
 >}}
 
@@ -302,13 +302,13 @@ The resulting filtered image has hexagonal features! If I manually measure the c
 
 {{< figure 
 height=300
-src="/Spectral-Analysis-of-Bacteria-S-Layer/manual_high.jpg" 
+src="img/manual_high.jpg" 
 caption="Close up of filtered reconstruction. Manually measured subunit center-to-center distance of 16.24 nm along periodic frequency of the blue ring (higher frequency)."
 >}}
 
 {{< figure 
 height=300
-src="/Spectral-Analysis-of-Bacteria-S-Layer/manual_low.jpg"
+src="img/manual_low.jpg"
 caption="Close up of filtered reconstruction. Manually measured subunit center-to-center distance of 29.60 nm along periodic frequency of the red ring (lower frequency)."
 >}}
 
@@ -316,7 +316,7 @@ I can see what I filtered out by inverting the mask and doing the same inverse F
 
 {{< figure 
 height=300
-src="/Spectral-Analysis-of-Bacteria-S-Layer/filtered_out.png" 
+src="img/filtered_out.png" 
 caption="Inverted filtered FFT and resulting inverse FFT."
 >}}
 

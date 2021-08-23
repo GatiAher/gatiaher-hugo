@@ -4,7 +4,7 @@ date: 2021-08-20T10:43:34-04:00
 tags: ["Image Processing", "Deep Learning"]
 categories: ["Internship-Work"]
 draft: false
-description: "Fine-tuning and modifying a pre-trained computer vision object-detection model to detect and classify handwritten marks on documents. I used the Faster R-CNN model from Detectron-v2 framework, and experimented with (1) different pre-training tasks, (2) multi-label formulation, (3) strategies to improve small object detection, and (4) different label sets and datasets. Internship project for Indico Data Solutions, Summer 2021 machine learning intern on Research & Development team."
+description: "Fine-tuning and modifying a pre-trained computer vision object-detection model to detect and classify handwritten marks on documents. I used the Faster R-CNN model from Detectron-v2 framework, and experimented with (1) different pre-training tasks, (2) multi-label formulation, (3) strategies to improve small object detection, and (4) different label sets and datasets. Summer 2021 internship project for Indico Data Solutions, machine learning intern on Research & Development team."
 ---
 
 - [1 INTRODUCTION](#1-introduction)
@@ -115,14 +115,14 @@ These baseline models have a Faster R-CNN architecture with a backbone net pre-t
 The object detection evaluation metrics use Intersection-over-Union (IoU) to pair prediction bounding boxes with ground truth bounding boxes.
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/definition_iou.png"
+src="img/definition_iou.png"
 caption="Definition of Object-Detection: Intersection-over-Union (IoU)"
 >}}
 
 The models that assigned a single label to each bounding box were evaluated with [COCOEvaluator’s metrics](https://cocodataset.org/#detection-eval) for average precision, average recall, and per class average precision.
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/definition_of_precision_recall_iou.png"
+src="img/definition_of_precision_recall_iou.png"
 caption="Definition of Object-Detection: Precision, Recall, IoU"
 >}}
 
@@ -131,22 +131,22 @@ Average Precision (AP) and Average Recall (AR) is measured out of 100 points t v
 Fine-tuning the baseline and smaller-baseline models to the handwriting detection task using label set v1 and Lease PNG dataset gave the following results:
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/eval_AP_baseline.png"
+src="img/eval_AP_baseline.png"
 caption="Average Precision (COCOEvaluator)"
 >}}
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/eval_AR_baseline.png"
+src="img/eval_AR_baseline.png"
 caption="Average Recall (COCOEvaluator)"
 >}}
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/eval_APclass_baseline.png"
+src="img/eval_APclass_baseline.png"
 caption="Per Class Average Precision (COCOEvaluator)"
 >}}
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/pred_model_prediction.png"
+src="img/pred_model_prediction.png"
 caption="Lease PNG document image (LID07240-Lease-a_Z-1.png) with fine-tuned baseline model predictions."
 >}}
 
@@ -178,7 +178,7 @@ Detectron2 is Facebook AI Research’s library for object detection and segmenta
 * [Useful 5-part explanation of repo structure and Faster R-CNN with FPN implementation By Hiroto Honda](https://medium.com/@hirotoschwert/digging-into-detectron-2-47b2e794fabd)
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/Faster_R-CNN.png"
+src="img/Faster_R-CNN.png"
 caption="Detailed architecture of Base-RCNN-FPN. Blue labels represent detectron-v2 class names. (Source: [Digging into Detectron 2 — part 1 | by Hiroto Honda](https://medium.com/@hirotoschwert/digging-into-detectron-2-47b2e794fabd))"
 >}}
 
@@ -200,7 +200,7 @@ The backbone network receives a transformed input image from the Data Mapper and
 The Feature Pyramid Network is an accurate and fast feature extractor that replaces the default feature extractor of Faster R-CNN. It is composed of a bottom-up pathway (ResNet convolution network for feature extraction) and a top-down pathway (lateral connections for merging high-level semantic features information into lower feature maps to create higher resolution layers)
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/FPN.png"
+src="img/FPN.png"
 caption="Feature Pyramid Network top-down and bottom-up pathway. (Source: [Understanding Feature Pyramid Networks for object detection (FPN)](https://jonathan-hui.medium.com/understanding-feature-pyramid-networks-for-object-detection-fpn-45b227b9106c))"
 >}}
 
@@ -362,17 +362,17 @@ LAYOUT PARSER OUTPUT Layout(_blocks=[TextBlock(block=Rectangle(x_1=126.421852111
 *Each model was trained on Lease PNG label set v1 and evaluated on the test split.*
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/eval_AP_layout_parser.png"
+src="img/eval_AP_layout_parser.png"
 caption="Average Precision (COCOEvaluator)"
 >}}
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/eval_AR_layout_parser.png"
+src="img/eval_AR_layout_parser.png"
 caption="Average Recall (COCOEvaluator)"
 >}}
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/eval_APclass_layout_parser.png"
+src="img/eval_APclass_layout_parser.png"
 caption="Per Class Average Precision (COCOEvaluator)"
 >}}
 
@@ -395,17 +395,17 @@ all_counts: {'Signature': 2333, 'Date': 1299, 'Initials': 3427, 'Handwriting': 2
 *Note: The performance of the model on v1 and v2 cannot be directly compared because their train and test splits contained different documents. Despite this, some conclusions can still be drawn. Each model was trained on the Lease-PNG dataset and evaluated on the test split.*
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/eval_AP_v2.png"
+src="img/eval_AP_v2.png"
 caption="Average Precision (COCOEvaluator)"
 >}}
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/eval_AR_v2.png"
+src="img/eval_AR_v2.png"
 caption="Average Recall (COCOEvaluator)"
 >}}
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/eval_APclass_v2.png"
+src="img/eval_APclass_v2.png"
 caption="Per Class Average Precision (COCOEvaluator)"
 >}}
 
@@ -426,12 +426,12 @@ Instances of ‘Strikethrough’ had a fair bit of variation (scribble, line thr
 In the “Filled Checkbox” vs. “Unfilled Checkbox”, the predictions sometimes missed the checkbox or labeled it incorrectly. There weren't many errors here:
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/pred_missed_checkboxes.png"
+src="img/pred_missed_checkboxes.png"
 caption="Lease PNG document image (LCT04791-Lease-0.png) as an example of predictions missing the very small checkboxes at the bottom of the page. The model predicted these correctly on another similar document (LFL61825-Lease_Z-0.png) so maybe the skew on this particular document affected it here."
 >}}
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/pred_checkbox_errors.png"
+src="img/pred_checkbox_errors.png"
 caption="More examples of incorrectly predicted checkboxes identified via visual inspection (aside from these, the checkboxes from the Lease_PNGs dataset were generally neat and marked with an even X)."
 >}}
 
@@ -440,7 +440,7 @@ caption="More examples of incorrectly predicted checkboxes identified via visual
 The ‘Stamp’ vs. ‘Date’ confusion could be attributed to my label aggregation decision. In label set v2, I had mapped all ground truth [‘Date’, ‘Stamp’] multi-labels to the ‘Stamp’ class, and the model sporadically predicted those as “Date” or “Stamp” *(in my Confusion Matrix based analysis I found out that this occurred less frequently that I had first assumed)*.
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/pred_stamp-date.png"
+src="img/pred_stamp-date.png"
 caption="Examples of model predictions of Date (Orange) and Stamp (Brown) from Lease-PNG v2 test split."
 >}}
 
@@ -504,17 +504,17 @@ all_counts: {'Handwriting': 6796, 'Signature': 2331, 'Checkbox': 1439, 'Filled':
 *Note: The performance of the model on label sets v1, v3, and v4 cannot be directly compared because their train and test splits contained different documents. Despite this, some conclusions can still be drawn. Each model was trained on the Lease-PNG dataset and evaluated on the test split.*
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/eval_AP50_multi.png"
+src="img/eval_AP50_multi.png"
 caption="Per Class Average Precision 50 for multi-label models (Modified Binary COCOEvaluator). *For single-label v1 model overall AP50 = 0.838"
 >}}
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/eval_AR_multi.png"
+src="img/eval_AR_multi.png"
 caption="Per Class Average Recall for multi-label models (Modified Binary COCOEvalulator) *For single-label v1 model overall (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.502"
 >}}
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/eval_APclass_single_vs_multi.png"
+src="img/eval_APclass_single_vs_multi.png"
 caption="Per Class Average Precision for single- and multi-label models (Modified Binary COCOEvaluator and COCOEvaluator)"
 >}}
 
@@ -544,7 +544,7 @@ In the default DataMapper, the following transform is applied to all the images:
 Images are rescaled to have a shortest edge of length 800 (for test) or randomly chosen from (640, 672, 704, 736, 768, 800) (for train). The RandomFlip means the DataMapper randomly chooses some images to get a horizontal flip transform.
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/feature_maps_c0.png"
+src="img/feature_maps_c0.png"
 caption="Given LAK07176-Lease-a_Z-0.png as the input image, the FPN + ResNet backbone net creates the following 5 feature maps (visualized channel 0)"
 >}}
 
@@ -556,12 +556,12 @@ If the original image is 2556x3305 pixels, it is rescaled to be 800x1056.
 * feature map p6 is created with a stride of 64 (12x16)
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/feature_map_p2_c0.png"
+src="img/feature_map_p2_c0.png"
 caption="Close up of the second column of checkboxes on channel 0 of p2, the highest resolution feature map. The smallest cell anchor size (32x32 pixels, so 8x8 pixels on p2) is drawn in red for size comparison."
 >}}
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/feature_map_p2_c235.png"
+src="img/feature_map_p2_c235.png"
 caption="Close up of the second column of checkboxes on channel 235 of p2, the highest resolution feature map. The smallest cell anchor size (32x32 pixels, so 8x8 pixels on p2) is drawn in red for size comparison."
 >}}
 
@@ -580,7 +580,7 @@ I changed the DataMapper image transform to
 This means the image is rescaled to double the default size (note: for the all documents dataset, I set max_size to 2071 so that images with certain ratios would not cause CUDA out of memory issues). I also disabled the RandomFlip (horizontal flip transform) because it is less applicable for document images.
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/feature_map_p2_c235_double.png"
+src="img/feature_map_p2_c235_double.png"
 caption="Close up of the second column of checkboxes on channel 235 of p2, the highest resolution feature map. The smallest cell anchor size (32x32 pixels, so 8x8 pixels on p2) is drawn in red for size comparison."
 >}}
 
@@ -599,7 +599,7 @@ MODEL.ANCHOR_GENERATOR.SIZES = [[16, 32, 64, 128, 256, 512]]
 ```
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/feature_map_p2_c0_anchor_16.png"
+src="img/feature_map_p2_c0_anchor_16.png"
 caption="Close up of the second column of checkboxes on channel 235 of p2, the highest resolution feature map. The smallest cell anchor size (16x16 pixels, so 4x4 pixels on p2) is drawn in red for size comparison."
 >}}
 
@@ -614,41 +614,41 @@ On the highest resolution feature map (p2), the smallest cell anchor (size 16) f
 **Results on Multi-Label Model**
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/eval_AP50_multi_detect_smaller_objects.png"
+src="img/eval_AP50_multi_detect_smaller_objects.png"
 caption="Per Class Average Precision 50 for multi-label models (Modified Binary COCOEvaluator). *For single-label v1 model overall AP50 = 0.838"
 >}}
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/eval_AR_multi_detect_smaller_objects.png"
+src="img/eval_AR_multi_detect_smaller_objects.png"
 caption="Per Class Average Recall for multi-label models (Modified Binary COCOEvalulator) *For single-label v1 model overall (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.502"
 >}}
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/eval_APclass_multi_detect_smaller_objects.png"
+src="img/eval_APclass_multi_detect_smaller_objects.png"
 caption="Per Class Average Precision for single- and multi-label models (Modified Binary COCOEvaluator and COCOEvaluator)"
 >}}
 
 Looking at AP, AP50, and AR metrics for the multi-label models, doubling the image resize resulted in a slight improvement across all classes, especially across “Filled” and “Checkbox” classes. Adding the cell anchor size 16 did not noticeably improve the metrics.
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/pred_multi_default_vs_doubled.png"
+src="img/pred_multi_default_vs_doubled.png"
 caption="Predictions on LAK07176-Lease-a_Z-0.png with the default image resize transform (top) compared to the doubled image resize transform (bottom). With the default image resize transform the model missed a checkbox completely, and twice marked an unfilled checkbox as “Filled”. With the doubled image resize transform, the model did not make those errors."
 >}}
 
 **Results on Single-Label Model**
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/eval_AP_detect_smaller_objects.png"
+src="img/eval_AP_detect_smaller_objects.png"
 caption="Average Precision (COCOEvaluator)"
 >}}
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/eval_AR_detect_smaller_objects.png"
+src="img/eval_AR_detect_smaller_objects.png"
 caption="Average Recall (COCOEvaluator)"
 >}}
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/eval_APclass_detect_smaller_objects.png"
+src="img/eval_APclass_detect_smaller_objects.png"
 caption="Per Class Average Precision (COCOEvaluator)"
 >}}
 
@@ -663,7 +663,7 @@ The best performing model (in terms of both metrics and inference time) was the 
 ## 7.1 Results
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/eval_AP_OOD.png"
+src="img/eval_AP_OOD.png"
 caption="Per Class Average Precision (COCOEvaluator) -- evaluated on the full FCC dataset"
 >}}
 
@@ -676,17 +676,17 @@ The best performing model was the single-label baseline model (pre-trained on Im
 ## 8.1 Results
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/eval_AP_all_docs.png"
+src="img/eval_AP_all_docs.png"
 caption="Average Precision (COCOEvaluator)"
 >}}
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/eval_AR_all_docs.png"
+src="img/eval_AR_all_docs.png"
 caption="Average Recall (COCOEvaluator)"
 >}}
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/eval_APclass_all_docs.png"
+src="img/eval_APclass_all_docs.png"
 caption="Per Class Average Precision (COCOEvaluator)"
 >}}
 
@@ -699,7 +699,7 @@ Given a poorly performing model, the first step in analysis is identifying wheth
 I had run a custom train hook to evaluate the model on the test split every 2000 steps and log the validation loss (the hook ran 25 times, performed inference on ~500 images each time, overall adding ~2 hours to the total training time). The train and validation loss both steadily decreased and leveled off over the course of training.
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/train_val_loss.png"
+src="img/train_val_loss.png"
 caption="Total Loss vs. Validation Loss from training all_doc model on 50,000 iterations"
 >}}
 
@@ -724,12 +724,12 @@ Then, to get a better visual sense of error modes, I made panels that visualized
 ## 9.1 Performance on Lease-PNG label set v1
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/confusion_v1.png"
+src="img/confusion_v1.png"
 caption="confusion matrix for single-label model baseline trained on Lease-PNG label set v1 with default transform"
 >}}
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/confusion_v1_double.png"
+src="img/confusion_v1_double.png"
 caption="confusion matrix for single-label model baseline trained on Lease-PNG label set v1 with doubled image resize transform"
 >}}
 
@@ -738,14 +738,14 @@ These confusion matrices were created from model predictions on the Lease PNG la
 **Unmatched Predictions Visualized**
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/confusion_panel_default_unmatched_prediction.png"
+src="img/confusion_panel_default_unmatched_prediction.png"
 caption="Unmatched predictions from model baseline with default transform: Predicted-Filled Checkbox (top-left), Predicted-Unfilled Checkbox (middle-left), Predicted-Redaction (bottom-left), Predicted-Signature (top-right), Predicted-Handwriting (bottom-right)"
 >}}
 
 For the model baseline with default transform’s predictions, the vast majority of predictions not matching a ground truth seem to be correctly predicted, but missing ground truth labels. For the unmatched “Redaction” class, there are maybe 6 instances where white text on a black background has been predicted as Redaction. Overall, no real problems. Three of the unmatched “Filled Checkboxes” may have been unmatched due to the predicted bounding box covering the area of two checkboxes (and thus likely exceeding the 0.5 IoU threshold). 
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/confusion_panel_doubled_unmatched_prediction.png"
+src="img/confusion_panel_doubled_unmatched_prediction.png"
 caption="Unmatched predictions from model baseline with doubled image resize transform: Predicted-Filled Checkbox (top-left), Predicted-Unfilled Checkbox (middle-left), Predicted-Redaction (bottom-left), Predicted-Signature (top-right), Predicted-Handwriting (bottom-right)"
 >}}
 
@@ -754,14 +754,14 @@ Like the model with default transform, the vast majority of predictions not matc
 **Class Confusion Visualized**
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/confusion_panel_baseline_class_confusion_false.png"
+src="img/confusion_panel_baseline_class_confusion_false.png"
 caption="Incorrectly marked class confusion from model baseline with default transform: Predicted-Handwriting:GT-Redaction (top-left), Predicted-Unfilled Checkbox:GT-Filled Checkbox (middle-left), Predicted-Handwriting:GT-Unfilled Checkbox (bottom-left), Predicted-Redaction:GT-Handwriting (top-right), Predicted-Signature:GT-Redaction (bottom-right)."
 >}}
 
 In terms of class confusion, there is very little. For all the predictions in pairings of Predicted-Handwriting:GT-Redaction (2), Predicted-Unfilled Checkbox:GT-Filled-Checkbox (3), Predicted-Handwriting:GT-Unfilled Checkbox (1), Predicted-Redaction:GT-Handwriting (18), and Predicted-Signature:GT-Redaction (2), the ground truth label is wrong and the predicted label is right.
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/confusion_panel_baseline_class_confusion_true.png"
+src="img/confusion_panel_baseline_class_confusion_true.png"
 caption="Real and potentially real class confusion form model baseline with default transform. From top to bottom: Predicted-Handwriting:GT-Filled Checkbox, Predicted-Filled Checkbox:GT-Unfilled Checkbox, Predicted-Signature:GT-Handwriting, Predicted-Handwriting:GT-Signature"
 >}}
 
@@ -770,7 +770,7 @@ Aside from a single Filled Checkbox predicted as Handwriting and 7 Unfilled chec
 ## 9.2 Performance on Lease-PNG label set v2
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/confusion_v2.png"
+src="img/confusion_v2.png"
 caption="confusion matrix for single-label model baseline trained on Lease-PNG label set v2 with default transform"
 >}}
 
@@ -781,14 +781,14 @@ In terms of desired behavior, the model did very well on detecting the other cla
 ## 9.3 Performance on All_Docs label set v5 (Final Model)
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/confusion_all_docs.png"
+src="img/confusion_all_docs.png"
 caption="confusion matrix for single-label model baseline trained on All_Docs label set v5 with default transform"
 >}}
 
 The final document model, trained on the all documents dataset using label set v5 for 50k iterations, had a pretty bad looking confusion matrix. In particular, almost all the Filled Checkbox and Unfilled Checkbox failed to be detected.
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/pred_all_doc.png"
+src="img/pred_all_doc.png"
 caption="All Doc document image (0003f6ad-e10a-9b4a-3d73-9d387656d39c-1.png) as an example of predictions missing the clean checkboxes in the center row of the page."
 >}}
 
@@ -797,21 +797,21 @@ The confusion matrix also indicates several unmatched Handwriting predictions, s
 **Unmatched Predictions Visualized**
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/confusion_panel_all_docs_unmatched_predictions_checkboxes.png"
+src="img/confusion_panel_all_docs_unmatched_predictions_checkboxes.png"
 caption="Unmatched predictions for Unfilled Checkbox (top) and Filled Checkbox (bottom)"
 >}}
 
 The unmatched predictions for the checkbox classes seem to be picking up on circular letters and semi-circle shapes.
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/confusion_panel_all_docs_unmatched_predictions_date_handwriting.png"
+src="img/confusion_panel_all_docs_unmatched_predictions_date_handwriting.png"
 caption="Unmatched predictions for Date (top), high confidence Handwriting (top-left) and low confidence Handwriting (bottom-right)"
 >}}
 
 The unmatched predictions for Date and Handwriting all seem to be picking up on numbers. Date in particular has lots of instances of page numbers, as well as text on a messy grey background. The Handwriting predictions seem to pick up on standalone numbers, as well as X marks and stamped or unusual font text.
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/confusion_panel_all_docs_unmatched_predictions_redaction_signature.png"
+src="img/confusion_panel_all_docs_unmatched_predictions_redaction_signature.png"
 caption="Unmatched predictions for Redaction (left) and Signature (right)"
 >}}
 
@@ -820,14 +820,14 @@ The unmatched predictions for Redaction and Signature seem to be pretty correct.
 **Class Confusion Visualized**
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/confusion_panel_all_docs_date_confusion.png"
+src="img/confusion_panel_all_docs_date_confusion.png"
 caption="Class confusion when GT-Date is predicted as Handwriting (top) and Signature (bottom)"
 >}}
 
 The biggest class confusion is when visually obvious Date instances are predicted as Handwriting or Signature.
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/confusion_panel_all_docs_other_class_confusion.png"
+src="img/confusion_panel_all_docs_other_class_confusion.png"
 caption="Class confusion when GT-Handwriting predicted as Date (top), when GT-Filled Checkbox predicted as Handwriting (middle). Single instance when GT-Unfilled Checkbox was predicted as Redaction (bottom)."
 >}}
 
@@ -836,7 +836,7 @@ There is also some consistent class confusion when slanted initials in the Handw
 **Unmatched Ground Truths Visualized**
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/confusion_panel_all_docs_missed_GT.png"
+src="img/confusion_panel_all_docs_missed_GT.png"
 caption="Unmatched ground truths: GT-Unfilled Checkbox (top-left), GT-Redaction (bottom-left), GT-Filled Checkbox (top-right), GT-Date (bottom-right)"
 >}}
 
@@ -852,12 +852,12 @@ Work could be done to measure and limit overlapping bounding boxes. The Faster-R
 2. Instances of different classes on the same area (this might be evading the Region Proposal Network non-maximal suppression threshold)
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/pred_overlap_same_class.png"
+src="img/pred_overlap_same_class.png"
 caption="Example of Overlapping Signature Predictions (same class, less than 0.5 overlap)"
 >}}
 
 {{< figure 
-src="/Experiments-in-Handwriting-Detection-With-Faster-R-CNN/pred_overlap_different_class.png"
+src="img/pred_overlap_different_class.png"
 caption="Example of Overlapping Handwriting and Signature Predictions (different classes, same area)"
 >}}
 

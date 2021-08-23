@@ -38,7 +38,7 @@ description: "A tour of data structures used in large-scale information systems.
 Information retrieval is not a new problem: humans have been compiling, storing, and organizing books and scrolls and papyrus for more than 5,000 years. What has changed, however, is the scale of the task. For most of human history, methods of information retrieval was a subject of interest restricted to librarians, bookkeepers, and information experts. However, in the modern era, with the introduction of smartphones, cheaply available sensors, and more than 4 billion people using and contributing to the Internet every day, the rate of information generation and storage has escalated. Research into fast and compact ways of finding information becomes more relevant every day. Figure 1 shows various companies and products that rely on efficient information retrieval.
 
 {{< figure 
-src="/Data-Structures-for-Large-Scale-Information-Retrieval/use_cases.png"
+src="img/use_cases.png"
 caption="Figure 1: Information retrieval is a ubiquitous task."
 >}}
 
@@ -47,7 +47,7 @@ caption="Figure 1: Information retrieval is a ubiquitous task."
 An information retrieval (IR) system attempts to solve The Matching Problem, where given a query, it wants to retrieve a set of documents that are relevant or useful to the user. Solving this problem requires a system to manage document indexing, retrieval, and ranking. The diagram in Figure 2 shows how documents and user queries get processed by an IR system.
 
 {{< figure 
-src="/Data-Structures-for-Large-Scale-Information-Retrieval/overview.png"
+src="img/overview.png"
 caption="Figure 2: High level software architecture of an IR system: Indexing, Retrieval, and Ranking [2]."
 >}}
 
@@ -60,7 +60,7 @@ If there were unlimited resources, each query could be processed by asking the r
 The theory behind an inverted index says, with some preprocessing upfront, finding which set of documents contains a single term can be done in constant time. An inverted index can be thought of as a hashmap, where the keys are terms and the values are a list of document IDs, or pointers, stored in monotonically increasing order (see Figure 3 for an example). The list of document IDs is also called a postings list. To process a query, the algorithm scans the posting list of each query term concurrently, keeping them aligned by document ID.
 
 {{< figure 
-src="/Data-Structures-for-Large-Scale-Information-Retrieval/inverted_index.png"
+src="img/inverted_index.png"
 caption="Figure 3: It is an “inverted” index because instead of mapping what words are in a document, it is an inverted map of what documents are associated with each word [14]."
 >}}
 
@@ -69,7 +69,7 @@ caption="Figure 3: It is an “inverted” index because instead of mapping what
 Googling the word "the" returns "About 25,270,000,000 results".
 
 {{< figure 
-src="/Data-Structures-for-Large-Scale-Information-Retrieval/the.png"
+src="img/the.png"
 caption="Figure 3: Google results for the word 'the'"
 >}}
 
@@ -84,7 +84,7 @@ While using a compression code saves memory, it also increases retrieval and ind
 For example, the smallest compressed inverted index is Binary Interpolative Coding (BIC). It is ~3x smaller and ~4.5x slower than the fastest inverted index, Variable-Byte (VByte) [10]. A IR system wants codes that are small when compressed and fast to decode. Production IR systems tend to use PFOR or PEF because they have good memory compression to time cost ratios. The charts in Figure 4 show the time and space tradeoff of common compression algorithms.
 
 {{< figure 
-src="/Data-Structures-for-Large-Scale-Information-Retrieval/compression_code_performance.png"
+src="img/compression_code_performance.png"
 caption="Figure 4: Compression Codes: the trade-off between spacing savings and decompression time costs [10]."
 >}}
 
@@ -113,14 +113,14 @@ Succinct data structures use $n + o(n)$ bits of storage space (the original bit 
 Elias-Fano is quasi-succinct because it uses at most $2 + ceil(log(u/n))$ bits per element, where n is the number of elements and u is an upper bound on the range. The lower $l = max(0, floor(log(u/n)))$ bits of each element are stored explicitly and contiguously, and the upper bits are stored as a sequence of unary coded gaps (see Figure 5 for an example).
 
 {{< figure 
-src="/Data-Structures-for-Large-Scale-Information-Retrieval/elias_fano_compression.png"
+src="img/elias_fano_compression.png"
 caption="Figure 5: Elias-Fano compression, represent each document ID in a gap-encoded compact representation."
 >}}
 
 Since each unary code uses one stop bit and there are n elements, the higher bit array can at most contain n ones and 2n zeros. This representation makes searching (see Figure 6 for an example) and skipping fast and easy.
 
 {{< figure 
-src="/Data-Structures-for-Large-Scale-Information-Retrieval/elias_fano_decompression.png"
+src="img/elias_fano_decompression.png"
 caption="Figure 6: Elias-Fano decompression, use rank and select to perform non-sequential decompression."
 >}}
 
@@ -150,14 +150,14 @@ Elias-Fano assumes document IDs in a postings list are randomly distributed, and
 "Crawler" is a generic term for any program (such as a robot or spider) that is used to automatically discover and scan websites by following links from one webpage to another. Using a crawler to find new documents to index means consecutively indexed pages are generally from the same site or on the same topic. These pages frequently have similar vocabularies, which creates clusters of consecutive document pointers in the postings list. These consecutive document IDs can be compressed more than randomly spaced numbers (see Figure 7).
 
 {{< figure 
-src="/Data-Structures-for-Large-Scale-Information-Retrieval/partitioned_elias_fano_improvements.png"
+src="img/partitioned_elias_fano_improvements.png"
 caption="Figure 7: Elias-Fano fails to exploit the clustering formed by crawlers consecutively encountering documents using the same vocabulary [6]. 7a.) natural cluster of document IDs 7b.) comparison of random sequence versus highly compressible consecutive sequence"
 >}}
 
 Partitioned Elias-Fano (PEF) compression improves upon the Elias-Fano compression by building a two-layer data structure. It partitions the sequence into chunks that take advantage of clusters, replaces chunks with pointers that mark the beginning of each chunk (see Figure 8), and then compresses the sequence of pointers with Elias-Fano to support fast random access and search operations.
 
 {{< figure 
-src="/Data-Structures-for-Large-Scale-Information-Retrieval/partitioned_elias_fano.png"
+src="img/partitioned_elias_fano.png"
 caption="Figure 8: PEF chunks sequences and stores pointers [8]"
 >}}
 
@@ -172,7 +172,7 @@ The problem can be represented as a search for the minimal cost path on a direct
 **Technique 2**: Cost differences between arbitrarily split chunks are negligible if the chunks are big enough. Thus, the search space can be trimmed by removing edges via a loss thresholding function.
 
 {{< figure 
-src="/Data-Structures-for-Large-Scale-Information-Retrieval/sparsification.png"
+src="img/sparsification.png"
 caption="Figure 9: PEF turns quadratic edge search (grey) into a linear edge search (red) [8]"
 >}}
 
@@ -195,14 +195,14 @@ However, search engines cannot always wait for batch updates in order to serve n
 BitFunnel uses minimal space while enabling rapid querying of the fresh collection of documents that have not been batch updated into the main inverted index. It does this by representing each document in the corpus by a signature. This signature is a Bloom filter representing the set of terms in the document (see Figure 9). A Bloom filter is a probabilistic data structure, meaning it does not store the terms directly, it stores indicators (a.k.a. hashes, probes) of each term’s presence.
 
 {{< figure 
-src="/Data-Structures-for-Large-Scale-Information-Retrieval/bloom_filter.png"
+src="img/bloom_filter.png"
 caption="Figure 10: Bloom Filter can return false positives but cannot return false negatives"
 >}}
 
 If all the signatures have the same length and share a common hashing scheme, each document can be represented by a bit-sliced signature. In this approach, document signatures are stored in a big table, like a nested array of machine words (32-bit integers). Each row corresponds to one hash key. In the row, each of the 32 bits in an element correspond to 32 documents, and the bit is on or off depending on whether the document has the hash key (see Figure 10). Since each document has its own column, adding a new document only requires a local update to the specified column.
 
 {{< figure 
-src="/Data-Structures-for-Large-Scale-Information-Retrieval/bitfunnel.png"
+src="img/bitfunnel.png"
 caption="Figure 11: BitFunnel Table Layout with bit-sliced signatures, in which each column is a document signature. Q is the signature of the query [Annotated By Gati Aher] [7]"
 >}}
 
