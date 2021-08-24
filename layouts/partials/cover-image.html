@@ -1,0 +1,8 @@
+{{ with .Resources }}
+{{ with .GetMatch "{cover.*,*.jpg,*.png,*.jpeg}" }}
+{{ $cover := .Fill "1200x200" }}
+{{ with $cover }}
+<img src="{{ .Permalink }}" />
+{{ end }}
+{{ end }}
+{{ end }}

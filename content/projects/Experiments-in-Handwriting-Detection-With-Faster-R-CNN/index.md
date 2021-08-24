@@ -873,4 +873,4 @@ One potential solution to the memory issue is gradient check-pointing, which is 
 
 ## 10.4 Find Out Why All_Docs Model Performed Poorly on Checkbox Detection
 
-The final all_docs model trained on all the documents struggled to detect Filled Checkboxes and Unfilled Checkboxes, even on documents from the Lease PNG dataset. Perhaps more examples of checkboxes are needed?
+The final all_docs model trained on all the documents struggled to detect Filled Checkboxes and Unfilled Checkboxes, even on documents from the Lease PNG dataset.

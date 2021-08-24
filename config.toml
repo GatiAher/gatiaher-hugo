@@ -40,3 +40,6 @@ copyright = ""
 [taxonomies]
   category = "categories"
   tag = "tags"
+
+[imaging]
+bgColor = "#777777"

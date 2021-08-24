@@ -7,9 +7,11 @@
   </div>
 
   <div>
+    <h1>- Featured -</h1>
+    <br>
     {{ $section := where $.Site.RegularPages "Section" "projects" }}
     {{ range $section }}
-    <div class="post-container">
+    <div class="featured-container">
       <h2>
         <a class="post-link" href="{{ .RelPermalink }}">{{ .Title }}</a>
       </h2>
@@ -17,6 +19,9 @@
       <blockquote>
         {{ .Description }}
       </blockquote>
+      <div class="cover-image">
+        {{ partial "cover-image.html" . }}
+      </div>
     </div>
     {{ end }}
   </div>

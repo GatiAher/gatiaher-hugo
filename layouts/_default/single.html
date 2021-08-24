@@ -7,6 +7,9 @@
         <blockquote>
             {{ .Description }}
         </blockquote>
+        <div class="cover-image">
+            {{ partial "cover-image.html" . }}
+        </div>
         <br>
     </div>
     {{ .Content }}
