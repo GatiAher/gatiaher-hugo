@@ -4,7 +4,7 @@ date: 2021-08-20T10:43:34-04:00
 tags: ["Image Processing", "Deep Learning"]
 categories: ["Internship-Work"]
 draft: false
-description: "Fine-tuning and modifying a pre-trained computer vision object-detection model to detect and classify handwritten marks on documents. I used the Faster R-CNN model from Detectron-v2 framework, and experimented with (1) different pre-training tasks, (2) multi-label formulation, (3) strategies to improve small object detection, and (4) different label sets and datasets. Summer 2021 internship project for Indico Data Solutions, machine learning intern on Research & Development team."
+description: "Fine-tuning and modifying a pre-trained computer vision object-detection model to detect and classify handwritten marks on documents. I used the Faster R-CNN model from Detectron-v2 framework, and experimented with (1) different pre-training tasks, (2) multi-label formulation, (3) strategies to improve small object detection, and (4) different label sets and datasets. Summer 2021 internship project for Indico Data Solutions, Research & Development team."
 ---
 
 - [1 INTRODUCTION](#1-introduction)
@@ -17,11 +17,11 @@ description: "Fine-tuning and modifying a pre-trained computer vision object-det
           - [Details on Feature Pyramid Network](#details-on-feature-pyramid-network)
         - [Region Proposal Network (RPN)](#region-proposal-network-rpn)
           - [RPN Head](#rpn-head)
-          - [Map Ground Truths to Feature Maps With Cell Anchors (only during training)](#map-ground-truths-to-feature-maps-with-cell-anchors-only-during-training)
-          - [Loss Function (only during training)](#loss-function-only-during-training)
+          - [Map Ground Truths to Feature Maps With Cell Anchors (during training)](#map-ground-truths-to-feature-maps-with-cell-anchors-during-training)
+          - [Loss Function (during training)](#loss-function-during-training)
           - [Box Proposal Selection](#box-proposal-selection)
         - [ROI Head](#roi-head)
-          - [Re-Sampling and Matching (during training only)](#re-sampling-and-matching-during-training-only)
+          - [Re-Sampling and Matching (during training)](#re-sampling-and-matching-during-training)
           - [Cropping](#cropping)
           - [Box Head](#box-head)
           - [Loss Calculation](#loss-calculation)
@@ -220,7 +220,7 @@ B stands for batch size, Hi and Wi are height and width of the feature map, and 
 
 During training, a loss function is used to determine how close RPN Head objectness predictions are to the ground truth boxes. To compare the `pred_objectness_logits` map and `pred_anchor_deltas` map to the ground truth boxes, the ground truth boxes have to be mapped to the feature maps.
 
-###### Map Ground Truths to Feature Maps With Cell Anchors (only during training)
+###### Map Ground Truths to Feature Maps With Cell Anchors (during training)
 
 The cell anchor generation step creates `objectness_logits` (ground truth objectness map) and `anchor_deltas` (ground truth anchor deltas map) with values at each grid point of the feature map.
 
@@ -244,7 +244,7 @@ MODEL.RPN.IOU_LABELS = [0, -1, 1]
 
 Then `anchor_deltas` are calculated as the regression parameters (Δx, Δy, Δw, and Δh) between each foreground box and its closest ground truth box.
 
-###### Loss Function (only during training)
+###### Loss Function (during training)
 
 Since the majority of generated anchors are going to be of the “background” class, the labels are re-sampled to fix the imbalance and make it easier to learn foreground classes. Then two loss function are applied:
 
@@ -259,7 +259,7 @@ The RPN applies the `pred_anchor_deltas`, sorts the predicted boxes by `pred_obj
 
 The ROI Head is a multi-class classifier that receives the backbone network’s feature maps (p2, p3, p4, and p5 -- p6 is not used), the RPN’s box proposals (1,000 top scoring proposal boxes, their objectness_logits are not used), and the ground truth boxes.
 
-###### Re-Sampling and Matching (during training only) 
+###### Re-Sampling and Matching (during training) 
 
 Ground truth boxes are added to the 1,000 RPN boxes. Then the IoU matrix is calculated between the box proposals and the ground truth (with proposals labeled as foreground if they have greater than 0.5 IoU and background otherwise; the added ground truths match themselves perfectly). Finally, the group is re-sampled to balance the proportion of foreground and background proposal boxes.
 

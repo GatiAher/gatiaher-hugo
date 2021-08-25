@@ -4,7 +4,7 @@ date: 2021-04-14T13:12:04-04:00
 tags: ["PCA", "Image Processing"]
 categories: []
 draft: false
-description: "Facial Recognition on a dataset of my classmates faces using Principal Component Analysis (PCA). Reasons about the assumptions of PCA and the effects of applying it to out-of-distribution data. Project adapted from  Olin College’s Quantitative Engineering Analysis, presented at Łódź University MathUp 2021 virtual conference."
+description: "Facial Recognition on a dataset of my classmates' faces using Principal Component Analysis (PCA). Reasons about the assumptions of PCA and the effects of applying it to out-of-distribution data. Project adapted from  Olin College’s Quantitative Engineering Analysis, presented at Łódź University MathUp 2021 virtual conference."
 ---
 
 - [1 INTRODUCTION](#1-introduction)
