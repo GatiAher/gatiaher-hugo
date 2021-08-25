@@ -14,6 +14,9 @@ Adding MathJax Support:
 
 * [Math-Typesetting In Hugo](https://geoffruddock.com/math-typesetting-in-hugo/) By Geoff Ruddock
 
+Favicon:
+* https://favicon.io/favicon-generator/
+
 # Add New Post
 
 1. Create new post: `hugo new projects/<project-name>`
