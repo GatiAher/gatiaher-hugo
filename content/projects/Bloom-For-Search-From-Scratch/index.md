@@ -1,7 +1,7 @@
 ---
 title: "Bloom for Search From Scratch"
 date: 2021-05-08T09:35:51-04:00
-categories: ["Systems Analysis", "Software Development"] 
+categories: ["Software Development"] 
 tags: ["Olin College: Final Project for SP2021 Software Systems in C"]
 featured: true
 draft: false

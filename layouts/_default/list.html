@@ -1,5 +1,17 @@
 {{ define "main" }}
 
+{{ if eq .Data.Plural "categories" }}
+    <h2 class="category_list_heading">
+        {{ .Title }}
+    </h2>
+{{ end }}
+
+{{ if eq .Data.Plural "tags" }}
+    <h2 class="tag_list_heading">
+        {{ .Title }}
+    </h2>
+{{ end }}
+
 {{ range .Pages.ByPublishDate.Reverse }}
 {{ partial "thumbnail" . }}
 {{ end }}
