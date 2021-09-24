@@ -1,5 +1,5 @@
 ---
-title: "Spectral Analysis of Bacteria S-Layer"
+title: "A Fourier Transform Detective Story!"
 date: 2021-03-14T22:24:10-04:00
 categories: ["Data Analysis"]
 tags: ["Olin Microbiology Lab (Undergraduate Research)"]
@@ -7,7 +7,7 @@ featured: true
 draft: false
 ---
 
-A Fourier Transform Detective Story! A previous group of research students had tried to use a 2D discrete Fourier Transform to characterize the pattern of repeating protein units on a bacteria surface layer image. Since their spectral graph looked unusually messy and their pattern estimates seemed very wrong, my research professor asked me to take a crack at interpreting and cleaning it. My successful analysis helped the research group complete their paper and publish their findings. This project was a pretty neat application of understanding the mathematical assumptions of a technique to properly isolate and interpret the results.
+A group of research students had tried to use a 2D discrete Fourier Transform to characterize the pattern of repeating protein units on a bacteria surface layer image. Since their spectral graph looked unusually messy and their pattern estimates seemed very wrong, my research professor asked me to take a crack at interpreting and cleaning it. My successful analysis helped the research group complete their paper and publish their findings. This project was a pretty neat application of understanding the mathematical assumptions of a technique to properly isolate and interpret the results.
 
 <!--more-->
 
