@@ -1,13 +1,15 @@
 ---
 title: "Handwriting Detection With Faster R-CNN + Experiments"
 date: 2021-08-20T10:43:34-04:00
-tags:
-  - "Indico Data Solutions (internship)"
-categories:
-  - "Deep Learning"
+categories: ["Deep Learning"]
+tags: ["Indico Data Solutions (intern: R&D + ML Engineering)"]
+featured: true
 draft: false
-description: "Project using computer vision deep learning to detect and classify handwritten information in scanned pdfs. I started by fine-tuning upon the Faster R-CNN model from the Detectron-v2 framework. Then I tried to improve performance with (1) different pre-training tasks, (2) multi-label formulation, (3) strategies to improve small object detection, and (4) different label sets and datasets. Finished with class confusion analysis and a retrospective."
 ---
+
+Indico provides services to extract information from scanned pdfs. Since their existing OCR + NLP pipeline did not extract handwriting, one of my projects involved creating a solution to detect and classify handwriting using a deep learning computer vision model. I started by fine-tuning upon the Faster R-CNN model from the Detectron-v2 framework. Then I tried to improve upon the baseline performance with (i) different pre-training tasks, (ii) multi-label formulation, (iii) strategies to improve small object detection, and (iv) different label sets and datasets. This report documents my methods and finishes with a class confusion analysis and retrospective.
+
+<!--more-->
 
 - [1 INTRODUCTION](#1-introduction)
   - [1.1 Datasets](#11-datasets)

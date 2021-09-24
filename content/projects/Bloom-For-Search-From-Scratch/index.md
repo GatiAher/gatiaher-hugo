@@ -1,11 +1,16 @@
 ---
 title: "Bloom for Search From Scratch"
 date: 2021-05-08T09:35:51-04:00
-tags: ["Data Structures"]
-categories: []
+categories: ["Systems Analysis", "Software Development"] 
+tags: ["Olin College: Final Project for SP2021 Software Systems in C"]
+featured: true
 draft: false
-description: "In this project I learned about and implemented a Bloom filter and a bit-sliced document signature in C. I also wrote tests to make sure my implementations worked as expected, and fun demos to show how these data structures can be used. Final project for Spring 2021 Software Systems at Olin College of Engineering."
 ---
+
+The Bloom filter is a data structure that tracks set-membership in a fast and space-efficient way. I first heard about Bloom filters when a start-up I was working for used Bloom filters to speed up their database search. Then, I heard about Microsoft using a stack of bloom filters (a bit-sliced document signature data structure) to speed up the Bing search engine's keyword search. In this project, I explored these interesting data structures by implementing a Bloom filter and a bit-sliced document signature in C. I also wrote unit tests and a collection of fun demos to show how Bloom filters and bit-sliced signatures can be used. This report gives an overview of the project, demos and results, and highlights notable code design decisions.
+
+<!--more-->
+
 
 - [1 PROJECT GOALS AND RESULTS](#1-project-goals-and-results)
 - [2 BLOOM FILTERS](#2-bloom-filters)

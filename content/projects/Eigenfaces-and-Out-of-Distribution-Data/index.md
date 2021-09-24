@@ -1,11 +1,17 @@
 ---
 title: "Eigenfaces and Out of Distribution Data"
 date: 2021-04-14T13:12:04-04:00
-tags: ["PCA", "Image Processing"]
-categories: []
+categories: ["Data Analysis"]
+tags: ["Olin Microbiology Lab (Undergraduate Research)", "Olin College: Quantitative Engineering Analysis", "Łódź University MathUp Conference SP2021"]
+featured: true
 draft: false
-description: "Facial Recognition on a dataset of my classmates' faces using Principal Component Analysis (PCA). Reasons about the assumptions of PCA and the effects of applying it to out-of-distribution data. Project adapted from  Olin College’s Quantitative Engineering Analysis, presented at Łódź University MathUp 2021 virtual conference."
 ---
+
+I have used multiple variations of Principal Component Analysis (PCA) in my research on microbial community analysis. To explain the core theory and assumptions of PCA to my lab group, I fleshed out an analysis of a toy example (eigenfaces) that I had originally seen in class. This analysis reasons about the assumptions of PCA and the effects of applying it to out-of-distribution data by using PCA to perform facial recognition on a dataset of my classmates' faces.     
+
+Fun fact: My research professor recommended my presentation to her connection at Łódź University, Poland, who in turn invited me to be a virtual presenter at Łódź University's SP2021 MathUp conference
+
+<!--more-->
 
 - [1 INTRODUCTION](#1-introduction)
   - [Dataset](#dataset)

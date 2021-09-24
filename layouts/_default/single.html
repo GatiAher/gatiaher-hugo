@@ -1,6 +1,10 @@
 {{ define "main" }}
 
 <div>
+    {{ if eq .Title "About" }}
+
+    {{ else }}
+
     {{ partial "category.html" . }}
     <div class="cover-image-container">
         {{ partial "cover-image.html" . }}
@@ -9,14 +13,15 @@
         </div>
     </div>
 
+
     {{ partial "tag.html" . }}
     {{ partial "meta-post.html" . }}
+
+    {{ end }}
 
 </div>
 
 <article>
-
-    {{ partial "description.html" . }}
 
     {{ .Content }}
 

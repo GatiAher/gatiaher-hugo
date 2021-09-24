@@ -1,10 +1,15 @@
 ---
 title: "1D and 2D Fourier Transforms"
 date: 2021-03-03T14:22:03-04:00
-tags: ["Image Processing", "Fourier Transforms"]
+categories: ["Conceptual Notes"]
+tags: ["Olin College: Quantitative Engineering Analysis"]
+featured: false
 draft: false
-description: "Concepts and math behind 1D and 2D discrete Fourier Transforms for signal and image analysis. Overview of mathematical steps, post-processing, assumptions, and reading of phase and magnitude plots."
 ---
+
+Concepts and math behind 1D and 2D discrete Fourier Transforms for signal and image analysis. Overview of mathematical steps, post-processing, assumptions, and reading of phase and magnitude plots.
+
+<!--more-->
 
 - [1 INTRODUCTION](#1-introduction)
 - [2 1D FOURIER TRANSFORM](#2-1d-fourier-transform)

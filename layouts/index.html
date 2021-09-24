@@ -7,8 +7,7 @@
   </div>
 
   <div>
-    <h1>- Featured -</h1>
-    <br>
+    <h2>Featured Work</h2>
     {{ $section := where $.Site.RegularPages "Section" "projects" }}
     {{ range $section }}
     {{ partial "thumbnail" . }}
