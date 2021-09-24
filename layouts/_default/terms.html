@@ -6,7 +6,7 @@
 
 {{ range .Site.Taxonomies.categories.ByCount }}
 <p>
-  <a class="btn btn-outline-dark font-125" href="{{ .Page.Permalink }}">
+  <a class="btn btn-outline-dark font-125 text-left" href="{{ .Page.Permalink }}">
     <span class="badge badge-dark">{{ .Count }}</span> {{ .Page.Title }}
   </a>
 </p>
@@ -16,7 +16,7 @@
 
 {{ range .Site.Taxonomies.tags.ByCount }}
 <p>
-  <a class="btn btn-outline-dark font-125" href="{{ .Page.Permalink }}">
+  <a class="btn btn-outline-dark font-125 text-left" href="{{ .Page.Permalink }}">
     <span class="badge badge-dark">{{ .Count }}</span> {{ .Page.Title }}
   </a>
 </p>
