@@ -7,8 +7,8 @@
   </div>
 
   <div>
-    <h2>Featured Work</h2>
-    {{ $section := where $.Site.RegularPages "Section" "projects" }}
+    {{ $section := where $.Site.RegularPages "Params.featured" "==" true }}
+    <h2>Featured Work ({{ len $section }}) </h2>
     {{ range $section }}
     {{ partial "thumbnail" . }}
     {{ end }}

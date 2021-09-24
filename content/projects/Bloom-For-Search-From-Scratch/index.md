@@ -1,5 +1,5 @@
 ---
-title: "Bloom for Search From Scratch"
+title: "Implementing Fast and Space-Efficient Look-up and Search"
 date: 2021-05-08T09:35:51-04:00
 categories: ["Software Development"] 
 tags: ["Olin College: Final Project for SP2021 Software Systems in C"]
@@ -7,7 +7,10 @@ featured: true
 draft: false
 ---
 
-The Bloom filter is a data structure that tracks set-membership in a fast and space-efficient way. I first heard about Bloom filters when a start-up I was working for used Bloom filters to speed up their database search. Then, I heard about Microsoft using a stack of bloom filters (a bit-sliced document signature data structure) to speed up the Bing search engine's keyword search. In this project, I explored these interesting data structures by implementing a Bloom filter and a bit-sliced document signature in C. I also wrote unit tests and a collection of fun demos to show how Bloom filters and bit-sliced signatures can be used. This report gives an overview of the project, demos and results, and highlights notable code design decisions.
+The Bloom filter data structure tracks set-membership in a fast and space-efficient way. I first heard about Bloom filters when a start-up I was working for used Bloom filters to speed up their database search. Then, I heard about Microsoft using a stack of bloom filters (a bit-sliced document signature data structure) to speed up the Bing search engine's keyword search. In this project, I explored these interesting data structures by implementing a Bloom filter and a bit-sliced document signature in C. I also wrote unit tests and a collection of fun demos to show how Bloom filters and bit-sliced signatures can be used. This report gives an overview of the project, demos and results, and highlights notable code design decisions.
+
+**Trello Board:** https://trello.com/b/xzVRxTDJ/bloomforsearchfromscratch  
+**Code:** https://github.com/GatiAher/BloomForSearchFromScratch
 
 <!--more-->
 
@@ -39,10 +42,6 @@ Thus, in terms of experience goals, I wanted to gain experience designing and us
 My highest bound was implementing some of the optimizations used by Bing search engine's BitFunnel algorithm. However, the BitFunnel algorithm reached its best performance improvements by simply sharding its gigantic corpus intelligently (i.e. binning documents by number of unique terms) so that they could store shorter document signatures in less space but still have precision for larger documents. This design decision makes sense for a production information retrieval system that was already sharding its corpus, but makes less sense for me. Therefore, for this project I pivoted to an actionable upper bound: a set of demos that demonstrate various aspects of Bloom filters and bit-sliced signatures and provide me with an intuition of how to use them.
 
 Overall, I met the higher bound for this project. I successfully implemented a Bloom filter and bit-sliced signatures, and made some really pretty and fun demos.
-
-Throughout the project, I updated my progress on this [Trello Board](https://trello.com/b/xzVRxTDJ/bloomforsearchfromscratch).
-
-**Code:** https://github.com/GatiAher/BloomForSearchFromScratch
 
 **Demo 1:** Bloom filter spellcheck, demonstrate actions of create, add, save, query from stdin, and ability to load and add to previously saved Bloom filter
 
