@@ -1,7 +1,8 @@
 ---
 title: "Data Structures for Large Scale Information Retrieval"
 date: 2021-05-09T21:21:42-04:00
-tags: ["Data Structures"]
+tags:
+- "Data Structures"
 categories: []
 draft: false
 description: "A tour of data structures used in large-scale information systems. Covers (i) inverted index data structure that allows constant time querying, (ii) interesting design details of inverted index compression codes (focusing on Elias-Fano and Partitioned Elias-Fano), and (iii) the use-case of BitFunnel, an unusual probabilistic data structure used by the Bing search engine as an alternative to inverted indexes. Final project for Spring 2021 Data Structures and Algorithms at Olin College."

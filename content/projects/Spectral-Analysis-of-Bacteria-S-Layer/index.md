@@ -19,7 +19,7 @@ description: "Using the 2D Discrete Fourier Transform to identify size and shape
   - [Bonus: Visualize the S-Layer Units](#bonus-visualize-the-s-layer-units)
 - [4 CONCLUSION](#4-conclusion)
 
-# 1 INTRODUCTION
+## 1 INTRODUCTION
 
 In 2015-2016, Professor Jean Huang and her research group cultured a phototrophic bacteria from the Little Sippewissett Salt Marsh. They nicknamed it ‘Hot Peanuts’ based on its interesting shape and growth at high temperatures. They wanted to study and publish their findings about its physiology and metabolism in a paper. The group performed a wide variety of analysis, including growth studies, 16sRNA analysis, and S-layer protein dissociation and identification.
 
@@ -53,11 +53,11 @@ From their FFT magnitude plot, the 2015-2016 research group could tell that thei
 
 Fortunately, I figured it out. See my post on [1D and 2D Fourier Transforms](/projects/1d-and-2d-fourier-transforms/) to learn more about the basic concepts (magnitude, phase, shifting, log transforms). The rest of this blog post will use the bacteria S-layer as a case-study for performing image analysis with Fourier Transforms.
 
-# 2 BACKGROUND INFORMATION
+## 2 BACKGROUND INFORMATION
 
 This is a brief introduction to prerequisite concepts.
 
-## Bacteria S-Layers
+### Bacteria S-Layers
 
 Most prokaryotic cells are encapsulated by a surface layer (S-layer) consisting of repeating units of S-layer proteins. These S-layers protect cells from the outside, provide mechanical stability, and play roles in spreading disease.
 
@@ -81,7 +81,7 @@ src="img/s_layer_diagram.png"
 caption="Image source: [International Genetically Engineered Machine (iGEM) Team Bielefeld-Germany S-Layer](http://2011.igem.org/Team:Bielefeld-Germany/Project/Background/S-Layer)"
 >}}
 
-## FFT In Python Code
+### FFT In Python Code
 
 Packages used in analysis:
 
@@ -105,9 +105,9 @@ image_f = np.abs(fftshift(fft2(image)))
 image_f_log = np.log(1 + image_f)
 ```
 
-# 3 APPLYING, CLEANING, AND INTERPRETING THE 2D FFT
+## 3 APPLYING, CLEANING, AND INTERPRETING THE 2D FFT
 
-## Step 1. Remove Vertical and Horizontal Pattern Noise
+### Step 1. Remove Vertical and Horizontal Pattern Noise
 
 When the FFT algorithm looks at an image, it assumes the image is one period of an infinitely repeating spectrum:
 
@@ -147,7 +147,7 @@ src="img/windowed.png"
 caption="Right: original colored image and its FFT (magma color scheme to accentuate pattern). Left: Hann windowed image and its log magnitude FFT which has no edge discontinuities."
 >}}
 
-## Step 2. Identify Key Periodic Frequencies
+### Step 2. Identify Key Periodic Frequencies
 
 The FFT magnitude plot clearly shows two hexagonal rings of bright points:
 
@@ -214,7 +214,7 @@ Outer Ring (High Frequency Ring) (Blue)
 * normalized average frequency: 0.198 cycles / pixel
 ```
 
-## Step 3. Calculate Size and Scale
+### Step 3. Calculate Size and Scale
 
 From the normalized average frequency, I can find the period length of one cycle:
 
@@ -264,7 +264,7 @@ Outer Ring (High Frequency Ring) (Blue)
 * center-to-center spacing: 17.0 nm
 ```
 
-## Step 4. Identify Shape
+### Step 4. Identify Shape
 
 The Fourier magnitude plot pretty clearly shows two hexagonal rings. Lets compare the layout to the example S-layer images from earlier in the post:
 
@@ -278,7 +278,7 @@ Here, I cropped the images, multiplied them with the Hann windowing function, an
 
 The Hot Peanut magnitude plot has the same layout as the example hexagonal S-layer!
 
-## Bonus: Visualize the S-Layer Units
+### Bonus: Visualize the S-Layer Units
 
 I thought it might be cool to visualize the S-layer units. 
 
@@ -320,7 +320,7 @@ src="img/filtered_out.png"
 caption="Inverted filtered FFT and resulting inverse FFT."
 >}}
 
-# 4 CONCLUSION
+## 4 CONCLUSION
 
 The 2D discrete Fast Fourier plot is a nice tool for picking out key periodic frequencies in an image. By using FFT analysis, I determined that the ‘Hot Peanuts’ bacteria S-layer had a hexagonal lattice pattern, and center-to-center subunit spacings of 29.4 nm and 17.0 nm.
 

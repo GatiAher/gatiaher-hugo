@@ -1,18 +1,25 @@
 {{ define "main" }}
 
-<article>
-    <div>
-        <h1>{{ .Title }}</h1>
-        {{ partial "post-meta-with-author.html" . }}
-        <blockquote>
-            {{ .Description }}
-        </blockquote>
-        <div class="cover-image">
-            {{ partial "cover-image.html" . }}
+<div>
+    {{ partial "category.html" . }}
+    <div class="cover-image-container">
+        {{ partial "cover-image.html" . }}
+        <div class="cover-image-text-block">
+            <h1>{{ .Title }}</h1>
         </div>
-        <br>
     </div>
+
+    {{ partial "tag.html" . }}
+    {{ partial "meta-post.html" . }}
+
+</div>
+
+<article>
+
+    {{ partial "description.html" . }}
+
     {{ .Content }}
+
 </article>
 
 {{ end }}

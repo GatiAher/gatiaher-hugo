@@ -15,9 +15,14 @@ copyright = ""
 # The value of pre is the icon name
 [menux]
   [[menu.main]]
-    name = "Projects"
+    name = "All Projects"
     pre = "archive"
     url = "/projects"
+    weight = 1
+  [[menu.main]]
+    name = "Tags"
+    pre = "tag"
+    url = "/tags"
     weight = 1
   [[menu.main]]
     name = "Contact"

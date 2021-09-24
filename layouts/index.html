@@ -1,7 +1,7 @@
 {{ define "main" }}
 <main aria-role="main">
 
-  <div class="homepage-content">
+  <div>
     <!-- Note that the content for index.html, as a sort of list page, will pull from content/_index.md -->
     {{.Content}}
   </div>
@@ -11,18 +11,7 @@
     <br>
     {{ $section := where $.Site.RegularPages "Section" "projects" }}
     {{ range $section }}
-    <div class="featured-container">
-      <h2>
-        <a class="post-link" href="{{ .RelPermalink }}">{{ .Title }}</a>
-      </h2>
-      {{ partial "post-meta" . }}
-      <blockquote>
-        {{ .Description }}
-      </blockquote>
-      <div class="cover-image">
-        {{ partial "cover-image.html" . }}
-      </div>
-    </div>
+    {{ partial "thumbnail" . }}
     {{ end }}
   </div>
 

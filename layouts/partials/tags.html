@@ -1,6 +1,0 @@
-{{ with .Params.tags }}
-{{ range . }}
-{{ $href := print (relURL "tags/") (urlize .) }}
-<a class="post-tag" href="{{ $href }}">{{ . }}</a>
-{{ end }}
-{{ end }}

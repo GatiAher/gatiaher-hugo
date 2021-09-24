@@ -1,8 +1,20 @@
 {{ define "main" }}
 
-<h1>{{ .Title }}</h1>
+<h1>Tagging System</h1>
 
-{{ range .Data.Terms.Alphabetical }}
+<h2 class="category_list_heading">Categories</h2>
+
+{{ range .Site.Taxonomies.categories.ByCount }}
+<p>
+  <a class="btn btn-outline-dark font-125" href="{{ .Page.Permalink }}">
+    <span class="badge badge-dark">{{ .Count }}</span> {{ .Page.Title }}
+  </a>
+</p>
+{{ end }}
+
+<h2 class="tag_list_heading">Tags</h2>
+
+{{ range .Site.Taxonomies.tags.ByCount }}
 <p>
   <a class="btn btn-outline-dark font-125" href="{{ .Page.Permalink }}">
     <span class="badge badge-dark">{{ .Count }}</span> {{ .Page.Title }}
