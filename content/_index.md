@@ -1,4 +1,3 @@
-# Hi, I'm Gati. Welcome to my Website!
 I am currently studying computer science at [Olin College of Engineering](https://www.olin.edu/), class of 2023.  
 I use this blog to document my software projects, share my data analysis adventures, and reflect upon design processes.
 
