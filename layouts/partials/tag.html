@@ -1,8 +1,12 @@
 <div class="tags">
     {{ with .Params.tags }}
-    {{ range . }}
-    {{ $href := print (relURL "tags/") (urlize .) }}
-    <a class="tags" href="{{ $href }}">{{ . }}</a>
+    {{ $tlen := len . }}
+    {{ range $ei, $ev := . }}
+    {{ $href := print (relURL "tags/") (urlize $ev) }}
+    <a class="tags" href="{{ $href }}">{{ $ev }}</a>
+    {{ if and (ne $tlen (add $ei 1)) (gt $tlen 1) }}
+    ,
+    {{ end }}
     {{ end }}
     {{ end }}
 </div>
