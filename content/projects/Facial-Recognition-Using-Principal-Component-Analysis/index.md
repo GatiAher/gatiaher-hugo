@@ -9,7 +9,7 @@ draft: false
 
 I have used multiple variations of Principal Component Analysis (PCA) in my research on microbial community analysis. To explain the core theory and assumptions of PCA to my lab group, I fleshed out an analysis of a toy example (eigenfaces) that I had originally seen in class. This analysis reasons about the assumptions of PCA and the effects of applying it to out-of-distribution data by using PCA to perform facial recognition on a dataset of my classmates' faces.     
 
-Fun fact: My research professor recommended my presentation to her connection at Łódź University, Poland, who in turn invited me to be a virtual presenter at Łódź University's SP2021 MathUp conference. The conference was an incredibly fun opportunity to meet fellow researchers and data scientists.
+Fun fact: My research professor recommended my presentation to her connection at Łódź University, Poland, who in turn invited me to be a virtual presenter at [Łódź University's SP2021 MathUp conference](https://ms-my.facebook.com/MathUpConference/photos/because-the-mathup-conference-is-conducted-in-both-polish-and-english-another-du/2805409529774282). The conference was an incredibly fun opportunity to meet fellow researchers and data scientists.
 
 <!--more-->
 

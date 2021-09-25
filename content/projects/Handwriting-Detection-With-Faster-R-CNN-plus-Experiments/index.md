@@ -7,7 +7,7 @@ featured: true
 draft: false
 ---
 
-[Indico Data Solutions](https://indico.io/) provides services to extract information from scanned pdfs. Since their existing OCR + NLP pipeline did not extract handwriting, one of my internship projects involved creating a robust solution to detect and classify handwriting using a deep learning computer vision model. I started by fine-tuning upon the Faster R-CNN model from the Detectron-v2 framework. Then I tried to improve upon the baseline performance with (i) different pre-training tasks, (ii) multi-label formulation, (iii) strategies to improve small object detection, and (iv) different label sets and datasets. This report documents my methods and finishes with a class confusion analysis and retrospective.
+[Indico Data Solutions](https://indico.io/) provides services to extract information from scanned pdfs. Since their existing OCR + NLP pipeline did not extract handwriting, one of my internship projects involved creating a robust solution to detect and classify handwriting using a deep learning computer vision model. I started by fine-tuning upon the [Faster R-CNN model](https://arxiv.org/abs/1506.01497) from the [Detectron-v2 framework](https://github.com/facebookresearch/detectron2). Then I tried to improve upon the baseline performance with (i) different pre-training tasks, (ii) multi-label formulation, (iii) strategies to improve small object detection, and (iv) different label sets and datasets. This report documents my methods and finishes with a class confusion analysis and retrospective.
 
 <!--more-->
 
