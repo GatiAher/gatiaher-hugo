@@ -3,7 +3,7 @@
     {{ $tlen := len . }}
     {{ range $ei, $ev := . }}
     {{ $href := print (relURL "tags/") (urlize $ev) }}
-    <a class="tags" href="{{ $href }}">{{ $ev }}</a>
+    <a class="tags selective-underline" href="{{ $href }}">{{ $ev }}</a>
     {{ if and (ne $tlen (add $ei 1)) (gt $tlen 1) }}
     ,
     {{ end }}
