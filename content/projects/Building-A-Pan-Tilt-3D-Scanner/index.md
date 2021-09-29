@@ -130,7 +130,7 @@ df["distance"] = df.apply(lambda row: 10964 * (1/row["ir_read"]), axis=1)
 The 0-180 degree ranges of the servo motors were not perfectly aligned with the global axes. Therefore, an offset needs to be accounted for when converting pwm signals to degrees measurements.
 
 {{< figure 
-src="img/IR_power_law_calibration_curve.png"
+src="img/servo_offsets.png"
 caption="Servo motor offsets and orientation relative to scanned object"
 >}}
 
