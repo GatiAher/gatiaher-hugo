@@ -2,24 +2,26 @@
 
 <h1>Tagging System</h1>
 
-<h2 class="category_list_heading">Categories</h2>
+<h2 class="category-list-heading">Categories</h2>
 
-{{ range .Site.Taxonomies.categories.ByCount }}
-<p>
+<div class="tag-buttons">
+  {{ range .Site.Taxonomies.categories.ByCount }}
   <a class="btn btn-outline-dark font-125 text-left" href="{{ .Page.Permalink }}">
     <span class="badge badge-dark">{{ .Count }}</span> {{ .Page.Title }}
   </a>
-</p>
-{{ end }}
+  {{ end }}
+</div>
 
-<h2 class="tag_list_heading">Tags</h2>
+<h2 class="tag-list-heading">Tags</h2>
 
-{{ range .Site.Taxonomies.tags.ByCount }}
-<p>
-  <a class="btn btn-outline-dark font-125 text-left" href="{{ .Page.Permalink }}">
-    <span class="badge badge-dark">{{ .Count }}</span> {{ .Page.Title }}
-  </a>
-</p>
-{{ end }}
+<div class="tag-buttons">
+  {{ range .Site.Taxonomies.tags.ByCount }}
+  <p>
+    <a class="btn btn-outline-dark font-125 text-left" href="{{ .Page.Permalink }}">
+      <span class="badge badge-dark">{{ .Count }}</span> {{ .Page.Title }}
+    </a>
+  </p>
+  {{ end }}
+</div>
 
 {{ end }}

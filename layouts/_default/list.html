@@ -1,12 +1,12 @@
 {{ define "main" }}
 
 {{ if eq .Data.Plural "categories" }}
-<h2 class="category_list_heading">
+<h2 class="category-list-heading">
     {{ .Title }} ({{ len .Pages.ByPublishDate.Reverse }})
 </h2>
 
 {{ else if eq .Data.Plural "tags" }}
-<h2 class="tag_list_heading">
+<h2 class="tag-list-heading">
     {{ .Title }} ({{ len .Pages.ByPublishDate.Reverse }})
 </h2>
 

@@ -8,3 +8,8 @@ draft: false
 ---
 
 <!--more-->
+
+{{< figure 
+src="img/test.png"
+caption="caption"
+>}}

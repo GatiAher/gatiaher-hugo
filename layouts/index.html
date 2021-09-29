@@ -10,6 +10,15 @@
     {{.Content}}
   </div>
 
+  <div class="tag-buttons">
+    <h2>Project Categories</h2>
+    {{ range .Site.Taxonomies.categories.ByCount }}
+    <a class="btn btn-outline-dark font-125 text-left" href="{{ .Page.Permalink }}">
+      <span class="badge badge-dark">{{ .Count }}</span> {{ .Page.Title }}
+    </a>
+    {{ end }}
+  </div>
+
   <div>
     {{ $section := where $.Site.RegularPages "Params.featured" "==" true }}
     <h2>Featured Work ({{ len $section }}) </h2>
