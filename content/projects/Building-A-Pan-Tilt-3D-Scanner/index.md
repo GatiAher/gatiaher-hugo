@@ -145,7 +145,7 @@ df["pan_deg"] = df.apply(lambda row: row["orig_pan_deg"] + PAN_DEG_OFFSET, axis=
 ## 4. Projection from Spherical to Cartesian Coordinates
 
 {{< figure 
-src="img/coordinate_plane.png"
+src="img/coordinate_plane.jpg"
 caption="Conversion from Spherical Coordinate Plane to Cartesian Coordinate Plane (Source: [LiDAR Basics: The Coordinate System](https://hackernoon.com/lidar-basics-the-coordinate-system-a26529615df9))"
 >}}
 
