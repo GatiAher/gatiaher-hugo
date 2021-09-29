@@ -2,7 +2,7 @@
 title: "Survey of Data Structures for Large Scale Information Retrieval"
 date: 2021-05-09T21:21:42-04:00
 categories: ["Systems Analysis"]
-tags: ["Olin College: Final Project for SP2021 Data Science and Algorithms"]
+tags: ["Olin College: SP2021 Data Science and Algorithms"]
 featured: true
 draft: false
 ---
