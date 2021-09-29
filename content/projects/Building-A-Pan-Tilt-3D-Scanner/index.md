@@ -125,6 +125,15 @@ caption="Plot of actual distances vs. infrared sensor output voltage readings"
 df["distance"] = df.apply(lambda row: 10964 * (1/row["ir_read"]), axis=1)
 ```
 
+To test the validity of the curve, we took a series of test points and compared their real distance to the distances predicted by the fitted power-curve equation. 
+
+{{< figure 
+src="img/error_curve.png"
+caption="(left) plot of test comparing actual and predicted distances for test infrared sensor output voltage readings; (right) differences between pairs of actual and predicted distances."
+>}}
+
+The scanner has lowest noise error in the 30cm - 60cm range.
+
 ## 3. Accounting for Servo Motor Offsets
 
 The 0-180 degree ranges of the servo motors were not perfectly aligned with the global axes. Therefore, an offset needs to be accounted for when converting pwm signals to degrees measurements.
