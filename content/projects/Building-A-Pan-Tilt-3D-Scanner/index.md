@@ -7,7 +7,7 @@ featured: false
 draft: false
 ---
 
-My team built a servo-driven pan-tilt mount for an infrared proximity sensor. To demonstrate the functionality of our design, we created a 3D scan of a cardboard letter cut in a Z shape. This project involved (1) designing and 3D-printing a pan-tilt servo and IR sensor, (2) programming an arduino to collect scan data, (3) projecting data from spherical coordinates into Cartesian coordinates. I was responsible for the CAD mechanical design and making the 3D data projection and visualization.
+My team built a servo-driven pan-tilt mount for an infrared proximity sensor. To demonstrate the functionality of our design, we created a 3D scan of a cardboard letter cut in a Z shape. This project involved (1) designing and 3D-printing a pan-tilt servo and IR sensor, (2) programming an arduino to collect scan data, (3) projecting data from spherical coordinates into Cartesian coordinates in order to isolate a cross-section scan of the letter. I was responsible for the CAD mechanical design and making the 3D data projection and visualization.
 
 <!--more-->
 
@@ -28,11 +28,6 @@ My team built a servo-driven pan-tilt mount for an infrared proximity sensor. To
 ## $15 [GP2Y0A02YK0F Sharp Infrared Proximity Sensor](https://www.sparkfun.com/datasheets/Sensors/Infrared/gp2y0a02yk_e.pdf)
 
 An infrared proximity sensor is an infrared emitter (LED) paired with an infrared detector (photodiode). The detector measures the intensity of the IR light reflected off of an object in its field of view. The output of the sensor is an analog voltage.
- 
-{{< figure 
-src="img/IR_specs.png"
-caption="Infrared sensor dimensions"
->}}
 
 ## Two $4 [Hobby Servo Motors](https://hobbyking.com/en_us/hobbykingtm-hk15138-standard-analog-servo-4-3kg-0-17sec-38g.html)
 
@@ -43,19 +38,9 @@ A hobby servo motor is a DC motor connected to:
 
 A hobby servo is controlled using a square wave form that is pulsed at a fixed frequency. The time that the waveform signal is set to “on” determines what the position of the shaft should be. An arduino board with “pulse width modulation” (PWM) output pin can control a servo motor’s shaft position.
 
-{{< figure 
-src="img/servo_specs.png"
-caption="Servo motor dimensions"
->}}
-
 ## Arduino board + breadboard + assorted circuitry
 
 The Arduino board programmatically controlled the servo motors and received analog outputs from the infrared sensor. The breadboard organized wires, power-supplies, and circuit components. To stabilize the power supply line, a by-pass capacitor of 10μF was inserted between Vcc and GND of the IR sensor. 
-
-{{< figure 
-src="img/circuit_board.jpg"
-caption="Final circuit"
->}}
 
 # CAD Design of Pan-Tilt Mount
 
@@ -68,7 +53,12 @@ caption="A sketch of the 3 mount components sharing common reference axes."
 
 {{< figure 
 src="img/CAD_parts.png"
-caption="3D render of pan-tilt mount parts to 3D-print"
+caption="The IR sensor tilts in the y-z plane and pans in the x-y plane."
+>}}
+
+{{< figure 
+src="img/fishbowl-lense.png"
+caption="The pan-tilt mechanism's spherical coordinate system creates a fish-bowl type distortion from the perspective of the IR camera."
 >}}
 
 {{< figure 
@@ -79,8 +69,8 @@ caption="3D printed and assembled mechanism"
 # Scan Demo
 
 {{< figure 
-src="img/demo.png"
-caption="(right) scan set-up; (left) final scan in 3D-Cartesian plane"
+src="img/orientation_setup.png"
+caption="Data collection setup"
 >}}
 
 ## 1. Set-Up and Collection
@@ -132,15 +122,22 @@ src="img/error_curve.png"
 caption="(left) plot of test comparing actual and predicted distances for test infrared sensor output voltage readings; (right) differences between pairs of actual and predicted distances."
 >}}
 
-The scanner has lowest noise error in the 30cm - 60cm range.
+According to the spec sheet, the scanner is rated for the 20 to 150 cm range. The has lowest noise and distortion error occurs the 30cm - 60cm range.
 
 ## 3. Accounting for Servo Motor Offsets
 
-The 0-180 degree ranges of the servo motors were not perfectly aligned with the global axes. Therefore, an offset needs to be accounted for when converting pwm signals to degrees measurements.
+The 0-180 pwm input to the servo motors does not line up perfectly with the degrees on the global axes. The servo zero position is offset slightly, by 20 degrees in the tilt servo, and by -60 degrees in the pan servo. This offset needs to be removed before the tilt and pan angles are used in downstream processing.
 
 {{< figure 
-src="img/servo_offsets.png"
-caption="Servo motor offsets and orientation relative to scanned object"
+src="img/tilt_servo.png"
+caption="The tilt servo is offset by 20 degrees, so it is centered at 90 - 20 = 70 pwm."
+height=400
+>}}
+
+{{< figure 
+src="img/pan_servo.png"
+caption="The pan servo is offset by -60 pwm, so it is centered at 90 + 60 = 150 pwm"
+height=400
 >}}
 
 ```python
@@ -156,6 +153,7 @@ df["pan_deg"] = df.apply(lambda row: row["orig_pan_deg"] + PAN_DEG_OFFSET, axis=
 {{< figure 
 src="img/coordinate_plane.jpg"
 caption="Conversion from Spherical Coordinate Plane to Cartesian Coordinate Plane (Source: [LiDAR Basics: The Coordinate System](https://hackernoon.com/lidar-basics-the-coordinate-system-a26529615df9))"
+height=400
 >}}
 
 The tilt angle is from the Cartesian z-axis to Cartesian y-axis ($\theta$). The pan angle is from the Cartesian x-axis to the Cartesian y-axis ($\varphi$).
@@ -183,14 +181,14 @@ df["xs"] = df.apply(lambda row: row["xs"] * -1, axis=1)
 ## 5. 3D Scan Visualization
 
 {{< figure 
-src="img/3D_scan_total.png"
+src="img/scan_demo.png"
 caption="All 3D scan points"
 >}}
 
 To isolate the letter from the wall and the floor, we can look at the point distributions along the y-axis (axis of distance between servo and scanned object). 
 
 {{< figure 
-src="img/y_axis_distribution.png"
+src="img/y-axis-distribution.png"
 caption="Distribution of scan y-coordinates"
 >}}
 
@@ -200,7 +198,7 @@ We see three main sections:
 * 60cm-ish and onwards is the wall
 
 {{< figure 
-src="img/scan_total.png"
+src="img/3D_scan_total.png"
 caption="All 3D scan points, positioned in x-z plan labeled according to position along y-axis"
 >}}
 
