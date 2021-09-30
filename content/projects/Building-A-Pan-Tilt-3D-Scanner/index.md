@@ -182,7 +182,7 @@ df["xs"] = df.apply(lambda row: row["xs"] * -1, axis=1)
 
 {{< figure 
 src="img/scan_demo.png"
-caption="All 3D scan points"
+caption="(top) all 3D scan points, annotated by location on y-axis. (bottom) cross section of region containing letter (Z)"
 >}}
 
 To isolate the letter from the wall and the floor, we can look at the point distributions along the y-axis (axis of distance between servo and scanned object). 
