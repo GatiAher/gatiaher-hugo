@@ -6,16 +6,10 @@
     {{ else }}
 
     {{ partial "category.html" . }}
-    <div class="cover-image-container">
-        {{ partial "cover-image.html" . }}
-        <div class="cover-image-text-block">
-            <h1>{{ .Title }}</h1>
-        </div>
-    </div>
-
-
-    {{ partial "tag.html" . }}
+    <h1>{{ .Title }}</h1>
     {{ partial "meta-post.html" . }}
+    {{ partial "cover-image.html" . }}
+    {{ partial "tag.html" . }}
 
     {{ end }}
 
