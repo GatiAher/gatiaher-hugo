@@ -1,8 +1,5 @@
-I am currently studying computer science at [Olin College of Engineering](https://www.olin.edu/), class of 2023.  
-I use this blog to document my software projects, share my data analysis adventures, and reflect upon design processes.
+I am studying computer science at [Olin College of Engineering](https://www.olin.edu/), class of 2023. I have a passion for creating software and analysis tools to help people analyze data and make decisions efficiently and effectively. I am especially excited about artificial intelligence, data analysis, computer vision, and software development. I use this blog to document my software projects, share my data analysis adventures, and reflect upon design processes.
 
 ## About Me
 
-I am passionate about constructing impactful data analysis stories and developing software. At Olin College, I am working as a student researcher for the Olin Microbiology and Bioinformatics (OMB) Lab and the Olin Satellite + Spectrum Technology & Policy (OSSTP) Group. In my role as lead data analyst, I focus on applications of computational math, effective data visualizations, and statistics. 
-
-Throughout my career, I have worked in many different areas of software including full-stack application development, cybersecurity, and machine learning. If you are interested in my professional experience, see my [CV](/Gati_Aher_Resume.pdf) or my [LinkedIn](https://www.linkedin.com/in/gatiaher).
+Currently, I am working as an undergraduate researcher for the Olin Microbiology and Bioinformatics (OMB) Lab and the Olin Satellite + Spectrum Technology & Policy (OSSTP) Group. In my role as lead data analyst, I focus on applications of computational math, effective data visualizations, and statistics.  Throughout my career, I have worked in many different areas of software including full-stack application development, cybersecurity, and machine learning. If you are interested in my professional experience, see my [CV](/Gati_Aher_Resume.pdf) or my [LinkedIn](https://www.linkedin.com/in/gatiaher).
