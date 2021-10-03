@@ -1,4 +1,4 @@
-I am studying computer science at [Olin College of Engineering](https://www.olin.edu/), class of 2023. I have a passion for creating software and analysis tools to help people analyze data and make decisions efficiently and effectively. I am especially excited about artificial intelligence, data analysis, computer vision, and software development. I use this blog to document my software projects, share my data analysis adventures, and reflect upon design processes.
+I am studying computer science at [Olin College of Engineering](https://www.olin.edu/), class of 2023. I have a passion for creating software, automation, and visualization tools to help people analyze data and make decisions efficiently and effectively. I am especially excited about artificial intelligence, statistics, data analysis, computer vision, and good software development practices. I use this blog to document my software projects, share my data analysis adventures, and reflect upon design processes.
 
 ## About Me
 
