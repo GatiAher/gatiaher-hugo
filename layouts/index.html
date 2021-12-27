@@ -4,14 +4,15 @@
   <div>
     <div class="bar">
       <h1>Hi, I'm Gati.&nbsp</h1>
-      <h1>Welcome to my Website!</h1>
+      <h1>Welcome to my Computing Blog!</h1>
     </div>
     <!-- Note that the content for index.html, as a sort of list page, will pull from content/_index.md -->
     {{.Content}}
   </div>
 
+  <!--Start Category Buttons -->
   <div class="tag-buttons">
-    <h2>Project Categories</h2>
+    <h2>Categories</h2>
     {{ range .Site.Taxonomies.categories.ByCount }}
     <a class="btn btn-outline-dark font-125 text-left" href="{{ .Page.Permalink }}">
       <span class="badge badge-dark">{{ .Count }}</span> {{ .Page.Title }}
@@ -20,6 +21,7 @@
   </div>
 
   <div>
+    <!--Start Featured Work -->
     {{ $section := where $.Site.RegularPages "Params.featured" "==" true }}
     <h2>Featured Work ({{ len $section }}) </h2>
     {{ range $section }}
