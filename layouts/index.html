@@ -10,9 +10,15 @@
     {{.Content}}
   </div>
 
+  <!-- <div>
+    <h2>Where I've Worked</h2>
+  </div> -->
+
+  <br>
+  <br>
   <!--Start Category Buttons -->
   <div class="tag-buttons">
-    <h2>Categories</h2>
+    <h2>Project Categories</h2>
     {{ range .Site.Taxonomies.categories.ByCount }}
     <a class="btn btn-outline-dark font-125 text-left" href="{{ .Page.Permalink }}">
       <span class="badge badge-dark">{{ .Count }}</span> {{ .Page.Title }}
@@ -20,12 +26,14 @@
     {{ end }}
   </div>
 
+  <br>
   <div>
     <!--Start Featured Work -->
     {{ $section := where $.Site.RegularPages "Params.featured" "==" true }}
     <h2>Featured Work ({{ len $section }}) </h2>
     {{ range $section }}
     {{ partial "thumbnail" . }}
+    <br>
     {{ end }}
   </div>
 
