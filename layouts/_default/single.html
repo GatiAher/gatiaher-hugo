@@ -5,11 +5,16 @@
 
     {{ else }}
 
-    {{ partial "category.html" . }}
-    <h1>{{ .Title }}</h1>
-    {{ partial "meta-post.html" . }}
-    {{ partial "cover-image.html" . }}
-    {{ partial "tag.html" . }}
+        <div class="post-heading">
+            {{ partial "category.html" . }}
+            <h1 >{{ .Title }}</h1>
+            {{ partial "meta-post.html" . }}
+            <br>
+            {{ partial "cover-image.html" . }}
+            <br>
+            {{ partial "tag.html" . }}
+            <hr>
+        </div>
 
     {{ end }}
 

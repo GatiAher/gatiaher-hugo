@@ -3,21 +3,29 @@ title: "Procedural Graph Generation For More Realistic Simulations"
 date: 2021-12-18T23:23:16-05:00
 categories: ["Conceptual Notes"]
 tags: ["Olin College: FA2021 Discrete Mathematics"]
+featured: true
 draft: false
 ---
 
 Many real world systems can be modeled with graphs. Most stable and complex graphs have **small-world** (local clustering) and **scale-free** (hubs) properties. The commonly used Erdös-Rényi algorithm generates random graphs, but random graphs are not useful for complex network simulations because they do not have clusters or hubs. In this project, we (1) identified algorithms that generated small-world and scale-free graphs, (2) studied and implemented generation functions for each type of algorithm, (3) created custom animations of graph generation process, and (4) verified that our graphs exhibited the expected structural properties.
 
+All generation, animation, and validation code is available in our [GitHub Repo](zbwrm/network-generation).
+
 {{< gslides src="https://docs.google.com/presentation/d/e/2PACX-1vRoVNJKtW84R-zlSBe9CBJO1PGcZwgc7_wVDoCUYklCmjqXsDLeqK1ipSAd0XweKgvaql3kSxRcF7YA/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">}}
 
 <!--more-->
 
-**Topic:** Procedural Graph Generation
-**Teammates:** Mira Flynn, Aydin O’Leary
-
-# My Reflection
+# Reflection
 
 I ran into this topic when I was first researching properties of stable microbial communities. Since microbial communities are real, stable, and complex, researchers expect that their dependency and interaction networks have hub and cluster characteristics. Hubs can indicate the presence of a keystone species and clusters can indicate that several microbes fall into a similar ecological and functional niche. In some papers, researchers simulated microbial community stability with randomly generated graphs, so I wanted to take a closer look at graph generation algorithms.
+
+# Teammate Contributions
+
+My group consisted of Mira, Aydin, and myself. We approached the deep dive by each studying and implementing a graph generation algorithm. We then divided up the remaining coding tasks.
+
+* **Mira:** BA algorithm, animation GIFs
+* **Aydin:** WS algorithm, deep dive on ring lattice properties
+* **Gati (me):** KE algorithm, structural verifications, network comparison panels
 
 # My Contributions
 

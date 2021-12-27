@@ -12,16 +12,14 @@ Huffman coding is a variation on prefix codes that optimize lossless data compre
 
 <!--more-->
 
-# Overview
+# Teammate Contributions
 
 My group consisted of Ducan, Alex, Robin, and myself. We approached the deep dive by each researching an aspect of Huffman codes usage. We did preliminary research and final proofreading together. We also explained findings to each other during our weekly group meeting.
-
-# Teammate Contributions
 
 * **Robin:** Part 1 - Introduction to Huffman Coding
 * **Duncan:** Part 2 - How far can Huffman compression go?
 * **Alex:** Part 3 - Error Correction and Resilience:  What resilience do HuffmanCodes have to errors?
-* **Gati:** Part 4 - MP3 Stenography:  How are Huffman tables used to communicate secret messages?
+* **Gati (me):** Part 4 - MP3 Stenography:  How are Huffman tables used to communicate secret messages?
 
 # My Contributions
 
