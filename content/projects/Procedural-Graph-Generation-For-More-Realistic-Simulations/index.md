@@ -1,9 +1,9 @@
 ---
 title: "Procedural Graph Generation For More Realistic Simulations"
-date: 2021-12-26T23:23:16-05:00
+date: 2021-12-18T23:23:16-05:00
 categories: ["Conceptual Notes"]
-tags: ["Olin College: Discrete Mathematics"]
-draft: true
+tags: ["Olin College: FA2021 Discrete Mathematics"]
+draft: false
 ---
 
 Many real world systems can be modeled with graphs. Most stable and complex graphs have **small-world** (local clustering) and **scale-free** (hubs) properties. The commonly used Erdös-Rényi algorithm generates random graphs, but random graphs are not useful for complex network simulations because they do not have clusters or hubs. In this project, we (1) identified algorithms that generated small-world and scale-free graphs, (2) studied and implemented generation functions for each type of algorithm, (3) created custom animations of graph generation process, and (4) verified that our graphs exhibited the expected structural properties.
@@ -11,4 +11,15 @@ Many real world systems can be modeled with graphs. Most stable and complex grap
 {{< gslides src="https://docs.google.com/presentation/d/e/2PACX-1vRoVNJKtW84R-zlSBe9CBJO1PGcZwgc7_wVDoCUYklCmjqXsDLeqK1ipSAd0XweKgvaql3kSxRcF7YA/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">}}
 
 <!--more-->
+
+**Topic:** Procedural Graph Generation
+**Teammates:** Mira Flynn, Aydin O’Leary
+
+# My Reflection
+
+I ran into this topic when I was first researching properties of stable microbial communities. Since microbial communities are real, stable, and complex, researchers expect that their dependency and interaction networks have hub and cluster characteristics. Hubs can indicate the presence of a keystone species and clusters can indicate that several microbes fall into a similar ecological and functional niche. In some papers, researchers simulated microbial community stability with randomly generated graphs, so I wanted to take a closer look at graph generation algorithms.
+
+# My Contributions
+
+I proposed the initial focus and scope of the project, found the main paper we used as a resource, and explained small-world and scale-free properties to my teammates. I was responsible for implementing the KE graph generation algorithm and explaining how it worked to my team. Next, I read about checking structural verifications, found the corresponding Networkx functions, and created a panel to display figures and properties to compare generated networks. Finally, I worked on the initial technical slide deck and made the final slide decks based on Professor Sarah and my teammates suggestions.
 
