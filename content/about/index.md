@@ -18,7 +18,7 @@ Hi, I'm Gati, computer science student at [Olin College of Engineering](https://
 * Email:    gaher@olin.edu
 * Github:   [@GatiAher](https://github.com/GatiAher)
 * LinkedIn: [gatiaher](https://www.linkedin.com/in/gatiaher)
-* Resume:   [Gati_Aher_Resume.pdf](/Gati_Aher_Resume.pdf).
+* CV:   [Gati_Aher_CV.pdf](/Gati_Aher_CV.pdf).
 
 ---
 
