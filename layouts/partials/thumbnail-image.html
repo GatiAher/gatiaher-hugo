@@ -1,8 +1,3 @@
 {{ with .Resources.GetMatch "{cover.*,*.jpg,*.png,*.jpeg}" }}
-    {{ $cover := .Resize "600x" }}
-        {{ with $cover }}
-        <a href="{{ .RelPermalink }}" class="image"><img src="{{ .Permalink }}" alt="" /></a>
-        {{ end }}
-{{ else }}
-
+    <a href="{{ .RelPermalink }}" class="image"><img src="{{ .Permalink }}" alt="" /></a>
 {{ end }}
