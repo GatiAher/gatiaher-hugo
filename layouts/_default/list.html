@@ -3,28 +3,34 @@
 <br>
 <header>
     {{ if eq .Data.Plural "categories" }}
-    <h2 class="category-list-heading">
+    <h1 class="category-list-heading">
         {{ .Title }} ({{ len .Pages.ByPublishDate.Reverse }})
-    </h2>
+    </h1>
 
     {{ else if eq .Data.Plural "tags" }}
-    <h2 class="tag-list-heading">
+    <h1 class="tag-list-heading">
         {{ .Title }} ({{ len .Pages.ByPublishDate.Reverse }})
-    </h2>
+    </h1>
 
     {{ else }}
-    <h2>
+    <h1>
         {{ .Title }} ({{ len .Pages.ByPublishDate.Reverse }})
-    </h2>
+    </h1>
 
     {{ end }}
 </header>
 <br>
 
+<!-- Groups content by year according to the "date" field in front matter -->
+{{ range .Pages.GroupByDate "2006" }}
+<header class="major">
+    <h2>{{ .Key }}</h2>
+</header>
 <div class="posts">
-    {{ range .Pages.ByPublishDate.Reverse }}
+    {{ range .Pages }}
     {{ partial "thumbnail" . }}
     {{ end }}
 </div>
+{{ end }}
 
 {{ end }}
