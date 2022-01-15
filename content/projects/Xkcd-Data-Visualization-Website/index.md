@@ -9,7 +9,7 @@ featured: false
 
 This single-page web application lets users interact with xkcd comics clustered by similarity. 
 
-Over the course of building this project, I learned how to clean data, use different natural language analysis techniques, build an interactive and reactive data visualization, and host a web application.
+Over the course of building this project, I learned how to clean data, use different natural language analysis techniques (**stemming, lemminizing, TF-IDF, SVD, t-SNE**), build an interactive and reactive data visualization (**D3.js**), and host a web application (**Flask, Bootstrap, Heroku**).
 
 * Details documented on [GitHub](https://github.com/GatiAher/Xkcd_Data_Visualization)
 * Hosted at https://xkcd-data.herokuapp.com/
