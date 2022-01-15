@@ -6,7 +6,7 @@ draft: false
 readmore: false
 ---
 
-*Pencil on 24"36" paper.*  
+*Charcoal on 24"36" paper.*  
 *Drawn from life over a month.*
 
 <!--more-->
