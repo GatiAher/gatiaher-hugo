@@ -1,16 +1,32 @@
 <!doctype html>
 <html lang="en">
 
-{{ partial "head.html" . }}
+    {{ partial "head.html" . }}
 
-<body>
-    {{ partial "site-header.html" . }}
+    <body class="is-preload">
+        
+        <!-- Wrapper -->
+            <div id="wrapper">
 
-    <main id="main" class="container">
-        {{ block "main" . }}{{ end }}
-    </main>
-    {{ partial "foot.html" . }}
-    {{ partial "support-feather-icons.html" . }}
-</body>
+                <!-- Main -->
+                    <div id="main">
+                        <div class="inner">
+
+                            <!-- Header -->
+                            {{ partial "site-header.html" . }}
+                            <!-- Content -->
+                            {{ block "main" . }}{{ end }}
+                        
+                        </div>
+                    </div>
+
+                <!-- Sidebar -->
+                {{ partial "site-sidebar.html" . }}
+            <div>
+
+        <!-- scripts -->
+        {{ partial "scripts.html" . }}
+        
+    </body>
 
 </html>

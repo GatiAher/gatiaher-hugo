@@ -1,31 +1,21 @@
 {{ define "main" }}
+<main>
+    <section>
+        {{ partial "category.html" . }}
+        <header>
+            <h1>{{ .Title }}</h1>
+        </header>
+        {{ partial "meta-post.html" . }}
+        <br>
+        {{ partial "cover-image.html" . }}
+        <br>
+        {{ partial "tag.html" . }}
+        <hr>
+        <article>
+            {{ .Content }}
+        </article>
 
-<div>
-    {{ if eq .Title "About" }}
-
-    {{ else }}
-
-        <div class="post-heading">
-            {{ partial "category.html" . }}
-            <h1 >{{ .Title }}</h1>
-            {{ partial "meta-post.html" . }}
-            <br>
-            {{ partial "cover-image.html" . }}
-            <br>
-            {{ partial "tag.html" . }}
-            <hr>
-        </div>
-
-    {{ end }}
-
-</div>
-
-<br/>
-
-<article>
-
-    {{ .Content }}
-
-</article>
+    </section>
+</main>
 
 {{ end }}

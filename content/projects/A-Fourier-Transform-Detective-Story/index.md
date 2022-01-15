@@ -7,7 +7,7 @@ featured: true
 draft: false
 ---
 
-A group of research students had tried to use a 2D discrete Fourier Transform to characterize the pattern of repeating protein units on a bacteria surface layer image. Since their spectral graph looked unusually messy and their pattern estimates seemed very wrong, my research professor asked me to take a crack at interpreting and cleaning it. My successful analysis helped the research group complete their paper and publish their findings. This project was a pretty neat application of understanding the mathematical assumptions of a technique to properly isolate and interpret the results.
+A group of research students had tried to use a 2D discrete Fourier Transform to characterize the pattern of repeating protein units on a bacteria surface layer image. Since their spectral graph looked unusually messy and their pattern estimates seemed very wrong, my research professor asked me to take a crack at interpreting and cleaning it. This was a neat application of understanding the mathematical assumptions of a technique to properly isolate and interpret results.
 
 <!--more-->
 
@@ -22,7 +22,7 @@ A group of research students had tried to use a 2D discrete Fourier Transform to
   - [Bonus: Visualize the S-Layer Units](#bonus-visualize-the-s-layer-units)
 - [5 CONCLUSION](#5-conclusion)
 
-# 1 THE HOT-PEANUTS CHALLENGE
+## 1 THE HOT-PEANUTS CHALLENGE
 
 In 2015-2016, Professor Jean Huang and her research group cultured a phototrophic bacteria from the Little Sippewissett Salt Marsh. They nicknamed it ‘Hot Peanuts’ based on its interesting shape and growth at high temperatures. They wanted to study and publish their findings about its physiology and metabolism in a paper. The group performed a wide variety of analysis, including growth studies, 16sRNA analysis, and S-layer protein dissociation and identification.
 
@@ -56,7 +56,7 @@ From their FFT magnitude plot, the 2015-2016 research group could tell that thei
 
 Fortunately, I figured it out. See my post on [1D and 2D Fourier Transforms](/projects/1d-and-2d-fourier-transforms/) to learn more about the basic concepts (magnitude, phase, shifting, log transforms). The rest of this blog post will use the bacteria S-layer as a case-study for performing image analysis with Fourier Transforms.
 
-# 2 INTRO TO BACTERIA S-LAYERS
+## 2 INTRO TO BACTERIA S-LAYERS
 
 Most prokaryotic cells are encapsulated by a surface layer (S-layer) consisting of repeating units of S-layer proteins. These S-layers protect cells from the outside, provide mechanical stability, and play roles in spreading disease.
 
@@ -80,7 +80,7 @@ src="img/s_layer_diagram.png"
 caption="Image source: [International Genetically Engineered Machine (iGEM) Team Bielefeld-Germany S-Layer](http://2011.igem.org/Team:Bielefeld-Germany/Project/Background/S-Layer)"
 >}}
 
-# 3 FFT WITH PYTHON CODE
+## 3 FFT WITH PYTHON CODE
 
 Packages used in analysis:
 
@@ -95,18 +95,18 @@ from skimage.filters import window
 
 How to get image, image's DFT magnitude plot, and log transformed magnitude plot:
 ```python
-# image
+## image
 image = img_as_float(plt.imread("2A.tif"))
-# take 2D DFT, center it, and get magnitude
+## take 2D DFT, center it, and get magnitude
 image_f = np.abs(fftshift(fft2(image)))
-# log transform to compress big values into smaller range
-# lets us see more information in the magnitude plot
+## log transform to compress big values into smaller range
+## lets us see more information in the magnitude plot
 image_f_log = np.log(1 + image_f)
 ```
 
-# 4 CLEANING AND INTERPRETING THE 2D FFT
+## 4 CLEANING AND INTERPRETING THE 2D FFT
 
-## Step 1. Remove Vertical and Horizontal Pattern Noise
+### Step 1. Remove Vertical and Horizontal Pattern Noise
 
 When the FFT algorithm looks at an image, it assumes the image is one period of an infinitely repeating spectrum:
 
@@ -135,7 +135,7 @@ The edge mismatches at the seams of the images still produce sharp horizontal an
 To reduce the frequencies of the edge discontinuities, I can use a windowing function. Windowing smoothly reduces the amplitude of the signal as it reaches the edges, removing the effect of the artificial discontinuity from the FFT. I use the Hann windowing function in this analysis.
 
 ```python
-# windowed image
+## windowed image
 wimage = image * window('hann', image.shape)
 wimage_f = np.abs(fftshift(fft2(wimage)))
 ```
@@ -146,7 +146,7 @@ src="img/windowed.png"
 caption="Right: original colored image and its FFT (magma color scheme to accentuate pattern). Left: Hann windowed image and its log magnitude FFT which has no edge discontinuities."
 >}}
 
-## Step 2. Identify Key Periodic Frequencies
+### Step 2. Identify Key Periodic Frequencies
 
 The FFT magnitude plot clearly shows two hexagonal rings of bright points:
 
@@ -213,7 +213,7 @@ Outer Ring (High Frequency Ring) (Blue)
 * normalized average frequency: 0.198 cycles / pixel
 ```
 
-## Step 3. Calculate Size and Scale
+### Step 3. Calculate Size and Scale
 
 From the normalized average frequency, I can find the period length of one cycle:
 
@@ -263,7 +263,7 @@ Outer Ring (High Frequency Ring) (Blue)
 * center-to-center spacing: 17.0 nm
 ```
 
-## Step 4. Identify Shape
+### Step 4. Identify Shape
 
 The Fourier magnitude plot pretty clearly shows two hexagonal rings. Lets compare the layout to the example S-layer images from earlier in the post:
 
@@ -277,7 +277,7 @@ Here, I cropped the images, multiplied them with the Hann windowing function, an
 
 The Hot Peanut magnitude plot has the same layout as the example hexagonal S-layer!
 
-## Bonus: Visualize the S-Layer Units
+### Bonus: Visualize the S-Layer Units
 
 I thought it might be cool to visualize the S-layer units. 
 
@@ -319,7 +319,7 @@ src="img/filtered_out.png"
 caption="Inverted filtered FFT and resulting inverse FFT."
 >}}
 
-# 5 CONCLUSION
+## 5 CONCLUSION
 
 The 2D discrete Fast Fourier plot is a nice tool for picking out key periodic frequencies in an image. By using FFT analysis, I determined that the ‘Hot Peanuts’ bacteria S-layer had a hexagonal lattice pattern, and center-to-center subunit spacings of 29.4 nm and 17.0 nm.
 

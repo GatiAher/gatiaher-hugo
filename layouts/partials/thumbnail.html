@@ -1,8 +1,10 @@
-<div class="thumbnail-container">
-    {{ partial "category.html" . }}
-    {{ partial "title.html" . }}
-    {{ partial "meta.html" . }}    
+<article>
+    <h3>{{ .Title }}</h3>
+    <p>
+        {{ .Summary }}
+    </p>
     {{ partial "thumbnail-image.html" . }}
-    {{ partial "description.html" . }}
-    {{ partial "readmore.html" . }}
-</div>
+    <ul class="actions">
+        <li><a href="{{ .RelPermalink }}" class="button">Read More...</a></li>
+    </ul>
+</article>

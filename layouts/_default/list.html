@@ -1,24 +1,30 @@
 {{ define "main" }}
 
-{{ if eq .Data.Plural "categories" }}
-<h2 class="category-list-heading">
-    {{ .Title }} ({{ len .Pages.ByPublishDate.Reverse }})
-</h2>
+<br>
+<header>
+    {{ if eq .Data.Plural "categories" }}
+    <h2 class="category-list-heading">
+        {{ .Title }} ({{ len .Pages.ByPublishDate.Reverse }})
+    </h2>
 
-{{ else if eq .Data.Plural "tags" }}
-<h2 class="tag-list-heading">
-    {{ .Title }} ({{ len .Pages.ByPublishDate.Reverse }})
-</h2>
+    {{ else if eq .Data.Plural "tags" }}
+    <h2 class="tag-list-heading">
+        {{ .Title }} ({{ len .Pages.ByPublishDate.Reverse }})
+    </h2>
 
-{{ else }}
-<h2>
-    {{ .Title }} ({{ len .Pages.ByPublishDate.Reverse }})
-</h2>
+    {{ else }}
+    <h2>
+        {{ .Title }} ({{ len .Pages.ByPublishDate.Reverse }})
+    </h2>
 
-{{ end }}
+    {{ end }}
+</header>
+<br>
 
-{{ range .Pages.ByPublishDate.Reverse }}
-{{ partial "thumbnail" . }}
-{{ end }}
+<div class="posts">
+    {{ range .Pages.ByPublishDate.Reverse }}
+    {{ partial "thumbnail" . }}
+    {{ end }}
+</div>
 
 {{ end }}

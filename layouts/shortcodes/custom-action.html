@@ -1,0 +1,5 @@
+<ul class="actions">
+    {{ $href := default "/"  (.Get "href") }}
+    {{ $text := default "Read More..." (.Get "text") }}
+    <li><a href="$href" class="button">{{ $text }}</a></li>
+</ul>

@@ -3,6 +3,7 @@ title: "Deep Dive Into Huffman Coding"
 date: 2021-10-25T00:46:56-05:00
 draft: false
 categories: ["Concepts & Theory"]
+featured: true
 tags: ["Olin College: FA2021 Discrete Mathematics"]
 ---
 
@@ -12,7 +13,7 @@ Huffman coding is a variation on prefix codes that optimize lossless data compre
 
 <!--more-->
 
-# Teammate Contributions
+## Teammate Contributions
 
 My group consisted of Ducan, Alex, Robin, and myself. We approached the deep dive by each researching an aspect of Huffman codes usage. We did preliminary research and final proofreading together. We also explained findings to each other during our weekly group meeting.
 
@@ -21,6 +22,6 @@ My group consisted of Ducan, Alex, Robin, and myself. We approached the deep div
 * **Alex:** Part 3 - Error Correction and Resilience:  What resilience do HuffmanCodes have to errors?
 * **Gati (me):** Part 4 - MP3 Stenography:  How are Huffman tables used to communicate secret messages?
 
-# My Contributions
+## My Contributions
 
 I put in a total of 15 hours to research the usage of Huffman codes. Originally, I was also looking more broadly into patterns and qualities that could be inferred from the statistical distributions of the choice of MP3 Huffman table, but I decided to focus the writeup on stenography because that was the usage I was most interested in diving deeper into. I created the figures used in my section in order to fully explore the patterns and choices made by each proposed scheme. I also learned how the Huffman compression worked with the other compression techniques used to make MP3. Overall, this topic was fun to read about and discuss!

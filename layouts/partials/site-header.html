@@ -1,16 +1,8 @@
-<div class="site-header">
-    <nav id="nav" class="container">
-        <div class=bar>
-            <a class="navbar-brand brand" href="/">
-                Gati Aher
-            </a>
-            <div class="links">
-                {{ range .Site.Menus.main }}
-                {{ $icon := printf "<i data-feather=\"%s\"></i>" .Pre }}
-                {{ $text := print $icon " " .Name | safeHTML }}
-                <a class="nav-link" href="{{ .URL }}">{{ $text }}</a>
-                {{ end }}
-            </div>
-        </div>
-    </nav>
-</div>
+<header id="header">
+    <a href="/" class="logo"><strong>Gati</strong> Aher</a>
+    <ul class="icons">
+        <li><a href="https://github.com/GatiAher" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+        <li><a href="https://www.linkedin.com/in/gatiaher" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+        <li><a href="mailto:gaher@olin.edu" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+    </ul>
+</header>

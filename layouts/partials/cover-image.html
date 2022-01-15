@@ -2,9 +2,11 @@
     {{ with .Resources }}
     {{ with .GetMatch "{cover.*,*.jpg,*.png,*.jpeg}" }}
     <!-- {{ $cover := .Resize "x600" | images.Filter (images.GaussianBlur 1) (images.Brightness -25) }} -->
-    {{ $cover := .Resize "x600" }}
+    <!-- {{ $cover := .Resize "x600" }} -->
     {{ with $cover }}
-    <img src="{{ .Permalink }}" />
+    <span class="image fit">
+        <img src="{{ .Permalink }}" />
+    </span>
     {{ end }}
     {{ end }}
     {{ end }}

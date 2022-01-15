@@ -7,7 +7,9 @@ featured: false
 draft: false
 ---
 
-The Bloom filter data structure tracks set-membership in a fast and space-efficient way. I first heard about Bloom filters when a start-up I was working for used Bloom filters to speed up their database search. Then, I heard about Microsoft using a stack of Bloom filters (a bit-sliced document signature data structure) to [speed up the Bing search engine's keyword search](https://dl.acm.org/doi/10.1145/3077136.3080789). In this project, I explored these interesting data structures by implementing a Bloom filter and a bit-sliced document signature in C. I also wrote unit tests and a collection of fun demos to show how Bloom filters and bit-sliced signatures can be used. This report gives an overview of the project, demos and results, and highlights notable code design decisions.
+The Bloom filter data structure tracks set-membership in a fast and space-efficient way. I first heard about Bloom filters when a start-up I was working for used Bloom filters to speed up their database search. Then, I heard about Microsoft using a stack of Bloom filters (a bit-sliced document signature data structure) to [speed up the Bing search engine's keyword search](https://dl.acm.org/doi/10.1145/3077136.3080789).
+
+In this project, I explored these interesting data structures by implementing a Bloom filter and a bit-sliced document signature in C. I also wrote unit tests and a collection of fun demos to show how Bloom filters and bit-sliced signatures can be used. This report gives an overview of the project, demos and results, and highlights notable code design decisions.
 
 All code is available in my [GitHub Repo](https://github.com/GatiAher/BloomForSearchFromScratch). I documented my progress on this [Trello Board](https://trello.com/b/xzVRxTDJ/bloomforsearchfromscratch)  
 
@@ -32,7 +34,7 @@ All code is available in my [GitHub Repo](https://github.com/GatiAher/BloomForSe
   - [4.3 Note on Choice of Hash Function](#43-note-on-choice-of-hash-function)
 - [5 FUTURE DIRECTIONS](#5-future-directions)
 
-# 1 PROJECT GOALS AND RESULTS
+## 1 PROJECT GOALS AND RESULTS
 
 I wanted to learn about Bloom filters because I have heard about their interesting real-world applications. I particularly wanted to implement a extension of Bloom filters called bit-sliced signatures that I heard of in the talk ["BitFunnel: Revisiting Signatures for Search" talk by Micheal Hopcroft, creator of BitFunnel](https://www.youtube.com/watch?v=1-Xoy5w5ydM). This was an interesting Software Systems project because many Bloom filter implementations are done in C/C++ in order to have full control and optimization of low-level bit-wise operations 
 
@@ -63,7 +65,7 @@ See the full `MakeFile` for more demos and list of all the executable programs. 
 
 *See test and demo output results in the [results folder](https://github.com/GatiAher/BloomForSearchFromScratch/tree/main/results).*
 
-# 2 BLOOM FILTERS
+## 2 BLOOM FILTERS
 
 The Bloom filter is a probabilistic, space-efficient data structure that can tell you whether an object is in a collection with the possibility of a false positive. It does not store the terms directly, it just stores indicators (a.k.a. hashes, probes) of each term’s presence. 
 
@@ -96,7 +98,7 @@ Other interesting use-cases to check out:
 
 *I implement two demos to show the functionality of Bloom filters.*
 
-## 2.1 Demo 1: Bloom filter to spellcheck a query
+### 2.1 Demo 1: Bloom filter to spellcheck a query
 
 My first demo creates a Bloom filter to check for properly spelled words. It uses a list of words from `/usr/share/dict/words`. For preprocessing, it splits terms by ` !\"#$%%&()*+,-./:;<=>?@[\\]^_{}|~`.
 
@@ -115,7 +117,7 @@ The spellchecker demo adds 102401 terms, hashes each term with 13 hash functions
 
 Furthermore, the resulting Bloom filter is ~262KB, which is 1/4th of the size of the original `/usr/share/dict/words` word list (972.4KB).
 
-## 2.2 Demo 2: Bloom filter to spellcheck a file
+### 2.2 Demo 2: Bloom filter to spellcheck a file
 
 My Bloom filter spellchecker can also be used to spellcheck files. I have a demo that uses my Bloom filter to spellcheck my README:
 
@@ -128,7 +130,7 @@ In the screenshot you can see words flagged as incorrect highlighted in red. You
 
 This a super helpful tool for spellchecking my `README.md` and `.txt` files that do not have a built-in spellchecker! I can quickly read through it on my terminal and change words that are obviously spelled wrong. Using a Bloom filter as the first pass spellchecker limits the words I have to check manually, which allows me to utilize my brain power more effectively.
 
-# 3 BIT-SLICED DOCUMENT SIGNATURES
+## 3 BIT-SLICED DOCUMENT SIGNATURES
 
 In addition to the Bloom filter, I also implemented a Bloom filter-based data structure called a bit-sliced signature. It that can be used to retrieve documents that contain all the words in a query.
 
@@ -150,7 +152,7 @@ All large-scale information retrieval systems use inverted indexes for efficient
 Bit-sliced signatures also frequently come up in the microbiology space, in particular when performing search on bacterial or viral data sets WGS data sets.:
 * [BItsliced Genomic Signature Index [BIGSI] Docs](https://bigsi.readme.io/)
 
-### 3.1 Demo 3: Information retrieval on xkcd comics transcripts
+#### 3.1 Demo 3: Information retrieval on xkcd comics transcripts
 
 So as a fun information retrieval demo, I decided to use my bit-sliced document signature to retrieve [xkcd comics](https://xkcd.com/2379/) that match keywords. This is a fun tool to explore new xkcd comics for a topic.
 
@@ -179,9 +181,19 @@ array =
 -105968822	187	
 165224480	8	
 ... [output truncated]
-colsums = 0 103 69 23 69 162 175 82 83 160 95 68 116 206 85 89 324 167 155 219 263 122 88 212 428 56 92 98 88 207 159 97 220 71 65 114 80 122 97 89 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+colsums = 0 103 69 23 69 162 175 82 83 160 95 68 116 206 85 89 
+324 167 155 219 263 122 88 212 428 56 92 98 88 207 159 97 
+220 71 65 114 80 122 97 89 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 
-percent filled = 0=0.00% 1=0.20% 2=0.13% 3=0.04% 4=0.13% 5=0.32% 6=0.34% 7=0.16% 8=0.16% 9=0.31% 10=0.19% 11=0.13% 12=0.23% 13=0.40% 14=0.17% 15=0.17% 16=0.63% 17=0.33% 18=0.30% 19=0.43% 20=0.51% 21=0.24% 22=0.17% 23=0.41% 24=0.84% 25=0.11% 26=0.18% 27=0.19% 28=0.17% 29=0.40% 30=0.31% 31=0.19% 32=0.43% 33=0.14% 34=0.13% 35=0.22% 36=0.16% 37=0.24% 38=0.19% 39=0.17% 40=0.00% 41=0.00% 42=0.00% 43=0.00% 44=0.00% 45=0.00% 46=0.00% 47=0.00% 48=0.00% 49=0.00% 50=0.00% 51=0.00% 52=0.00% 53=0.00% 54=0.00% 55=0.00% 56=0.00% 57=0.00% 58=0.00% 59=0.00% 60=0.00% 61=0.00% 62=0.00% 63=0.00% 
+percent filled = 0=0.00% 1=0.20% 2=0.13% 3=0.04% 4=0.13% 5=0.32% 6=0.34% 7=0.16% 
+8=0.16% 9=0.31% 10=0.19% 11=0.13% 12=0.23% 13=0.40% 14=0.17% 15=0.17% 
+16=0.63% 17=0.33% 18=0.30% 19=0.43% 20=0.51% 21=0.24% 22=0.17% 23=0.41% 
+24=0.84% 25=0.11% 26=0.18% 27=0.19% 28=0.17% 29=0.40% 30=0.31% 31=0.19% 
+32=0.43% 33=0.14% 34=0.13% 35=0.22% 36=0.16% 37=0.24% 38=0.19% 39=0.17% 
+40=0.00% 41=0.00% 42=0.00% 43=0.00% 44=0.00% 45=0.00% 46=0.00% 47=0.00% 
+48=0.00% 49=0.00% 50=0.00% 51=0.00% 52=0.00% 53=0.00% 54=0.00% 55=0.00% 
+56=0.00% 57=0.00% 58=0.00% 59=0.00% 60=0.00% 61=0.00% 62=0.00% 63=0.00% 
 ---------------------------------
 Sucessfully saved bit-sliced signature to bss_xkcd.dat!
 echo "outside" | ./bss_play -f bss_xkcd.dat -s "https://xkcd.com/%d"
@@ -298,13 +310,13 @@ for (b = 0; b < bitslicedsig->num_blocks; b++)
 
 ---
 
-# 4 APPENDIX
+## 4 APPENDIX
 
-## 4.1 Note on Code Design
+### 4.1 Note on Code Design
 
 Through completing this project, I wanted to gain experience designing and using bit-wise operations, structs, function pointers, file pointers, enums, linked lists, Makefiles, and other programming concepts I learned about in class. Here are some interesting design decisions that went into writing this code:
 
-### 4.1.1  Bit-wise functions that take advantage of powers of 2
+#### 4.1.1  Bit-wise functions that take advantage of powers of 2
 
 Division is a very slow operation. I can avoid division in many cases by taking advantage of the fact that in base 2, dividing by 2 is equivalent to a right bit shifting.
 
@@ -345,12 +357,16 @@ u_int32_t get_next_pow_2(u_int32_t n)
 }
 ```
 
-### 4.1.2 Function pointers for cleaner, reusable code
+#### 4.1.2 Function pointers for cleaner, reusable code
 
 I can use function wrappers with function pointers in order to reuse code and make cleaner files. In [bloom/test/test_bloom.c](https://github.com/GatiAher/BloomForSearchFromScratch/blob/main/bloom/test/test_bloom.c) I define a wrapper function to parse string inputs into tokens in a consistent manner for insertion and querying.
 
 ```C
-void process_stream(test_results_t *test_res, bloom_t *filter, void (*operate)(test_results_t *, bloom_t *, char *), FILE *stream)
+void process_stream(test_results_t *test_res, 
+        bloom_t *filter, 
+        void (*operate)(test_results_t *, bloom_t *, char *), 
+        FILE *stream
+    )
 {
     ...
 
@@ -381,7 +397,7 @@ process_stream(&test_res, filter, operate_test_lookup_real_positives, options->f
 process_stream(&test_res, filter, operate_test_lookup_real_negatives, options->fcheck_in_bloom);
 ```
 
-### 4.1.3 Flexible input using FILE pointers
+#### 4.1.3 Flexible input using FILE pointers
 
 I want my play programs to either read input from stdin, or read from a file, like the `grep` program does. I accomplish this by allowing my bit-sliced signature files to take a FILE pointer.
 
@@ -394,15 +410,15 @@ This gives the play programs the flexibility of supplying either an opened file 
 For example:
 
 ```bash
-# valid interaction
+## valid interaction
 echo "hi my name is Gati" | ./bf_play -f bf_spellcheck.dat -v
 
-# also valid interaction
+## also valid interaction
 ./bf_play -f bf_spellcheck.dat -i README.md
 ```
 
 
-### 4.1.4 Flexible output by Using Linked Lists for indeterminately sized result arrays
+#### 4.1.4 Flexible output by Using Linked Lists for indeterminately sized result arrays
 
 The bit-sliced document signature can output a variable number of matching documents. Storing these documents efficiently is an interesting problem. My first solution involved just printing the matching document IDs out directly from inside the bitslicedsig_query function. However, this is not a good practice because it limits the format options of the displayed output. A better method would be to store the matching outputs and return a pointer to the structure. For this, I had some different options:
 
@@ -439,21 +455,25 @@ https://xkcd.com/14
 Where the document IDs are tied to a clickable url.
 
 
-### 4.1.5 Enums and binary flags for display modes
+#### 4.1.5 Enums and binary flags for display modes
 
 For the bloom filter player [bloom/demo/bf_play_main.c](https://github.com/GatiAher/BloomForSearchFromScratch/blob/main/bloom/demo/bf_play_main.c) I use enums to designate the various output modes.
 
 ```bash
 ./bf_play -h
 
->> bf_play [-v] [-f file_load_bloom_from] [-i file_read_input_from] [-s mode_display_selected] [-x mode_select_in] [-h]
- 	Default: load Bloom filter from `bf_saved.txt`, read input from stdin, m = 60, k = 3, -s OFF (print all text), -x OFF (color out-of-set terms red)
+>> bf_play [-v] [-f file_load_bloom_from] [-i file_read_input_from] 
+    [-s mode_display_selected] [-x mode_select_in] [-h]
+ 	Default: load Bloom filter from `bf_saved.txt`, 
+     read input from stdin, m = 60, k = 3, 
+     -s OFF (print all text), 
+     -x OFF (color out-of-set terms red)
 ```
 
 I use an enum and binary flags to designate the options:
 
 ```bash
-# pseudocode
+## pseudocode
 00 = ALL, OUT
 01 = ALL, IN
 10 = SELECTED, OUT
@@ -489,7 +509,7 @@ src="img/output_demo_spellcheck_readme_sx.png"
 caption="Output of demo spellcheck README option -sx"
 >}}
 
-### 4.1.6 Modular Design
+#### 4.1.6 Modular Design
 
 I also wanted practice designing and writing clean, modular code. I accomplish this by making the decision to split the code for the actual data structure into a src folder (see [bloom/src](bloom/src) and [bitslicedsig/src](bitslicedsig/src)).
 
@@ -503,7 +523,7 @@ The play program (see [bloom/demo/bf_play_main.h](bloom/demo/bf_play_main.h) and
 
 ---
 
-## 4.2 Note on Controlling False Positives
+### 4.2 Note on Controlling False Positives
 
 You can control the number of false positives (reduce collision) by increasing number of signature bits (m) and increasing number of hash functions (k).
 
@@ -511,7 +531,7 @@ The value of m configures how many bits will be allocated for the bit array. Ide
 
 The value of k configures how many hash functions will be used in the Bloom filter hashing scheme. A higher number of hash functions means that there is a higher signal to noise ratio, where signal is the probability that a term is a member of a set given that all the term's probes are present in the Bloom filter, and noise is the probability of a false positive. Rarer terms have a higher likelihood of being a false positive, so increasing k improves the signal to noise ratio and allows for better retrieval of rate terms. However, a larger k leads to more hash operations, and therefore slower insertion and lookup time. The seeds of the hash function are generated with a random number generator in order to be independent and uniformly distributed.
 
-## 4.3 Note on Choice of Hash Function
+### 4.3 Note on Choice of Hash Function
 
 The hash function used in a Bloom filter must be independent, uniformly distributed, and as fast as possible. MurmurHash is a non-cryptographic hash function suitable for general hash-based lookup. In this project, I use [jwerle/murmurhash](https://fuchsia.googlesource.com/third_party/murmurhash.c/) which implements version 3 of MurmurHash and provides 32-bit hash signatures.
 
@@ -525,7 +545,7 @@ See expected output at [results/output_test_murmurhash.txt](results/output_test_
 
 ---
 
-# 5 FUTURE DIRECTIONS
+## 5 FUTURE DIRECTIONS
 
 Currently, the Bloom filter and bit-sliced signatures perform exact keyword search. However, there are situations where a fuzzier keyword search is desirable (lower precision but higher recall). Ways to make a fuzzy keyword search include:
 
