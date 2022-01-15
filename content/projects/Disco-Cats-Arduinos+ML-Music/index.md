@@ -2,7 +2,7 @@
 title: "Disco-Cats: Arduinos + ML Music"
 date: 2021-12-14T21:21:42-04:00
 categories: ["Software Development"]
-tags: ["Olin College: SP2021 Data Structures and Algorithms"]
+tags: ["Olin College: FA2021 Principals of Integrated Engineering"]
 featured: true
 draft: false
 ---
@@ -11,7 +11,7 @@ My team spent 6 weeks building an interactive music visualization system that us
 
 I learned how to (1) design an intuitive UI (2) use [Google's Magenta multi-track VAE model](https://magenta.tensorflow.org/multitrack) to generate music based on user input (3) transmit the MIDI bitstream over serial (3) extract pitch, instrument, and duration information from the midi bitstream in real time (4) efficiently control an LED matrix and motors.
 
-* Details are available on our [*Showcase Website!*](https://olincollege.github.io/pie-2021-03/Disco-Cats/)
+* Details available on our [*Website!*](https://olincollege.github.io/pie-2021-03/Disco-Cats/)
 * Code is on [GitHub](https://github.com/GatiAher/disco_cats)
 * Demo video is on [YouTube](https://youtu.be/nX_OTCaxyTM).
 
