@@ -1,7 +1,7 @@
 ---
 title: "Disco-Cats: Arduinos + ML Music"
 date: 2021-12-14T21:21:42-04:00
-categories: ["Concepts & Theory"]
+categories: ["Software Development"]
 tags: ["Olin College: SP2021 Data Structures and Algorithms"]
 featured: true
 draft: false
