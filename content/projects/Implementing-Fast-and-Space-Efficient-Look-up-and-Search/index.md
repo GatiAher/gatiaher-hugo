@@ -8,9 +8,9 @@ draft: false
 readmore: true
 ---
 
-The Bloom filter data structure tracks set-membership in a fast and space-efficient way. I first heard about Bloom filters when a start-up I was working for used Bloom filters to speed up their database search. Then, I heard about Microsoft using a stack of Bloom filters (a bit-sliced document signature data structure) to [speed up the Bing search engine's keyword search](https://dl.acm.org/doi/10.1145/3077136.3080789).
+The Bloom filter data structure tracks set-membership in a fast and space-efficient way. I first heard about Bloom filters when I saw them used in speeding up database search. Then, I heard about Microsoft using a stack of Bloom filters to [speed up the Bing search engine's keyword search](https://dl.acm.org/doi/10.1145/3077136.3080789).
 
-In this project, I explored these interesting data structures by implementing a Bloom filter and a bit-sliced document signature in C. I also wrote unit tests and a collection of fun demos to show how Bloom filters and bit-sliced signatures can be used. This report gives an overview of the project, demos and results, and highlights notable code design decisions.
+In this project, I implemented a Bloom filter and a bit-sliced document signature in C. I also wrote unit tests and a collection of fun demos to show how Bloom filters and bit-sliced signatures can be used. This report gives an overview of the project, demos and results, and notable code design decisions.
 
 {{< custom-action href="https://github.com/GatiAher/BloomForSearchFromScratch" text="Visit GitHub" icon="brands fa-github">}}
 {{< custom-action href="https://trello.com/b/xzVRxTDJ/bloomforsearchfromscratch" text="Visit Trello" icon="brands fa-trello">}}
