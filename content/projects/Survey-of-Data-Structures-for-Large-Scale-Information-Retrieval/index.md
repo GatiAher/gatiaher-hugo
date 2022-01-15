@@ -1,10 +1,11 @@
 ---
 title: "Survey of Data Structures for Large Scale Information Retrieval"
 date: 2021-05-09T21:21:42-04:00
-categories: ["Concepts & Theory"]
 tags: ["Olin College: SP2021 Data Structures and Algorithms"]
+categories: ["Concepts & Theory"]
 featured: true
 draft: false
+readmore: true
 ---
 
 A survey of data structures used in large-scale information systems. Covers (i) how the inverted index data structure allows for constant time querying (ii) the need, problems, and clever design details of methods to compress big numbers (focusing on Elias-Fano and Partitioned Elias-Fano), and (iii) BitFunnel, an unusual probabilistic data structure used by the Bing search engine to bypass the curse of inverted index global updates.

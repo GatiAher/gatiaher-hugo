@@ -1,5 +1,10 @@
 <ul class="actions">
     {{ $href := default "/"  (.Get "href") }}
-    {{ $text := default "Read More..." (.Get "text") }}
-    <li><a href="$href" class="button">{{ $text }}</a></li>
+    {{ $text := default "Click Here" (.Get "text") }}
+    {{ if (.Get "icon") }}
+        {{ $icon := (.Get "icon") }}
+        <li><a href="{{$href}}" class="button icon solid {{$icon}}">{{ $text }}</a></li>
+    {{ else }}
+        <li><a href="{{$href}}" class="button">{{ $text }}</a></li>
+    {{ end }}
 </ul>

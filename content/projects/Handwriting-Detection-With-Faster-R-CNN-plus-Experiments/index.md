@@ -1,10 +1,11 @@
 ---
 title: "Handwriting Detection With Faster R-CNN + Experiments"
 date: 2021-08-20T10:43:34-04:00
-categories: ["Data Analysis"]
 tags: ["Indico Data Solutions (Intern: R&D + ML Engineering)"]
+categories: ["Data Analysis"]
 featured: true
 draft: false
+readmore: true
 ---
 
 [Indico Data Solutions](https://indico.io/) provides services to extract information from scanned pdfs. Since their existing OCR + NLP pipeline did not extract handwriting, one of my internship projects involved creating a robust solution to detect and classify handwriting using a deep learning computer vision model. 

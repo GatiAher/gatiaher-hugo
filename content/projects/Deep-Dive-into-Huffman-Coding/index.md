@@ -1,10 +1,11 @@
 ---
 title: "Deep Dive Into Huffman Coding"
 date: 2021-10-25T00:46:56-05:00
-draft: false
+tags: ["Olin College: FA2021 Discrete Mathematics"]
 categories: ["Concepts & Theory"]
 featured: false
-tags: ["Olin College: FA2021 Discrete Mathematics"]
+draft: false
+readmore: true
 ---
 
 Huffman coding is a variation on prefix codes that optimize lossless data compression. In this deep dive, we (1) introduced how Huffman Codes work, (2) explored the theoretical limits of Huffman compression, (3) analyzed resilience to error, and (4) followed the evolution of research on using choice of Huffman tables to encode secret messages in MP3 files.

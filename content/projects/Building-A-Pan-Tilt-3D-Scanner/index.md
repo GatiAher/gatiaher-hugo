@@ -5,6 +5,7 @@ tags: ["Olin College: FA2021 Principals of Integrated Engineering"]
 categories: ["Software Development"]
 featured: false
 draft: false
+readmore: true
 ---
 
 My team built a servo-driven pan-tilt mount for an infrared proximity sensor. To demonstrate the functionality of our design, we created a 3D scan of a cardboard letter cut in a Z shape. This project involved (1) designing and 3D-printing a pan-tilt servo and IR sensor, (2) programming an arduino to collect scan data, (3) projecting data from spherical coordinates into Cartesian coordinates in order to isolate a cross-section scan of the letter. I was responsible for the CAD mechanical design and making the 3D data projection and visualization.

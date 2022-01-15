@@ -1,10 +1,11 @@
 ---
 title: "A Fourier Transform Detective Story!"
 date: 2021-03-14T22:24:10-04:00
-categories: ["Data Analysis"]
 tags: ["Olin Microbiology Lab (Undergraduate Research)"]
+categories: ["Data Analysis"]
 featured: true
 draft: false
+readmore: true
 ---
 
 A group of research students had tried to use a 2D discrete Fourier Transform to characterize the pattern of repeating protein units on a bacteria surface layer image. Since their spectral graph looked unusually messy and their pattern estimates seemed very wrong, my research professor asked me to take a crack at interpreting and cleaning it. This was a neat application of understanding the mathematical assumptions of a technique to properly isolate and interpret results.

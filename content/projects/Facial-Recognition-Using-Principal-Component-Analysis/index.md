@@ -1,10 +1,11 @@
 ---
 title: "Facial Recognition Using Principal Component Analysis"
 date: 2021-04-14T13:12:04-04:00
-categories: ["Data Analysis"]
 tags: ["Olin Microbiology Lab (Undergraduate Research)", "Olin College: Quantitative Engineering Analysis", "Łódź University 2021 MathUp Conference"]
+categories: ["Data Analysis"]
 featured: true
 draft: false
+readmore: true
 ---
 
 I have used multiple variations of Principal Component Analysis (PCA) in my research on microbial community analysis. To explain the core theory and assumptions of PCA to my lab group, I fleshed out an analysis of a toy example (eigenfaces) that I had originally seen in class. This analysis reasons about the assumptions of PCA and the effects of applying it to out-of-distribution data by using PCA to perform facial recognition on a dataset of my classmates' faces.     

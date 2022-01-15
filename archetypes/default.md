@@ -3,13 +3,9 @@ title: "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
 tags: []
 categories: []
-featured: true
+featured: false
 draft: false
+readmore: true
 ---
 
 <!--more-->
-
-{{< figure 
-src="img/test.png"
-caption="caption"
->}}

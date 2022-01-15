@@ -4,7 +4,11 @@
         {{ .Summary }}
     </p>
     {{ partial "thumbnail-image.html" . }}
-    <ul class="actions">
-        <li><a href="{{ .RelPermalink }}" class="button">Read More...</a></li>
-    </ul>
+
+    {{ if .Params.readmore }}
+        <ul class="actions">
+            <li><a href="{{ .RelPermalink }}" class="button">Read More...</a></li>
+        </ul>
+    {{ end }}
+
 </article>

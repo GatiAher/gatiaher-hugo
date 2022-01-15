@@ -1,15 +1,16 @@
 ---
 title: "Procedural Graph Generation For More Realistic Simulations"
 date: 2021-12-18T23:23:16-05:00
-categories: ["Concepts & Theory"]
 tags: ["Olin College: FA2021 Discrete Mathematics"]
+categories: ["Concepts & Theory"]
 featured: true
 draft: false
+readmore: true
 ---
 
 Many real world systems can be modeled with graphs. Most stable and complex graphs have **small-world** (local clustering) and **scale-free** (hubs) properties. In this project, we (1) identified algorithms that generated small-world and scale-free graphs, (2) studied and implemented generation functions for each type of algorithm, (3) created custom animations of graph generation process, and (4) verified that our graphs exhibited the expected structural properties.
 
-All generation, animation, and validation code is available in our [GitHub Repo](https://github.com/GatiAher/network-generation).
+{{< custom-action href="https://github.com/GatiAher/network-generation" text="Visit GitHub" icon="brands fa-github">}}
 
 {{< gslides src="https://docs.google.com/presentation/d/e/2PACX-1vRoVNJKtW84R-zlSBe9CBJO1PGcZwgc7_wVDoCUYklCmjqXsDLeqK1ipSAd0XweKgvaql3kSxRcF7YA/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">}}
 
