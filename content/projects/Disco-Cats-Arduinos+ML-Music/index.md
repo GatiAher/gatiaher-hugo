@@ -3,7 +3,7 @@ title: "Disco-Cats: Arduinos + ML Music"
 date: 2021-12-14T21:21:42-04:00
 tags: ["Olin College: FA2021 Principals of Integrated Engineering"]
 categories: ["Software Development"]
-featured: true
+featured: false
 draft: false
 readmore: false
 ---
