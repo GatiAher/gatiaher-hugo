@@ -1,5 +1,5 @@
 ---
-title: "400 Hours of Data Collection Process R&D"
+title: "Reflecting on 400 Hours of Data Collection R&D"
 date: 2022-05-11T21:37:12-04:00
 tags: ["Olin Social Technology Enterprise with Purpose (STEP)"]
 categories: ["Software Development"]
@@ -8,14 +8,12 @@ draft: false
 readmore: true
 ---
 
-STEP (Social Technology Enterprise with Purpose) was an 400+ work hour experimental Olin College engineering course that aimed to give students real-world experience within the freedoms afforded by an education-first structure. 
-
-The final work product was three integrated prototypes for screen-free interactions (i.e. remote controller, whispered speech, gesture ring) that could enable users to control their phone using discreet motions. I worked on the gesture ring, designing a gesture set and building the data collection process for training a machine-learning gesture classification model.
+STEP (Social Technology Enterprise with Purpose) was an 400+ hour experimental course that aimed to give students real-world engineering experience within the freedoms afforded by an education-first structure. I worked on the gesture ring, designing a gesture set and building the data collection process for training a machine-learning gesture classification model.
 
 **30-second demo video**:
 {{< youtube id=gtr_1zKshnQ title="STEP Gesture Ring Demo" >}}
 
-My conclusions and perspectives are embodied in this 20 page report. Since I believe that creativity should be offered alongside criticism (first 10 pages), I have also compiled a list of proposals for STEP v2 (next 10 pages). These conclusions are meant for faculty developing other iterations of STEP-like courses, engineering students grappling with the process of designing a process, and my future self before I set on my next AR/VR, accessibility, machine-learning, or large integrated software development project.
+This reflection includes criticisms and creative proposals that may be interesting for faculty developing iterations of STEP-like courses,  engineering students grappling with the process of designing a process, and my future self before I set on my next AR/VR, accessibility, machine-learning, or large integrated software development project.
 
 <!--more-->
 

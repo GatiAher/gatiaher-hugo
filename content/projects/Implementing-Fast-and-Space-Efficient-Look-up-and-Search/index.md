@@ -17,25 +17,8 @@ In this project, I implemented a Bloom filter and a bit-sliced document signatur
 
 <!--more-->
 
-
-- [1 PROJECT GOALS AND RESULTS](#1-project-goals-and-results)
-- [2 BLOOM FILTERS](#2-bloom-filters)
-  - [2.1 Demo 1: Bloom filter to spellcheck a query](#21-demo-1-bloom-filter-to-spellcheck-a-query)
-  - [2.2 Demo 2: Bloom filter to spellcheck a file](#22-demo-2-bloom-filter-to-spellcheck-a-file)
-- [3 BIT-SLICED DOCUMENT SIGNATURES](#3-bit-sliced-document-signatures)
-    - [3.1 Demo 3: Information retrieval on xkcd comics transcripts](#31-demo-3-information-retrieval-on-xkcd-comics-transcripts)
-- [4 APPENDIX](#4-appendix)
-  - [4.1 Note on Code Design](#41-note-on-code-design)
-    - [4.1.1  Bit-wise functions that take advantage of powers of 2](#411--bit-wise-functions-that-take-advantage-of-powers-of-2)
-    - [4.1.2 Function pointers for cleaner, reusable code](#412-function-pointers-for-cleaner-reusable-code)
-    - [4.1.3 Flexible input using FILE pointers](#413-flexible-input-using-file-pointers)
-    - [4.1.4 Flexible output by Using Linked Lists for indeterminately sized result arrays](#414-flexible-output-by-using-linked-lists-for-indeterminately-sized-result-arrays)
-    - [4.1.5 Enums and binary flags for display modes](#415-enums-and-binary-flags-for-display-modes)
-    - [4.1.6 Modular Design](#416-modular-design)
-  - [4.2 Note on Controlling False Positives](#42-note-on-controlling-false-positives)
-  - [4.3 Note on Choice of Hash Function](#43-note-on-choice-of-hash-function)
-- [5 FUTURE DIRECTIONS](#5-future-directions)
-
+{{< table_of_contents >}}
+  
 ## 1 PROJECT GOALS AND RESULTS
 
 I wanted to learn about Bloom filters because I have heard about their interesting real-world applications. I particularly wanted to implement a extension of Bloom filters called bit-sliced signatures that I heard of in the talk ["BitFunnel: Revisiting Signatures for Search" talk by Micheal Hopcroft, creator of BitFunnel](https://www.youtube.com/watch?v=1-Xoy5w5ydM). This was an interesting Software Systems project because many Bloom filter implementations are done in C/C++ in order to have full control and optimization of low-level bit-wise operations 

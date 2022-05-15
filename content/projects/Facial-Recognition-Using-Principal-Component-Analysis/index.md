@@ -3,7 +3,7 @@ title: "Facial Recognition Using Principal Component Analysis"
 date: 2021-04-14T13:12:04-04:00
 tags: ["Olin Microbiology Lab (Undergraduate Research)", "Olin College: Quantitative Engineering Analysis", "Łódź University 2021 MathUp Conference"]
 categories: ["Data Analysis"]
-featured: true
+featured: false
 draft: false
 readmore: true
 ---
@@ -14,20 +14,7 @@ I have used multiple variations of Principal Component Analysis (PCA) in my rese
 
 <!--more-->
 
-- [1 INTRODUCTION](#1-introduction)
-  - [Dataset](#dataset)
-- [2 FACIAL RECOGNITION WITH NEAREST NEIGHBOR DISTANCE](#2-facial-recognition-with-nearest-neighbor-distance)
-  - [Room for Improvement](#room-for-improvement)
-    - [PCA Toy Example](#pca-toy-example)
-- [3 FACIAL RECOGNITION WITH PCA NEAREST NEIGHBOR DISTANCE](#3-facial-recognition-with-pca-nearest-neighbor-distance)
-  - [Step 1. Standardize Dataset](#step-1-standardize-dataset)
-  - [Step 2. Compute Sample Covariance Matrix from Standardized Train Dataset](#step-2-compute-sample-covariance-matrix-from-standardized-train-dataset)
-  - [Step 3. Compute Eigenvectors and Eigenvalues of the Covariance Matrix](#step-3-compute-eigenvectors-and-eigenvalues-of-the-covariance-matrix)
-  - [Step 4. Pick k Eigenvectors](#step-4-pick-k-eigenvectors)
-  - [Step 5. Project and Reconstruct Dataset onto k Eigenvectors](#step-5-project-and-reconstruct-dataset-onto-k-eigenvectors)
-  - [Step 6. Evaluation](#step-6-evaluation)
-- [4 APPLICATIONS](#4-applications)
-- [5 FURTHER READING](#5-further-reading)
+{{< table_of_contents >}}
 
 ## 1 INTRODUCTION
 
@@ -220,13 +207,11 @@ Using PCA made all 50 of our dimensions independent, so if we wanted to replace 
 I’ll end by noting PCA is a popular data science algorithm. I’ve seen it used in machine learning, as well as linguistics and microbiology. It is known by many slightly different names and formulas — Principal Coordinate Analysis (PCoA), Singular Value Decomposition (SVD), Latent Semantic Analysis (LSA) — but it’s essentially eigendecomposition.
 
 {{< figure
-height=300,
 src="img/LSA.png"
 caption="Topic Modeling: merge redundant words instead of pixels (Image Source: [Topic model - Wikipedia](https://en.wikipedia.org/wiki/Topic_model#cite_note-6))"
 >}}
 
 {{< figure 
-height=300,
 src="img/Biplot.png"
 caption="Microbiome Biplot: make PCoA more interpretable by plotting directions in which factors vary. (Image Source: [How to read PCA biplots and scree plots](https://blog.bioturing.com/2018/06/18/how-to-read-pca-biplots-and-scree-plots/))"
 >}}

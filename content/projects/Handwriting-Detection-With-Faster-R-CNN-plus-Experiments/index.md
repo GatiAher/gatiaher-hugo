@@ -14,57 +14,7 @@ I started by fine-tuning upon the [Faster R-CNN model](https://arxiv.org/abs/150
 
 <!--more-->
 
-- [1 INTRODUCTION](#1-introduction)
-  - [1.1 Datasets](#11-datasets)
-  - [1.2 Tough-to-Beat Baseline Model](#12-tough-to-beat-baseline-model)
-- [2 BACKGROUND INFORMATION](#2-background-information)
-  - [2.1 Overview of Detectron-v2's Faster R-CNN with FPN](#21-overview-of-detectron-v2s-faster-r-cnn-with-fpn)
-  - [2.2 Overview of Fine-Tuning](#22-overview-of-fine-tuning)
-- [3 FINE-TUNE ON MODELS PRE-TRAINED ON DOCUMENTS](#3-fine-tune-on-models-pre-trained-on-documents)
-  - [3.1 Check for Porting Discrepancies](#31-check-for-porting-discrepancies)
-  - [3.2 Results](#32-results)
-- [4 EXPAND THE LABEL SET](#4-expand-the-label-set)
-  - [4.1 Results](#41-results)
-  - [4.2 Analysis of Class Confusion Via Visual Inspection](#42-analysis-of-class-confusion-via-visual-inspection)
-  - [4.3 Considerations on an Alternative Formulation](#43-considerations-on-an-alternative-formulation)
-- [5 MULTI-LABEL OBJECT DETECTION](#5-multi-label-object-detection)
-  - [5.1 Detectron-v2 Modifications](#51-detectron-v2-modifications)
-  - [5.2 New Label Sets](#52-new-label-sets)
-  - [5.3 Results](#53-results)
-- [6 BETTER SMALL OBJECT DETECTION](#6-better-small-object-detection)
-  - [6.1 Visualize Feature Map](#61-visualize-feature-map)
-  - [6.2 Increase Image Resoluton](#62-increase-image-resoluton)
-  - [6.3 Add Smaller Anchor Size](#63-add-smaller-anchor-size)
-  - [6.4 Results](#64-results)
-- [7 TEST ON OUT-OF-DISTRIBUTION DATA](#7-test-on-out-of-distribution-data)
-  - [7.1 Results](#71-results)
-- [8 TRAIN FINAL ALL_DOCUMENT MODEL](#8-train-final-all_document-model)
-  - [8.1 Results](#81-results)
-  - [8.2 Train-Validation Loss Curve](#82-train-validation-loss-curve)
-- [9 QUALITATIVE AND QUANTITATIVE ANALYSIS OF OBJECT DETECTION CLASS CONFUSION, FALSE POSITIVES, AND FALSE NEGATIVES](#9-qualitative-and-quantitative-analysis-of-object-detection-class-confusion-false-positives-and-false-negatives)
-  - [9.1 Performance on Lease-PNG label set v1](#91-performance-on-lease-png-label-set-v1)
-  - [9.2 Performance on Lease-PNG label set v2](#92-performance-on-lease-png-label-set-v2)
-  - [9.3 Performance on All_Docs label set v5 (Final Model)](#93-performance-on-all_docs-label-set-v5-final-model)
-- [10 FUTURE WORK](#10-future-work)
-  - [10.1 Analysis of Prediction Bounding Box Overlap](#101-analysis-of-prediction-bounding-box-overlap)
-  - [10.2 Reduce False Positives with Explicit Labeling](#102-reduce-false-positives-with-explicit-labeling)
-  - [10.3 Reduce Inference Time and Memory Usage](#103-reduce-inference-time-and-memory-usage)
-  - [10.4 Find Out Why All_Docs Model Performed Poorly on Checkbox Detection](#104-find-out-why-all_docs-model-performed-poorly-on-checkbox-detection)
-- [11 APPENDIX: FASTER-RCNN IMPLEMENTATION DETAILS](#11-appendix-faster-rcnn-implementation-details)
-  - [DataMapper](#datamapper)
-  - [Backbone Network](#backbone-network)
-    - [Details on Feature Pyramid Network](#details-on-feature-pyramid-network)
-  - [Region Proposal Network (RPN)](#region-proposal-network-rpn)
-    - [RPN Head](#rpn-head)
-      - [Map Ground Truths to Feature Maps With Cell Anchors (during training)](#map-ground-truths-to-feature-maps-with-cell-anchors-during-training)
-      - [Loss Function (during training)](#loss-function-during-training)
-      - [Box Proposal Selection](#box-proposal-selection)
-  - [ROI Head](#roi-head)
-    - [Re-Sampling and Matching (during training)](#re-sampling-and-matching-during-training)
-    - [Cropping](#cropping)
-    - [Box Head](#box-head)
-      - [Loss Calculation](#loss-calculation)
-      - [Inference](#inference)
+{{< table_of_contents >}}
 
 ## 1 INTRODUCTION
 
@@ -303,7 +253,7 @@ Overall, the model trained on v2 had a decent per class AP on the expanded v2 la
 
 Additionally, visual inspection of the predictions showed that the model sometimes struggled with distinguishing between ‘Filled Checkbox’ vs. ‘Unfilled Checkbox’ and ‘Stamp’ vs. ‘Date’.
 
-At first, to get a sense of the error modes of the model predictions, I glanced through the visualized model predictions and noted down interesting and common errors. *Following further analysis I came to realize that some of my conclusions were subject to confirmation bias (you see an error early on so you look for that error more than other errors). I have kept this analysis here because (1) it was an important realization to learn, and (2) this analysis led us to future decisions. For the more objective analysis I performed later, see the [qualitative and quantitative analysis](#9-qualitative-and-quantitative-analysis-of-object-detection-class-confusion-false-positives-and-false-negatives) section below.*
+At first, to get a sense of the error modes of the model predictions, I glanced through the visualized model predictions and noted down interesting and common errors. *Following further analysis I came to realize that some of my conclusions were subject to confirmation bias (you see an error early on so you look for that error more than other errors). I have kept this analysis here because (1) it was an important realization to learn, and (2) this analysis led us to future decisions. For the more objective analysis I performed later, see the [qualitative and quantitative analysis](#9-qualitative-and-quantitative-analysis-of-class-confusion) section below.*
 
 **Strikethrough**
 
@@ -594,7 +544,7 @@ Resources
 * How to use TensorBoard with PyTorch — PyTorch Tutorials 1.9.0+cu102 documentation 
 * Training on Detectron2 with a Validation set, and plot loss on it to avoid overfitting
 
-## 9 QUALITATIVE AND QUANTITATIVE ANALYSIS OF OBJECT DETECTION CLASS CONFUSION, FALSE POSITIVES, AND FALSE NEGATIVES
+## 9 QUALITATIVE AND QUANTITATIVE ANALYSIS OF CLASS CONFUSION
 
 It is very useful to analyze a model's error modes, especially class confusion, false positives, and false negatives. I wrote a script to create a object-detection confusion matrix to identify class confusion and unpaired predictions and ground truths, and visualizing high and low confidence predictions by prediction label and ground truth label.
 

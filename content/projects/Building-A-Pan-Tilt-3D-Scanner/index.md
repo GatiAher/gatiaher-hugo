@@ -12,17 +12,7 @@ My team built a servo-driven pan-tilt mount for an infrared proximity sensor. To
 
 <!--more-->
 
-- [Bill of Materials](#bill-of-materials)
-  - [$15 GP2Y0A02YK0F Sharp Infrared Proximity Sensor](#15-gp2y0a02yk0f-sharp-infrared-proximity-sensor)
-  - [Two $4 Hobby Servo Motors](#two-4-hobby-servo-motors)
-  - [Arduino board + breadboard + assorted circuitry](#arduino-board--breadboard--assorted-circuitry)
-- [CAD Design of Pan-Tilt Mount](#cad-design-of-pan-tilt-mount)
-- [Scan Demo](#scan-demo)
-  - [1. Set-Up and Collection](#1-set-up-and-collection)
-  - [2. Sensor Output to Distances Calibration](#2-sensor-output-to-distances-calibration)
-  - [3. Accounting for Servo Motor Offsets](#3-accounting-for-servo-motor-offsets)
-  - [4. Projection from Spherical to Cartesian Coordinates](#4-projection-from-spherical-to-cartesian-coordinates)
-  - [5. 3D Scan Visualization](#5-3d-scan-visualization)
+{{< table_of_contents >}}
 
 ## Bill of Materials
 
@@ -132,13 +122,11 @@ The 0-180 pwm input to the servo motors does not line up perfectly with the degr
 {{< figure 
 src="img/tilt_servo.png"
 caption="The tilt servo is offset by 20 degrees, so it is centered at 90 - 20 = 70 pwm."
-height=400
 >}}
 
 {{< figure 
 src="img/pan_servo.png"
 caption="The pan servo is offset by -60 pwm, so it is centered at 90 + 60 = 150 pwm"
-height=400
 >}}
 
 ```python
@@ -154,7 +142,6 @@ df["pan_deg"] = df.apply(lambda row: row["orig_pan_deg"] + PAN_DEG_OFFSET, axis=
 {{< figure 
 src="img/coordinate_plane.jpg"
 caption="Conversion from Spherical Coordinate Plane to Cartesian Coordinate Plane (Source: [LiDAR Basics: The Coordinate System](https://hackernoon.com/lidar-basics-the-coordinate-system-a26529615df9))"
-height=400
 >}}
 
 The tilt angle is from the Cartesian z-axis to Cartesian y-axis ($\theta$). The pan angle is from the Cartesian x-axis to the Cartesian y-axis ($\varphi$).

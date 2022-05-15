@@ -14,6 +14,8 @@ Huffman coding is a variation on prefix codes that optimize lossless data compre
 
 <!--more-->
 
+{{< table_of_contents >}}
+
 ## Teammate Contributions
 
 My group consisted of Ducan, Alex, Robin, and myself. We approached the deep dive by each researching an aspect of Huffman codes usage. We did preliminary research and final proofreading together. We also explained findings to each other during our weekly group meeting.
