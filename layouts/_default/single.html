@@ -11,9 +11,11 @@
         <br>
         {{ partial "tag.html" . }}
         <hr>
-        <article>
-            {{ .Content }}
-        </article>
+        <div class="posts">
+            <article>
+                {{ .Content }}
+            </article>
+        </div>
 
     </section>
 </main>
