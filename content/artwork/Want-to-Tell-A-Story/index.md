@@ -1,7 +1,7 @@
 ---
 title: "Want to Tell a Story? Use Psychology and Acting"
 date: 2022-05-15T14:05:17-04:00
-tags: ["Olin College + Babson College: Constructing and Performing the Self"]
+tags: ["Olin College + Babson College SP2022: Constructing and Performing the Self"]
 featured: false
 draft: false
 readmore: true
