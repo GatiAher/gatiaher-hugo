@@ -13,7 +13,7 @@ STEP (Social Technology Enterprise with Purpose) was an 400+ hour experimental c
 **30-second demo video**:
 {{< youtube id=gtr_1zKshnQ title="STEP Gesture Ring Demo" >}}
 
-This reflection includes criticisms and creative proposals that may be interesting for faculty developing iterations of STEP-like courses,  engineering students grappling with the process of designing a process, and my future self before I set on my next AR/VR, accessibility, machine-learning, or large integrated software development project.
+This 20-page reflection includes criticisms and creative proposals that may be interesting to faculty developing iterations of STEP-like courses,  engineering students grappling with the process of designing a process, and my future self before I set on my next AR/VR, accessibility, machine-learning, or large integrated software development project.
 
 <!--more-->
 
