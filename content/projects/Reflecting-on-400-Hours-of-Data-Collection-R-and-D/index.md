@@ -1,7 +1,7 @@
 ---
 title: "Reflecting on 400 Hours of Data Collection R&D"
 date: 2022-05-11T21:37:12-04:00
-tags: ["Olin College SP2022: Social Technology Enterprise with Purpose (STEP)"]
+tags: ["Olin College: SP2022 Social Technology Enterprise with Purpose (STEP)"]
 categories: ["Software Development"]
 featured: true
 draft: false
