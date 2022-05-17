@@ -10,8 +10,9 @@ readmore: true
 
 Constructing and Performing the Self is an experimental cross-college course that combines psychology and acting to teach the art of  storytelling. The final deliverable was a 10-minute one-person narrative play, performed 4 times in front of a total of 240 audience members. This reflection captures the lessons I learned across the creative disciplines of writing, collaborative work, psychology, and acting.
 
-**10-minute performance video**
+**10-minute performance - "Don't Tell"**
 {{< vimeo "710532040?h=d6c97a87da" >}}
+*Written and performed by Gati Aher; directed by Beth Wynstra and Jonathan Adler; lighting design by Ellen Moore; video filmed and edited by Ernesto Galen/Scalped Productions*
 
 <!--more-->
 
