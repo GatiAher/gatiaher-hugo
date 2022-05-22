@@ -29,6 +29,15 @@ Understanding the geometric intuition and algorithms for solving linear programm
 * Given system of linear constraints
 * Find maximal value of linear objective equation
 
+*2-variable example ($x$, $y$)*
+$$\displaylines{
+&\text{max } &3x + 4y 
+\\\ &\text{subject to } &x + 2y&\le 14
+\\\ &&-3x + y &\le 0
+\\\ &&x - y &\le 2
+\\\ &&0 \le x, y
+}$$
+
 *3-variable example ($x_1$, $x_2$, $x_3$)*
 $$\displaylines{
 &\text{max } &5x_1 + 4x_2 + 3x_3 
@@ -65,6 +74,11 @@ For linear programs, a feasible solution set exists as the points within the con
 * The optimal solution set is convex
 * If the objective function is strictly convex, then problem has at most one optimal point
 
+{{< figure 
+src="img/graphical.png"
+caption="Graphical approach to finding the maximum value of the objective function."
+>}}
+
 The objective function has a fixed slope and a variable intercept, so the optimal solution can be found by path-finding toward the local maximum within the solution space. 
 
 ### V1 → V2 (Slackness). Narrow the solution space to a finite set of vertex points
@@ -74,6 +88,11 @@ Note that if the optimal solution exists within the convex polytope solution spa
 ### V2 → V3 (Simplex). Search for optimal point without traversing the entire set of vertices
 
 If the starting vertex is not the maximum point, then it has at least one edge leading to another vertex such that the objective function is strictly increasing along that edge ([visual proof](https://dando18.github.io/posts/2021/12/visualizing-the-simplex-algorithm)). To find the maximum, first pick a vertex, then continually jump to neighboring vertex points with higher objective values. This will eventually lead to a vertex with no neighbors having higher objective values. The Simplex Algorithm can use steps from Gaussian Elimination to turn the geometric intuition into a matrix system of equations.
+
+{{< figure 
+src="img/simplex.png"
+caption="Simplex Algorithm approach to finding the maximum value of the objective function."
+>}}
 
 *The process of stringing together a sequence of simplex pivots in order to locate an optimal solution is called the **Simplex Algorithm**. It was discovered by George Dantzig (1914-2005). The Simplex Algorithm is considered one of the ten most important algorithmic discoveries of the 20th century. Even with after the discovery of the Interior Point Methods, for many specially structured linear programming problems, the Simplex remains the most efficient algorithm.*
 
@@ -93,6 +112,11 @@ The Simplex method starts out with maintaining complementary slackness and a bas
 Interior Point methods achieve a better time complexity by starting out being both primal and dual feasible and working towards complementary slackness. The Interior Point methods require $O(\sqrt{n}\log(1/\epsilon))$ iterations (worst case polynomial time complexity) to get a primal-dual solution that is feasible and optimal up to some tolerance measured by $\epsilon$. Thus, the Interior Point methods takes fewer iterations to solve, but require larger computational cost per iteration.
 
 In essence, the Interior Point methods work by path-finding along a central path that starts from the analytical center of the convex solution space and heads towards the optimal solution, always staying within the interior of the convex solution space ([visual proof](https://www.youtube.com/watch?v=MsgpSl5JRbI)). The larger computational cost per iteration results from playing a min-max game on the Lagrangian of the Dual. It can use an unconstrained convex approximation solver (i.e. Newton's Method) to power its approximation logic steps in a matrix-oriented way.
+
+{{< figure 
+src="img/interior_point.png"
+caption="Interior Point Methods approach to finding the maximum value of the objective function."
+>}}
 
 *The Interior Point Method was published by Narendra Karmarkar in 1984. This approach works for convex optimization problems, so it also works for problems beyond the realm of linear programming.*
 
