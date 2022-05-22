@@ -8,6 +8,8 @@ draft: false
 readmore: true
 ---
 
+Understanding the geometric intuition and algorithms for solving linear programming problems. Covers (1) defining the solution space as the area within a convex polytope space, (2) understanding that the optimal solution occurs at a vertex point and translating that geometric intuition and more efficient search path into the Simplex matrix-based algorithm, (3) the idea of Duality and how it exposes additional information, and (4) how the Interior Point method works not just for linear programs, but also for more general convex optimization problems.
+
 <!--more-->
 
 {{< table_of_contents >}}
