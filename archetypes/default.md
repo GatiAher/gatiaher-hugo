@@ -9,3 +9,5 @@ readmore: true
 ---
 
 <!--more-->
+
+{{< table_of_contents >}}

@@ -12,7 +12,7 @@ Powered By Hugo:
 
 Adding MathJax Support:
 
-* [Math-Typesetting In Hugo](https://geoffruddock.com/math-typesetting-in-hugo/) By Geoff Ruddock
+* [Math-Typesetting In Hugo (Mathjax)](https://geoffruddock.com/math-typesetting-in-hugo/) By Geoff Ruddock
 
 Favicon:
 * https://favicon.io/favicon-generator/
