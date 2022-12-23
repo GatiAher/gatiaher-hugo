@@ -1,7 +1,8 @@
 baseURL = "http://GatiAher.github.io"
-title = "Gati Aher's Blog"
+title = "Gati Aher"
 publishDir = "docs"
 
+theme = "paper"
 languageCode = "en-us"
 copyright = ""
 
@@ -10,7 +11,7 @@ copyright = ""
 
 [params]
     dateFormat = "Jan 2, 2006"
-    description = "I am currently studying computer science at Olin College of Engineering, class of 2023. I use this blog to document my software projects, share my data analysis adventures, and reflect upon design processes."
+    description = "Gati Aher's personal page. Read reflections, notes, and guides for computer science and machine learning."
     images = ["/img/cover_page.png"]
 
 # See https://feathericons.com/
