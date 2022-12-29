@@ -2,6 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://GatiAher.github.io/projects/</loc>
+    <lastmod>2022-05-20T12:21:08-04:00</lastmod>
+  </url><url>
     <loc>http://GatiAher.github.io/categories/</loc>
     <lastmod>2022-05-20T12:21:08-04:00</lastmod>
   </url><url>
@@ -15,9 +18,6 @@
     <lastmod>2022-05-20T12:21:08-04:00</lastmod>
   </url><url>
     <loc>http://GatiAher.github.io/tags/olin-sp2022-advanced-algorithms/</loc>
-    <lastmod>2022-05-20T12:21:08-04:00</lastmod>
-  </url><url>
-    <loc>http://GatiAher.github.io/projects/</loc>
     <lastmod>2022-05-20T12:21:08-04:00</lastmod>
   </url><url>
     <loc>http://GatiAher.github.io/tags/</loc>
@@ -52,6 +52,9 @@
   </url><url>
     <loc>http://GatiAher.github.io/projects/reflecting-on-400-hours-of-data-collection-r-and-d/</loc>
     <lastmod>2022-05-11T21:37:12-04:00</lastmod>
+  </url><url>
+    <loc>http://GatiAher.github.io/artwork/abstract-art/</loc>
+    <lastmod>2022-01-24T16:21:10-05:00</lastmod>
   </url><url>
     <loc>http://GatiAher.github.io/tags/building-software-for-family-friends/</loc>
     <lastmod>2022-01-18T00:01:01-05:00</lastmod>
@@ -133,9 +136,6 @@
   </url><url>
     <loc>http://GatiAher.github.io/projects/1d-and-2d-fourier-transforms/</loc>
     <lastmod>2021-03-03T14:22:03-04:00</lastmod>
-  </url><url>
-    <loc>http://GatiAher.github.io/artwork/new-art-style/</loc>
-    <lastmod>2020-12-12T16:50:13-05:00</lastmod>
   </url><url>
     <loc>http://GatiAher.github.io/artwork/good-harbor-beach-massachusetts/</loc>
     <lastmod>2020-06-27T16:23:12-05:00</lastmod>

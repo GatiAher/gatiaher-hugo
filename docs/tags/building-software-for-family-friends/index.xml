@@ -21,22 +21,26 @@
   &lt;iframe src=&#34;https://www.youtube.com/embed/IYpS-rnKjFc&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;Lagaan Football Pick-Em&amp;#39; Application Demo&#34;&gt;&lt;/iframe&gt;
 &lt;/div&gt;
 &lt;/p&gt;
-&lt;p&gt;&lt;ul class=&#34;actions&#34;&gt;
+&lt;p&gt;&lt;div class=&#34;center&#34;&gt;
+  &lt;ul class=&#34;actions&#34;&gt;
+       
+    &lt;li&gt;
+      &lt;a href=&#34;https://github.com/GatiAher/lagaan-football-pool-app&#34; class=&#34;button icon outline brands fa-github&#34;&gt;Visit GitHub&lt;/a&gt;
+    &lt;/li&gt;
     
+  &lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div class=&#34;center&#34;&gt;
+  &lt;ul class=&#34;actions&#34;&gt;
+       
+    &lt;li&gt;
+      &lt;a href=&#34;https://www.lagaannfl.com&#34; class=&#34;button icon outline fa-gem&#34;&gt;View Website&lt;/a&gt;
+    &lt;/li&gt;
     
-    
-        
-        &lt;li&gt;&lt;a href=&#34;https://github.com/GatiAher/lagaan-football-pool-app&#34; class=&#34;button icon solid brands fa-github&#34;&gt;Visit GitHub&lt;/a&gt;&lt;/li&gt;
-    
-&lt;/ul&gt;
-&lt;ul class=&#34;actions&#34;&gt;
-    
-    
-    
-        
-        &lt;li&gt;&lt;a href=&#34;https://www.lagaannfl.com&#34; class=&#34;button icon solid fa-gem&#34;&gt;View Website&lt;/a&gt;&lt;/li&gt;
-    
-&lt;/ul&gt;&lt;/p&gt;</description>
+  &lt;/ul&gt;
+&lt;/div&gt;
+&lt;/p&gt;</description>
     </item>
     
   </channel>

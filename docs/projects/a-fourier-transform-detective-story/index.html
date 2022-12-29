@@ -1,19 +1,20 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
-    <head>
+  <head>
   
-  
-  
+   
   <title>A Fourier Transform Detective Story!</title>
   
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta charset="utf-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, user-scalable=no"
+  />
   
-    
-  <link rel="stylesheet" href="/css/main.css">
   
+  <link rel="stylesheet" href="/css/main.css" />
     
+  <noscript><link rel="stylesheet" href="/css/noscript.css" /></noscript>
   
   
 
@@ -40,94 +41,91 @@
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script type="text/javascript" id="MathJax-script" async
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
-  <link rel="manifest" href="/favicon_io/site.webmanifest">
   
-  <meta name="generator" content="Hugo 0.108.0">
-  <meta property="og:title" content="A Fourier Transform Detective Story!" />
+  <link
+    rel="apple-touch-icon"
+    sizes="180x180"
+    href="/favicon_io/apple-touch-icon.png"
+  />
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="32x32"
+    href="/favicon_io/favicon-32x32.png"
+  />
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="16x16"
+    href="/favicon_io/favicon-16x16.png"
+  />
+  <link rel="manifest" href="/favicon_io/site.webmanifest" />
+  
+  <meta name="generator" content="Hugo 0.108.0"> <meta property="og:title" content="A Fourier Transform Detective Story!" />
 <meta property="og:description" content="A group of research students had tried to use a 2D discrete Fourier Transform to characterize the pattern of repeating protein units on a bacteria surface layer image. Since their spectral graph looked unusually messy and their pattern estimates seemed very wrong, my research professor asked me to take a crack at interpreting and cleaning it. This was a neat application of understanding the mathematical assumptions of a technique to properly isolate and interpret results." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://GatiAher.github.io/projects/a-fourier-transform-detective-story/" /><meta property="og:image" content="http://GatiAher.github.io/projects/a-fourier-transform-detective-story/cover.png"/><meta property="article:section" content="projects" />
 <meta property="article:published_time" content="2021-03-14T22:24:10-04:00" />
 <meta property="article:modified_time" content="2021-03-14T22:24:10-04:00" />
 
-
 </head>
 
-    <body class="is-preload">
-        
-        
-            <div id="wrapper">
 
-                
-                    <div id="main">
-                        <div class="inner">
-
-                            
-                            <header id="header">
-    <a href="/" class="logo"><strong>Gati</strong> Aher</a>
-    <ul class="icons">
-        <li><a href="https://github.com/GatiAher" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-        <li><a href="https://www.linkedin.com/in/gatiaher" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-        <li><a href="mailto:gaher@olin.edu" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+  <body class="is-preload">
+    
+    
+<div>
+  <header id="header">
+  <a href="/" class="title">Gati Aher</a>
+  <nav>
+    <ul>
+      
+      
+      <li>
+        <a href="http://GatiAher.github.io/categories/software-development/">Software Development (8)</a>
+      </li>
+      
+      <li>
+        <a href="http://GatiAher.github.io/categories/concepts-theory/">Concepts &amp; Theory (6)</a>
+      </li>
+      
+      <li>
+        <a href="http://GatiAher.github.io/categories/data-analysis/">Data Analysis (5)</a>
+      </li>
+      
+      <li>
+        <a href="/artwork">Art</a>
+      </li>
     </ul>
+  </nav>
 </header>
-                            
-                            
-<main>
-    <section>
-        <div class="category">
-    
-    
-    
-    
-    <a class="categories selective-underline" href="/categories/data-analysis">Data Analysis</a>
-    
-    
-    
-</div>
-        <header>
-            <h1>A Fourier Transform Detective Story!</h1>
-        </header>
-        <div class="meta">
-    By Gati Aher &#183
-    
 
-<time class="date" datetime="2021-03-14">Mar 14, 2021</time> &#183
-    10 min read
-</div>
-        <br>
-        <div class="cover-image-container">
+
+  <div id="wrapper">
     
-    
-    
-    
-    
-    <span class="image fit">
-        <img src="http://GatiAher.github.io/projects/a-fourier-transform-detective-story/cover_hu0744e488aa5df63d9908a3a97386058d_551992_0x600_resize_box_3.png" />
-    </span>
-    
-    
-    
-</div>
-        <br>
-        <div class="tags">
-    <i>Posted in:</i>
-    
-    
-    
-    
-    <a class="tags selective-underline" href="/tags/olin-microbiology-lab-undergraduate-research">Olin Microbiology Lab (Undergraduate Research)</a>
-    
-    
-    
-</div>
-        <hr>
-        <div class="single">
-            <article>
-                <p>A group of research students had tried to use a 2D discrete Fourier Transform to characterize the pattern of repeating protein units on a bacteria surface layer image. Since their spectral graph looked unusually messy and their pattern estimates seemed very wrong, my research professor asked me to take a crack at interpreting and cleaning it. This was a neat application of understanding the mathematical assumptions of a technique to properly isolate and interpret results.</p>
+    <section id="single" class="wrapper">
+      <header>
+        <div class="single-header">
+             
+<a class="category" href="/categories/data-analysis">Data Analysis</a>
+  
+
+          <h1>A Fourier Transform Detective Story!</h1>
+          <p>
+            <i>
+              written by Gati Aher on 
+
+<time class="date" datetime="2021-03-14">Mar 14, 2021</time> | 10 min read <br />
+                  tags:
+<a href="/tags/olin-microbiology-lab-undergraduate-research">Olin Microbiology Lab (Undergraduate Research)</a>
+  
+
+            </i>
+          </p>
+        </div>
+      </header>
+      <div class="inner">
+        <article><p>A group of research students had tried to use a 2D discrete Fourier Transform to characterize the pattern of repeating protein units on a bacteria surface layer image. Since their spectral graph looked unusually messy and their pattern estimates seemed very wrong, my research professor asked me to take a crack at interpreting and cleaning it. This was a neat application of understanding the mathematical assumptions of a technique to properly isolate and interpret results.</p>
 <div class="toc">
     <p>
         <strong>Table of Contents</strong>
@@ -380,148 +378,42 @@
 
 <h2 id="5-conclusion">5 CONCLUSION</h2>
 <p>The 2D discrete Fast Fourier plot is a nice tool for picking out key periodic frequencies in an image. By using FFT analysis, I determined that the ‘Hot Peanuts’ bacteria S-layer had a hexagonal lattice pattern, and center-to-center subunit spacings of 29.4 nm and 17.0 nm.</p>
-<p>This analysis was verified by comparing the ‘Hot Peanut’ FFT lattice pattern to known S-layer FFT patterns and by manually measuring the center-to-center spacing of the hexagonal subunits in a ‘Hot Peanut’ low-pass filtered spatial reconstruction.</p>
-            </article>
-        </div>
-
+<p>This analysis was verified by comparing the ‘Hot Peanut’ FFT lattice pattern to known S-layer FFT patterns and by manually measuring the center-to-center spacing of the hexagonal subunits in a ‘Hot Peanut’ low-pass filtered spatial reconstruction.</p></article>
+      </div>
     </section>
-</main>
+  </div>
 
+  
+  <footer id="footer" class="wrapper style1-alt">
+  <div class="inner">
+    <ul class="menu">
+      <li>&copy; 2022 <a href="/">Gati Aher</a></li>
+      <li>Powered by <a href="https://gohugo.io/">Hugo</a></li>
+      <li>
+        Adapted 
+        <a href="https://html5up.net/hyperspace"
+          > from HTML5 UP</a
+        >
+      </li>
+      <li>
+        Code on <a href="https://github.com/GatiAher/gatiaher-hugo">GitHub</a>
+      </li>
+    </ul>
+  </div>
+</footer>
 
-                        
-                        </div>
-                    </div>
-
-                
-                <div id="sidebar">
-    <div class="inner">
-
-        
-        <nav id="menu">
-            <header class="major">
-                <h2>Menu</h2>
-            </header>
-            <ul>
-                <li><a href="/">Home</a></li>
-                
-                
-                    <li>
-                        <a href="http://GatiAher.github.io/categories/software-development/">Software Development (8)</a>
-                    </li>
-                
-                    <li>
-                        <a href="http://GatiAher.github.io/categories/concepts-theory/">Concepts &amp; Theory (6)</a>
-                    </li>
-                
-                    <li>
-                        <a href="http://GatiAher.github.io/categories/data-analysis/">Data Analysis (5)</a>
-                    </li>
-                
-                
-                <li>
-                    <a href="/artwork">Artwork</a>
-                </li>
-                
-                <li>
-                    <span class="opener"><i>Tags</i></span>
-                    <ul>
-                        
-                        <li>
-                            <a href="http://GatiAher.github.io/tags/olin-college-fa2021-discrete-mathematics/">Olin College: FA2021 Discrete Mathematics (2)</a>
-                        </li>
-                        
-                        <li>
-                            <a href="http://GatiAher.github.io/tags/olin-college-fa2021-principals-of-integrated-engineering/">Olin College: FA2021 Principals of Integrated Engineering (2)</a>
-                        </li>
-                        
-                        <li>
-                            <a href="http://GatiAher.github.io/tags/olin-college-quantitative-engineering-analysis/">Olin College: Quantitative Engineering Analysis (2)</a>
-                        </li>
-                        
-                        <li>
-                            <a href="http://GatiAher.github.io/tags/olin-college-sp2021-software-systems-in-c/">Olin College: SP2021 Software Systems in C (2)</a>
-                        </li>
-                        
-                        <li>
-                            <a href="http://GatiAher.github.io/tags/olin-college-sp2022-social-technology-enterprise-with-purpose-step/">Olin College: SP2022 Social Technology Enterprise with Purpose (STEP) (2)</a>
-                        </li>
-                        
-                        <li>
-                            <a href="http://GatiAher.github.io/tags/olin-microbiology-lab-undergraduate-research/">Olin Microbiology Lab (Undergraduate Research) (2)</a>
-                        </li>
-                        
-                        <li>
-                            <a href="http://GatiAher.github.io/tags/building-software-for-family-friends/">Building Software For Family &amp; Friends (1)</a>
-                        </li>
-                        
-                        <li>
-                            <a href="http://GatiAher.github.io/tags/indico-data-solutions-intern-rd-&#43;-ml-engineering/">Indico Data Solutions (Intern: R&amp;D &#43; ML Engineering) (1)</a>
-                        </li>
-                        
-                        <li>
-                            <a href="http://GatiAher.github.io/tags/olin-college-&#43;-babson-college-sp2022-constructing-and-performing-the-self/">Olin College &#43; Babson College SP2022: Constructing and Performing the Self (1)</a>
-                        </li>
-                        
-                        <li>
-                            <a href="http://GatiAher.github.io/tags/olin-college-fa2021-computer-architecture/">Olin College: FA2021 Computer Architecture (1)</a>
-                        </li>
-                        
-                        <li>
-                            <a href="http://GatiAher.github.io/tags/olin-college-sp2020-software-design/">Olin College: SP2020 Software Design (1)</a>
-                        </li>
-                        
-                        <li>
-                            <a href="http://GatiAher.github.io/tags/olin-college-sp2021-data-structures-and-algorithms/">Olin College: SP2021 Data Structures and Algorithms (1)</a>
-                        </li>
-                        
-                        <li>
-                            <a href="http://GatiAher.github.io/tags/olin-college-sp2021-neurotechnology-brains-and-machines/">Olin College: SP2021 Neurotechnology: Brains and Machines (1)</a>
-                        </li>
-                        
-                        <li>
-                            <a href="http://GatiAher.github.io/tags/olin-satellite-&#43;-spectrum-technology-policy-group-undergraduate-research/">Olin Satellite &#43; Spectrum Technology &amp; Policy Group (Undergraduate Research) (1)</a>
-                        </li>
-                        
-                        <li>
-                            <a href="http://GatiAher.github.io/tags/olin-sp2022-advanced-algorithms/">Olin SP2022: Advanced Algorithms (1)</a>
-                        </li>
-                        
-                        <li>
-                            <a href="http://GatiAher.github.io/tags/%C5%82%C3%B3d%C5%BA-university-2021-mathup-conference/">Łódź University 2021 MathUp Conference (1)</a>
-                        </li>
-                        
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-
-        
-        <section>
-            <header class="major">
-                <h2>Get in touch</h2>
-            </header>
-            <p>Have questions or want to chat? Feel free to reach out via email or LinkedIn!</p>
-            <ul class="contact">
-                <li class="icon solid fa-envelope"><a href="mailto:gaher@olin.edu">gaher@olin.edu</a></li>
-                <li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/gatiaher">linkedin.com/in/gatiaher</a></li>
-                <li class="icon solid fa-home">Boston, MA</li>
-            </ul>
-        </section>
-
-        
-        <footer id="footer">
-            <p class="copyright">&copy; 2022 Gati Aher &#183; All rights reserved &#183; Powered by <a href="https://gohugo.io/">Hugo</a> &#183; </a> Design: <a href="https://html5up.net">HTML5 UP</a> &#183; Code on <a href="https://github.com/GatiAher/gatiaher-hugo">GitHub</a></p>
-        </footer>
-
-    </div>
 </div>
 
-            <div>
 
-        
-        
+
+    
+    
 
 <script src="/js/jquery.min.js"></script>
+
+<script src="/js/jquery.scrollex.min.js"></script>
+
+<script src="/js/jquery.scrolly.min.js"></script>
 
 <script src="/js/browser.min.js"></script>
 
@@ -532,9 +424,10 @@
 <script src="/js/main.js"></script>
 
 
-<script src="/js/vertical-tabs.js"></script>
+<script src="/js/tab_control.js"></script>
 
-        
-    </body>
 
+<script src="/js/carousel_control.js"></script>
+
+  </body>
 </html>
