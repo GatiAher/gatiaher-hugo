@@ -6,6 +6,10 @@ categories: ["Data Analysis"]
 featured: true
 draft: false
 readmore: true
+covertype: "image"
+cover: "default"
+shorttitle: "Fourier Transform Detective Story"
+shortsummary: "Characterizing repeating protein patterns on bacteria image with 2D Fourier Transform"
 ---
 
 A group of research students had tried to use a 2D discrete Fourier Transform to characterize the pattern of repeating protein units on a bacteria surface layer image. Since their spectral graph looked unusually messy and their pattern estimates seemed very wrong, my research professor asked me to take a crack at interpreting and cleaning it. This was a neat application of understanding the mathematical assumptions of a technique to properly isolate and interpret results.

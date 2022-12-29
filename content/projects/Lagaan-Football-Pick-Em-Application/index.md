@@ -6,6 +6,10 @@ categories: ["Software Development"]
 featured: true
 draft: false
 readmore: false
+covertype: "youtube"
+cover: "https://www.youtube.com/embed/IYpS-rnKjFc"
+shorttitle: "Fullstack React Development"
+shortsummary: "React.js + DigitalOcean + SQLite + Auth0 Football Pick-Em' site used by 40+ active weekly users"
 ---
 
 This fullstack application includes a scoring engine to validate user pool picks and compute score and a React.js UI to handle team selections and leader-board displays. This is used by 40+ active users to submit pool selections weekly. I developed and maintained this application from Fall 2020 through Spring 2022.

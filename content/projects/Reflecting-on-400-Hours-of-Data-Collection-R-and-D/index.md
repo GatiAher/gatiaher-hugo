@@ -6,6 +6,10 @@ categories: ["Software Development"]
 featured: true
 draft: false
 readmore: true
+covertype: "youtube"
+cover: "https://www.youtube.com/embed/gtr_1zKshnQ"
+shorttitle: "Reflecting on the Gesture Detection Ring"
+shortsummary: "400+ hours designing, building, integrating, and collecting gesture samples"
 ---
 
 STEP (Social Technology Enterprise with Purpose) was an 400+ hour experimental course that aimed to give students real-world engineering experience within the freedoms afforded by an education-first structure. I worked on the gesture ring, designing a gesture set and building the data collection process for training a machine-learning gesture classification model.

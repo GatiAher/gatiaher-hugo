@@ -1,24 +1,35 @@
 {{ define "main" }}
 <main aria-role="main">
+  <!-- Sidebar -->
+  {{ partial "index-sidebar.html" . }}
 
-  <!-- Banner -->
-  {{ partial "site-banner.html" . }}
+  <!-- Wrapper -->
+  <div id="wrapper">
+    <div id="index">
+      <!-- Intro -->
+      {{ partial "index-section-intro.html" . }}
 
-  <!-- Where I've Worked Section -->
-  {{ partial "section-where-I-worked.html" . }}
+      <!-- Interests -->
+      {{ partial "index-section-interests.html" . }}
 
-  <!-- Featured Work Section -->
-  <section>
-    <header class="major">
-      <h2>Featured Projects</h2>
-    </header>
-    <div class="posts">
-      {{ $section := where $.Site.RegularPages "Params.featured" "==" true }}
-      {{ range $section }}
-      {{ partial "thumbnail" . }}
-      {{ end }}
+      <!-- Experience -->
+      {{ partial "index-section-experience.html" . }}
+
+      <!-- Publications -->
+      {{ partial "index-section-publications.html" . }}
+
+      <!-- Projects -->
+      {{ partial "index-section-projects.html" . }}
+
+      <!-- Teaching -->
+      {{ partial "index-section-teaching.html" . }}
+
+      <!-- Art -->
+      {{ partial "index-section-art.html" . }}
     </div>
-  </section>
+  </div>
 
+  <!-- Footer -->
+  {{ partial "site-footer.html" . }}
 </main>
 {{ end }}

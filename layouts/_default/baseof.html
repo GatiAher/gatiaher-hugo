@@ -1,32 +1,12 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+  {{ partial "head.html" . }}
 
-    {{ partial "head.html" . }}
+  <body class="is-preload">
+    <!-- Content -->
+    {{ block "main" . }}{{ end }}
 
-    <body class="is-preload">
-        
-        <!-- Wrapper -->
-            <div id="wrapper">
-
-                <!-- Main -->
-                    <div id="main">
-                        <div class="inner">
-
-                            <!-- Header -->
-                            {{ partial "site-header.html" . }}
-                            <!-- Content -->
-                            {{ block "main" . }}{{ end }}
-                        
-                        </div>
-                    </div>
-
-                <!-- Sidebar -->
-                {{ partial "site-sidebar.html" . }}
-            <div>
-
-        <!-- scripts -->
-        {{ partial "scripts.html" . }}
-        
-    </body>
-
+    <!-- Scripts -->
+    {{ partial "scripts.html" . }}
+  </body>
 </html>

@@ -2,7 +2,7 @@ baseURL = "http://GatiAher.github.io"
 title = "Gati Aher"
 publishDir = "docs"
 
-theme = "paper"
+
 languageCode = "en-us"
 copyright = ""
 

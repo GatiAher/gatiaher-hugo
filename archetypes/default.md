@@ -6,6 +6,10 @@ categories: []
 featured: false
 draft: false
 readmore: true
+covertype: "image"
+cover: "default"
+shorttitle: ""
+shortsummary: ""
 ---
 
 <!--more-->

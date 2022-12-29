@@ -1,8 +1,16 @@
 <header id="header">
-    <a href="/" class="logo"><strong>Gati</strong> Aher</a>
-    <ul class="icons">
-        <li><a href="https://github.com/GatiAher" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-        <li><a href="https://www.linkedin.com/in/gatiaher" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-        <li><a href="mailto:gaher@olin.edu" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+  <a href="/" class="title">Gati Aher</a>
+  <nav>
+    <ul>
+      <!-- Categories -->
+      {{ range.Site.Taxonomies.categories.ByCount }}
+      <li>
+        <a href="{{ .Page.Permalink }}">{{ .Page.Title }} ({{ .Count }})</a>
+      </li>
+      {{ end }}
+      <li>
+        <a href="/artwork">Art</a>
+      </li>
     </ul>
+  </nav>
 </header>
